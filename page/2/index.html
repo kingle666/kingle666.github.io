@@ -1,853 +1,557 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Language" content="zh-cn">
-    <meta charset="utf-8">
-    
-    
-    
-    <title>Hexo</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    
-    <meta name="theme-color" content="#77AAFF">
-    
-    
-    <meta name="keywords" content="">
-    
-    
-
-    
-
-    <!-- Baidu Push -->
-<script>
-	(function(){
-		var bp = document.createElement('script');
-		var curProtocol = window.location.protocol.split(':')[0];
-		if (curProtocol === 'https') {
-			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-		}
-		else {
-			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-		}
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(bp, s);
-	})();
-
-	var _hmt = _hmt || [];
-</script>
-
-
-
-    
-    <meta property="og:type" content="website">
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/page/2/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
     
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
-    <script>window.lazyScripts=[]</script>
+    
 
-    <!-- custom head -->
-    
-            
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-    <aside id="menu"   >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" >
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg" alt="avatar">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname" id="name">John Doe</h5>
-          
-            <div id="yiyanmotto" class="motto">&nbsp;</div>
-          
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-              <li class="waves-block waves-effect">
-                  <a href="/"  >
-                    <i class="icon icon-lg icon-home"></i>
-                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/archives"  >
-                    <i class="icon icon-lg icon-archives"></i>
-                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/categories"  >
-                    <i class="icon icon-lg icon-th-list"></i>
-                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/tags"  >
-                    <i class="icon icon-lg icon-tags"></i>
-                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/about"  >
-                    <i class="icon icon-lg icon-smile-o"></i>
-                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-      <div class="nav2">
-          
-              <a class="nav2item" data-title="Email" href="mailto:1755811882@qq.com" target="_parent"title="Email" >
-                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
-              </a>
-          
-              <a class="nav2item" data-title="Github" href="https://github.com/tomotoes" target="_blank"title="Github" >
-                <i class="icon icon-lg icon-github github"></i>
-              </a>
-          
-              <a class="nav2item" data-title="微博" href="https://weibo.com/u/6179399347" target="_blank"title="微博" >
-                <i class="icon icon-lg icon-weibo weibo"></i>
-              </a>
-          
 
-            </div>
-        
-      </ul>
-        
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
     </div>
   </div>
- 
-</aside>
+</div>
 
 
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">Hexo</div>
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
         
-        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
-            <i class="icon icon-lg icon-rss"></i>
-        </a>
-    </div>
-</header>
-<header class="content-header index-header">
-    
-    
-    <div class="container fade-scale">
-        <div id="myheader">
-            <h1 class="title">
-                 
-                    Hexo
-                
-            </h1>
-            <h5 class="subtitle">
-                
-                    在Web全栈的道路上努力前行
-                
-            </h5>
-        </div>
-    </div>
-
-</header>
-
-<div class="container body-wrap">
-    <ul class="post-list">
-    
-        <li class="post-list-item fade">
-            <article id="post-linux-etc文件系统介绍"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2018/07/13/linux-etc文件系统介绍/">linux etc,var文件系统介绍</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-07-13 19:04:51" datetime="2018-07-13T11:04:51.000Z"  itemprop="datePublished">2018-07-13</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <h3 id="1）-目录结构说明："><a href="#1）-目录结构说明：" class="headerlink" title="1） 目录结构说明："></a>1） 目录结构说明：</h3><pre><code>windows：磁盘----分区---格式化--系统
-linux：磁盘--分区--生成一个文件（磁盘分区）
-linux 中一切皆文件
-ll -h 显示人类能看懂的
-mount -o remount，rw /
-安装tree yum install tree -y
-
-查看一级根 tree -L 1 /
-esc . 快速输入上一个字符串。
-etc下重要文件：nfig/network-scripts/ifcfg-eth0
-        DEVICE=eth0  --&gt; 设备名称eth0 
-        HWADDR=00:0c:29:8c:e2:3b  mac地址
-        TYPE=Ethernet  网络类型
-        UUID=ffe5f1b3-26ab-4312-a364-c0061f01bbb6  硬件标示id信息    查看分区的命令blkid
-        ONBOOT=yes   ------------------&gt;    一定设置yes&apos; 激活网卡（给网卡供电）
-        NM_CONTROLLED=yes   网络控制服务
-        BOOTPROTO=none         启动协议：获取地址方式  静态
-        IPADDR=10.0.0.200      网关
-        NETMASK=255.255.255.0  dns
-        DNS2=223.5.5.5
-        GATEWAY=10.0.0.2   服务器网卡ip
-        DNS1=114.114.114.114  子网掩码
-        USERCTL=no
-        PEERDNS=yes            网卡dns配置是否覆盖
-        IPV6INIT=no         
-；命令分隔符
-&amp;&amp;  前面命令执行成功后在执行后一条命令
-</code></pre><h3 id="2）-重启网0卡-service-network-restart-（字太多不建议使用）"><a href="#2）-重启网0卡-service-network-restart-（字太多不建议使用）" class="headerlink" title="2）    重启网0卡 service network restart （字太多不建议使用）"></a>2）    重启网0卡 service network restart （字太多不建议使用）</h3><pre><code>/etc/resolv.conf dns网卡配置信息
-</code></pre><h3 id="3）-etc-hosts-主机名称或者域名信息-本机设置域名和ip地址装换关系"><a href="#3）-etc-hosts-主机名称或者域名信息-本机设置域名和ip地址装换关系" class="headerlink" title="3）/etc/hosts  主机名称或者域名信息 本机设置域名和ip地址装换关系"></a>3）/etc/hosts  主机名称或者域名信息 本机设置域名和ip地址装换关系</h3><pre><code>修改主机名称 的时候要修改这个文件
-</code></pre><h3 id="4）-etc-sysconfig-network"><a href="#4）-etc-sysconfig-network" class="headerlink" title="4）/etc/sysconfig/network"></a>4）/etc/sysconfig/network</h3><pre><code>用于修改系统主机名信息：配置网关信息
-
-    主机名修改步骤：    
-    第一：    hostname kingle  修改主机名称不会立即生效 
-说明：命令修改主机名只是临时生效；
-    第二：编写配置文件：
-            vim /etc/sysconfig/network
-    第三：编写/etc/host  配置好主机名于ip地址的关系
-</code></pre><h3 id="5）-etc-fstab"><a href="#5）-etc-fstab" class="headerlink" title="5）/etc/fstab"></a>5）/etc/fstab</h3><pre><code>file system mounting table 
-    磁盘 做raid （阵列卡） 进行分区  格式化 文件系统 默认的挂载参数
-/dev/cdrom /mnt iso9660 defaults 0 0
-
-cat /proc/mounts 可以看到挂载文件的属性
-mount -auto /etc/fstab --&gt;  mount -a
-</code></pre><h3 id="6）-etc-rc-local-开机自启"><a href="#6）-etc-rc-local-开机自启" class="headerlink" title="6）/etc/rc.local  开机自启"></a>6）/etc/rc.local  开机自启</h3><pre><code>将你要的操作执行的命令，直接放入到此文件，可是让操作命令自动开机自启
-</code></pre><h3 id="7）-etc-inittab"><a href="#7）-etc-inittab" class="headerlink" title="7）/etc/inittab"></a>7）/etc/inittab</h3><pre><code>linux 系统有不同的进入方式，系统的运行级别
-
-0 -halt 关机运行级别
-1 - single user mode 单用户级别
-2 - multiuser，without NFS 多用户级别，但是不支持nfs （类似3级别但是没有网络）
-3 - Full multiuser mode 正常多用户模式 （命令行模式）
-4 - unused 未使用级别
-5 - X11 图形化界面 （安装oracle）
-6 - reboot 重启
-</code></pre><h3 id="8）-etc-init-d-目录"><a href="#8）-etc-init-d-目录" class="headerlink" title="8）/etc/init.d (目录)"></a>8）/etc/init.d (目录)</h3><pre><code>主要用于存放服务的启动和关闭
-    但是并不是所有的程序都放在这里
-
-
-系统软件的安装：
-    1，软件的安装方式（启动脚本会放在etc/init.d）
-        rpm 命令 rpm -ivh 
-                        -i install
-                        -v 显示详细信息
-                        -h 显示信息 
-        yum 
-
-        优化yum源 
-        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
-
-        3.编译安装是不会放在/etc/inin.d
-</code></pre><h3 id="9）-etc-profile-加载命令的配置信息文件"><a href="#9）-etc-profile-加载命令的配置信息文件" class="headerlink" title="9）    /etc/profile (加载命令的配置信息文件)"></a>9）    /etc/profile (加载命令的配置信息文件)</h3><pre><code>此文件一般加载配置是环境变量信息或者别名的配置信息
-
-如何让配置环境变量
-export （让配置修改环境变量全局生效）
-环境变量 PS1 LANG PATH 
-设置修改PATH环境方法
-
- ll /bin/ -d
-dr-xr-xr-x. 2 root root 4096 Jul  4 13:30 /bin/
-mkdir /bin01
-ll /bin01/ -d
-drwxr-xr-x 2 root root 4096 Jul 13 11:15 /bin01/
-mv /bin/cat /bin01/
-ll /bin/cat
-ls: cannot access /bin/cat: No such file or directory
-ll /bin01/cat 
--rwxr-xr-x. 1 root root 48568 Mar 23  2017 /bin01/cat
-cat /etc/hosts
--bash: /bin/cat: No such file or directory
-echo $PATH
-/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
-export PATH=&quot;$PATH:/bin01&quot;
-echo $PATH
-/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin:/bin01
-cat /etc/hosts
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-10.0.0.200   oldgirl
-</code></pre><h3 id="10）-etc-bashrc-加载命令配置文件"><a href="#10）-etc-bashrc-加载命令配置文件" class="headerlink" title="10）/etc /bashrc  加载命令配置文件"></a>10）/etc /bashrc  加载命令配置文件</h3><h3 id="11）-bash-profile-bashrc"><a href="#11）-bash-profile-bashrc" class="headerlink" title="11）    ~/.bash_profile  ~/.bashrc"></a>11）    ~/.bash_profile  ~/.bashrc</h3><pre><code>用户家下面  ~/.bash_profile  ~/.bashrc （使用优先）
-
-/etc 目录下面 /etc/profile
-etc/bash 全局命令  （其次）
-
-souce ==. 
-</code></pre><h3 id="11）-var-目录中保存的信息经常变化-日志文件"><a href="#11）-var-目录中保存的信息经常变化-日志文件" class="headerlink" title="11）/ var    目录中保存的信息经常变化 日志文件"></a>11）/ var    目录中保存的信息经常变化 日志文件</h3><pre><code>/var/log/messages --系统日子文件
-不断增加 ，对其切割处理
-
-/var/log/secure  记录用户登录信息
-
-    tail -f /var/log/secure 实时监控文件信息
-        -f  如果监控文件被删除了，会停止监控 
-        -F  监控文件删除了，依旧监控
-
-/var/spool 定时任务
-/var/spool/cron/root  系统闹钟
-
-
-
-
-/porc   
-/proc/cpuinfo   cpu 信息
-/proc/meminfo    系统内存
-/porc/loadavg    负载信息   ---&gt;uptime 查看负载信息  ：
-0.00    0.00   0.00 1/168 7396
-一分钟 五分钟 十五分钟
-/porc/mounts
-</code></pre><h3 id="top-监控系统运行情况"><a href="#top-监控系统运行情况" class="headerlink" title="top  监控系统运行情况"></a>top  监控系统运行情况</h3>
-    
-        <div>
-            <a href="/2018/07/13/linux-etc文件系统介绍/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a></li></ul>
-
-    </div>
-    
-</article>
-
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
         </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-linux-删除文件深入了解及任务定时-Linux的闹钟"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/">linux 删除文件深入了解及任务定时--Linux的闹钟</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-07-13 19:01:18" datetime="2018-07-13T11:01:18.000Z"  itemprop="datePublished">2018-07-13</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <h3 id="1-linux-删除一个文件的权限要看文件所在的目录的权限"><a href="#1-linux-删除一个文件的权限要看文件所在的目录的权限" class="headerlink" title="1. linux 删除一个文件的权限要看文件所在的目录的权限"></a>1. linux 删除一个文件的权限要看文件所在的目录的权限</h3><pre><code>删除文件需要对对这个目录拥有w权限
-
-修改文件 查看文件的内容需要对文件有rw权限
-
-删除 创建一个文件 需要对文件坐在地目录拥有wx权限
-</code></pre><h3 id="2-chattr-添加隐藏文件-lsattr-查看隐藏权限-append-追加权限-只能追加"><a href="#2-chattr-添加隐藏文件-lsattr-查看隐藏权限-append-追加权限-只能追加" class="headerlink" title="2. chattr  添加隐藏文件 lsattr  查看隐藏权限  append 追加权限 只能追加"></a>2. chattr  添加隐藏文件 lsattr  查看隐藏权限  append 追加权限 只能追加</h3><pre><code>i 不可毁灭的 无法修改无法删除  对于系统的一些需要保护的文件可以添加 eg：/etc/inittab /etc/passwd /etc/shadow
-</code></pre><h3 id="3-suid-运行莫一个命令的时候相当于root-加特殊权限-chmod-u-s-bin-rm-超级危险啊"><a href="#3-suid-运行莫一个命令的时候相当于root-加特殊权限-chmod-u-s-bin-rm-超级危险啊" class="headerlink" title="3. suid 运行莫一个命令的时候相当于root   加特殊权限 chmod u+s /bin/rm  超级危险啊"></a>3. suid 运行莫一个命令的时候相当于root   加特殊权限 chmod u+s /bin/rm  超级危险啊</h3><pre><code>chmod o+t /tmp  粘滞位 --&gt;任何人都可以创建，但是只能自己管理自己的
-
-
-
-
-linux  定时任务！！闹钟！！
-        atd        运行一次
-    不用
-        anacron 非7*24小时的服务器
-
-crond   用户的定时任务，和系统的定时任务    
-
-系统定时任务不要求深究
-
-
-我们用的叫用户定时任务
-
-    查看任务 crontab -l cat /var spool/cron/root
-    编辑任务 crontab -e vim /var spool/cron/root
-1，！！定时任务依赖的软件 是否能用    
-        /etc/init.d/crond  status
-2， 查看crond 是否开机自启
-    chkconfig | grep crond
-3， 查看sshd是否运行
-    ps-ef |grep sshd
-
-进程：正在运行的程序
-守护进程：一直运行的程序
-</code></pre><h3 id="4，-crontab-怎么使用：-有语法检查功能"><a href="#4，-crontab-怎么使用：-有语法检查功能" class="headerlink" title="4，    crontab  怎么使用： 有语法检查功能"></a>4，    crontab  怎么使用： 有语法检查功能</h3><pre><code>    查看任务 crontab -l cat /var spool/cron/root
-    编辑任务 crontab -e vim /var spool/cron/root
-定时文件放置的目录：    /var/spool/cron/
-定时任务的日志文件：    /var/log/cron
-哪些用禁止使用定时任务    /etc/cron/
-
-定时任务就是什么时间做什么任务!
-
-* 每 *   * * * * 命令
-/n */10 表示每隔十分钟
-    ntpdate ntp1.aliyun.com
-    crontab -e * * * * * /usr/sbin/ntpdate ntp1.aliyun.com &gt;/dev/null 2&gt;$1
-- 00 07-11 * * * cmd 每天上午7点到11点运行一次
-每周一周五 凌晨三点到五点的整点和半点 运行
-    分 时  周  月  周 
-    00，30    03-05    *    *    01-05
-</code></pre>
-    
-        <div>
-            <a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-命令"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2018/07/12/命令/">命令</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-07-12 19:34:40" datetime="2018-07-12T11:34:40.000Z"  itemprop="datePublished">2018-07-12</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <h3 id="1-tree"><a href="#1-tree" class="headerlink" title="1,tree"></a>1,tree</h3><pre><code>-d /etc/ 参数表示只显示目录
--f 显示内容的完整
--i 不显示树枝显示完整路径
-</code></pre><h3 id="2-mkdir"><a href="#2-mkdir" class="headerlink" title="2,mkdir"></a>2,mkdir</h3><pre><code>-p 递归创建多级目录
--v 显示创建目录的过程
--m 设置目录的默认权限
-mkdir -p `cat ~/oldbay.txt` 
-</code></pre><h3 id="3-touch"><a href="#3-touch" class="headerlink" title="3,touch"></a>3,touch</h3><pre><code>-a 只更改指定文件最后访问
--m 修改最后的修改时间
--d 指定文件的修改时间
-</code></pre><h3 id="4-stat"><a href="#4-stat" class="headerlink" title="4,stat"></a>4,stat</h3><pre><code>查看文件的时间搓
-</code></pre><h3 id="5-ls"><a href="#5-ls" class="headerlink" title="5,ls"></a>5,ls</h3><pre><code>-l 详细信息
--a 显示隐藏文件
--t 根据时间排序
--F 文件类型
-    * 代表普通文件
-    / 代表目录
-    = 代表套接字（socket）
-    | ------
-    @ 符号链接
--i 显示inode节点
---time-style=long-iso 显示完整的时间属性
--lhi含义 第一列：inode 索引节点编号
-第二列：文件类型属性
-第三列：硬链接个数
-第四列：文件所属的用户
-第五列：文件所属的组
-第六列：文件的大小
-</code></pre><h3 id="6-cp"><a href="#6-cp" class="headerlink" title="6,cp"></a>6,cp</h3><pre><code>-p 复制文件保持源文件属性
--d 符号链接
--r 递归复制 
--a 上面总和
--i 覆盖前提示
--t 颠倒格式
-</code></pre><h3 id="7-mv"><a href="#7-mv" class="headerlink" title="7,mv"></a>7,mv</h3><pre><code>-f 不提示覆盖
--i 询问覆盖
--n 不覆盖已存在的文件
--t 源文件和目标文件对调
-</code></pre><h3 id="8-rm"><a href="#8-rm" class="headerlink" title="8,rm"></a>8,rm</h3><pre><code>-f 强制删除
--i 删除前提示
--I 删除文件过多需要提示
--r 递归删除
-</code></pre><h3 id="9-rmdir"><a href="#9-rmdir" class="headerlink" title="9,rmdir"></a>9,rmdir</h3><pre><code>-p 递归删除目录
--v 显示命令执行的过程
-</code></pre><h3 id="10-in"><a href="#10-in" class="headerlink" title="10,in"></a>10,in</h3><pre><code>-s 创建软连接（符号链接）
-</code></pre><h3 id="11-find"><a href="#11-find" class="headerlink" title="11,find"></a>11,find</h3><pre><code>pathname :路径
-Options 模块
-    -depth 从指定目录下最深的子目录
-    -maxdepth levels
-Tests模块
-    -atime 按照文件的访问时间查找文件
-
--type    
-    b 块设备文件
-    c 字符设备文件
-    d 目录
-    p 管道文件
-    l 符号链接
-    f 普通文件
-    $ socket 文件
-    D door
-actions模块
-    -delete 讲查找的文件删除
-    -exec 对匹配的文件执行改参数给出的shell命令
-    -ok 和-exec作用相同
-    -print 讲匹配的文件输出到标准输出
-    ！取反
-    忽略目录：find /data \(/data/dir2 -o -path /data/dirs \) -prune -o -print
-</code></pre><h3 id="12-xargs"><a href="#12-xargs" class="headerlink" title="12,xargs"></a>12,xargs</h3><pre><code>-n 指定每行最大参数量
--d 自定义分隔符
--i 以{}代替前面的结果
--I 指定一个符号代替前面的结果
--p 提示用户是否执行
-</code></pre><h3 id="13-rename"><a href="#13-rename" class="headerlink" title="13,rename"></a>13,rename</h3><pre><code>rename form to file
-    form 代表需要提哈U呢或者处理的字符
-    to 把前面的from 代表内容替换我to的代表内容
-    file 待处理的文件
-</code></pre><h3 id="14-dasename"><a href="#14-dasename" class="headerlink" title="14,dasename"></a>14,dasename</h3><pre><code>显示文件名或目录名
-    用于去除文件后缀部分
-</code></pre><h3 id="15-dirname"><a href="#15-dirname" class="headerlink" title="15,dirname"></a>15,dirname</h3><pre><code>显示文件或者目录路径
-</code></pre><h3 id="16-chattr-option-选项-mode-模式-files-问价或者路径"><a href="#16-chattr-option-选项-mode-模式-files-问价或者路径" class="headerlink" title="16,chattr [option 选项] [mode 模式] [files 问价或者路径]"></a>16,chattr [option 选项] [mode 模式] [files 问价或者路径]</h3><pre><code>改变文件扩展属性
-    -R 递归更改目录属性
-    -V 显示命令执行的过程
-    mode项：
-    + 增加参数
-    - 移除参数
-    = 跟新为指定参数
-    A 告诉系统不要修改这个文件的最后访问时间
-    a 只能向文件添加数据，不能删除更改或者删除
-    i 设定文件锁定不允许操作
-</code></pre><h3 id="17-lsattr-option-选项-file-目标-文件"><a href="#17-lsattr-option-选项-file-目标-文件" class="headerlink" title="17,lsattr [option 选项] [file 目标 文件]"></a>17,lsattr [option 选项] [file 目标 文件]</h3><pre><code>-R 递归查看目录的扩展属性
--a 显示所有文件包括隐藏文件的扩展属性
--d 显示目录的扩展属性
-</code></pre><h3 id="18-file-option-选项-file-目标-文件"><a href="#18-file-option-选项-file-目标-文件" class="headerlink" title="18,file    [option 选项] [file 目标 文件]"></a>18,file    [option 选项] [file 目标 文件]</h3><pre><code>-b 输出信息使用精简格式
-</code></pre><h3 id="19-md5sum"><a href="#19-md5sum" class="headerlink" title="19,md5sum"></a>19,md5sum</h3>
-    
-        <div>
-            <a href="/2018/07/12/命令/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-linux系统优化基础"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2018/07/11/linux系统优化基础/">linux系统优化基础</a>
-    </h3>
-  
-
-
-
-
-     <div class="post-meta">
-        <time class="post-time" title="2018-07-11 19:19:29" datetime="2018-07-11T11:19:29.000Z"  itemprop="datePublished">2018-07-11</time>
-
-    </div>
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        <h3 id="1，-查看centos版本：cat-etc-redhat-release"><a href="#1，-查看centos版本：cat-etc-redhat-release" class="headerlink" title="1， 查看centos版本：cat etc/redhat-release"></a>1， 查看centos版本：cat etc/redhat-release</h3><pre><code>看看centos架构信息：uname -m
-
-查看内核信息：uname -r
-                    -r 显示内核信息
-                    -m 显示系统架构信息
-                    -a 显示系统所欲信息
-                    -n 网络节点主机
-</code></pre><h3 id="2，-ctrl-L-清屏操作"><a href="#2，-ctrl-L-清屏操作" class="headerlink" title="2，    ctrl+ L 清屏操作"></a>2，    ctrl+ L 清屏操作</h3><pre><code>ctrl＋ｄ　退出当前用户
-ｃｔｒｌ　＋　ｃ　结束操作
-</code></pre><h3 id="3，-创建用户-useradd"><a href="#3，-创建用户-useradd" class="headerlink" title="3， 创建用户 useradd"></a>3， 创建用户 useradd</h3><pre><code>创建密码　ｐａｓｓｗｄ　 
-    免交互设置密码 echo“” |passwd --stdin oldgilr
-切换：  su   不指定用户默认root
-        su -
-    su 进入的普通用户后 环境变量还是原本用户的变量及pwd后 显示的是/root
-    su - 进入普通用户原本的环境变量也会改变
-    及pwd显示是 /home/kingle 
-</code></pre><p>###　4, 查看当前用户whoami </p>
-<h3 id="5，如果用户需要重置密码，需要以root用户重置"><a href="#5，如果用户需要重置密码，需要以root用户重置" class="headerlink" title="5，如果用户需要重置密码，需要以root用户重置"></a>5，如果用户需要重置密码，需要以root用户重置</h3><pre><code>root草鸡管理员 其他普通用户只能独立访问长度 
-</code></pre><h3 id="6，-export-PS1-”-u-h-w-A-“"><a href="#6，-export-PS1-”-u-h-w-A-“" class="headerlink" title="6， export PS1=”[\u@\h \w\A]\$ “"></a>6， export PS1=”[\u@\h \w\A]\$ “</h3><pre><code>\u--&gt;root
-\h--&gt;标示
-\w-&gt;当前路径
-\A--时间
-</code></pre><h3 id="7，系统优化：selinux"><a href="#7，系统优化：selinux" class="headerlink" title="7，系统优化：selinux"></a>7，系统优化：selinux</h3><pre><code>    关闭：临时关闭：     setenforce 
-                    service selinux stop
-
-                    enforcing - selinux 服务器处于开启状态
-                    permisssive- 临时关闭，有问一题还会报告
-                    disable -- 临时关闭
-
-          永久关闭：selinux 修改自己的配置文件生效
-
-      iptables
-    /etc/init.d 目录存放服务程序的脚本文件
-chkconfig 设置系统的各种服务
-chkconfig iptables off 关闭服务
-</code></pre><h3 id="系统乱码："><a href="#系统乱码：" class="headerlink" title="系统乱码："></a>系统乱码：</h3><pre><code>修改一个字符集的环境变量
-临时修改
-echo $LANG 
-LANG=en_US.UTF-8  ------&gt;正确的设定
-永久修改
-export LANG=en_US.UTF-8 &gt;&gt;/etc/profile
-
-
-vim /etc/sysconfig/i18n
-
-修改生效 source /etc/sysconfig/i18n
-source 经常可以加载的配置文件
-
-/etc/profile /etc/bashrc    ~/.bash_profile ~/.bashrc /etc/sysconfig/i18n
-</code></pre>
-    
-        <div>
-            <a href="/2018/07/11/linux系统优化基础/" class="post-more waves-button">
-                Continue reading...
-            </a>
-        </div>
-    </div>
-    
-    <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a></li></ul>
-
-    </div>
-    
-</article>
-
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
         </li>
-    
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
     </ul>
 
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
     
-<nav id="page-nav">
-    <div class="inner">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
     </div>
-</nav>
-
-
 </div>
 
-        <footer class="footer">
-    <div class="footer-content">
-        <span class="power">
-            <i class="icon icon-lg icon-copyright"></i>
-            2017
-            <i class="icon icon-lg icon-heart"></i>
-            <a href="http://yoursite.com">tomotoes.com</a>
-            <br/>
-            Power by
-            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
-            Theme
-            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
-        </span>
+    
+      
 
-        <br/>
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ansible/">ansible</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lnmp-shell/">lnmp shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ulimit/">ulimit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单引号，双引号，反引号/">单引号，双引号，反引号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令-运维/">命令 运维</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
 
-        <span id="RunTime" style="color:#a7a7a2;"></span>
-        <br/>
 
-        <span>
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Linux-etc-var-kingle/" style="font-size: 13px;">Linux etc var kingle</a> <a href="/tags/ansible/" style="font-size: 13px;">ansible</a> <a href="/tags/linux-优化-kingle/" style="font-size: 13px;">linux 优化 kingle</a> <a href="/tags/linux-删除-闹钟/" style="font-size: 13px;">linux 删除 闹钟</a> <a href="/tags/lnmp-shell/" style="font-size: 13px;">lnmp shell</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/ulimit/" style="font-size: 13px;">ulimit</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/单引号，双引号，反引号/" style="font-size: 13px;">单引号，双引号，反引号</a> <a href="/tags/命令-运维/" style="font-size: 13px;">命令 运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
             
-	<i class="icon icon-lg icon-user">
-<span id="busuanzi_container_site_uv" style='display:none'>
-       访问用户：<span id="busuanzi_value_site_uv"></span>
-    </span>人</i>
-    ·
-    <i class="icon icon-lg icon-eye">
-    <span id="busuanzi_container_site_pv" style='display:none'>
-      访问次数：<span id="busuanzi_value_site_pv"></span>
-    </span>次
-    </i>
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/跟我一起学正则表达式/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:42:58.740Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:40:37.622Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/lnmp-编译安装脚本/" class="title">lnmp 编译安装脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:59:58.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/vim自定义配置文件/" class="title">vim自定义配置文件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:57:31.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/linux-系统优化脚本/" class="title">linux 系统优化脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:52:18.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  <main class="main" role="main">
+  
+  <div class="content article-list">
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/13/linux-etc文件系统介绍/">linux etc,var文件系统介绍</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/13/linux-etc文件系统介绍/" class="article-date">
+	  <time datetime="2018-07-13T11:04:51.000Z" itemprop="datePublished">Jul 13</time>
+	</a>
+</span>
+    
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a>
+  </span>
 
 
-        </span>
-        <br/>
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/13/linux-etc文件系统介绍/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
 
-        <span class="license">This blog is licensed under a <a rel="license" rel="external nofollow" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/">linux 删除文件深入了解及任务定时--Linux的闹钟</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/" class="article-date">
+	  <time datetime="2018-07-13T11:01:18.000Z" itemprop="datePublished">Jul 13</time>
+	</a>
+</span>
+    
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/命令/">命令</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/12/命令/" class="article-date">
+	  <time datetime="2018-07-12T11:34:40.000Z" itemprop="datePublished">Jul 12</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/12/命令/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/11/linux系统优化基础/">linux系统优化基础</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/11/linux系统优化基础/" class="article-date">
+	  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">Jul 11</time>
+	</a>
+</span>
+    
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/11/linux系统优化基础/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
+
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/">
+                    <i class="icon icon-angle-left"></i>
+                    Prev
+                </a>
+            </li>
+            
+            
+            <li class="next disabled">
+                <a href="javascript:;">
+                    Next
+                    <i class="icon icon-angle-right"></i>                    
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 2 of 2</div>
+        </div>
+    </nav>
+    
+ 
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
     </div>
 </footer>
-
-    </main>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
     
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-    <!-- waves按钮特效 -->
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-
-<!-- 主题配置脚本 -->
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
 </script>
-
-<!-- jquery -->
-<script src="/js/jquery.min.js?v=3.0"></script>
-
-<!-- 搜索 -->
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item waves-block waves-effect" onclick="location.href='{path}'">
-    <div class="title ellipsis" title="{title}">{title}</div>
-</li>
-</template>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
 
 
-<!-- main博客脚本 -->
-<script src="/js/main.min.js?v=3.0" ></script>
+    
+    
+    
 
-<!-- 动画&配置 -->
-<script src="/js/script.min.js?v=3.0" ></script>
-
-<!-- 脚本管理 -->
-<script>
-
-if(window.innerWidth > 800){
-	/* 3D标题 */
-	$(".content-header").on("mousemove", threedee);
-
-	/* 底部追随鼠标 */
-	$(".footer").hover(2);
-
-	/* gotop键的涟漪 */
-	$("#gotop").hover(1);
-
-	/* 赞赏的粒子雨 */
-	$("#reward").hover(3);
-
-	/* 微信公众号的底部渲染 */
-	$("#wechat").hover(4);
-
-    /* 标题跳动 */
-    $(".archivestitle").bumpyText();
-
-	/* 图片点击放大 */
-	const postimg = jQuery(".post-content img:not(.github-emoji)");
-	postimg.on("click",function(){
-
-		mask.classList.add("in");
-		main.classList.add("Mask");
-		menu.classList.add("Mask");
-		var myimg = this.cloneNode(true);
-		myimg.classList.add("imgShow");
-
-		setTimeout(function(){
-			jQuery(myimg).animate({
-				opacity:"1"
-			},1000);
-		},0);
-
-		document.body.appendChild(myimg);
-
-		myimg.onclick=function(){
-			document.body.removeChild(myimg);
-			mask.classList.remove("in");
-			main.classList.remove("Mask");
-			menu.classList.remove("Mask");
-		};
-
-	});
-
-}
-
-/* 名字跳动 */
-$("#name").bumpyText();
-
-
-/* 网站运行时间 */
-setInterval(function () {
-	setTime("2017/10/11");
-}, 1000);
-
-/* 文章块的淡出 */
-postshow();
-
-/* 座右铭 */
-
-   getHitokoto();
-
-
-
-/* 粘贴提示 */
-G($(".post-content"), location.href, "John Doe");
-
-
-/* 控制台 */
-if (window.console && window.console.log) {
-	setTimeout(function () {
-		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
-	}, 0);
-}
-
-</script>
-
-
-
-
-<!-- 公式渲染 -->
-
-
-
-<!-- 不蒜子 -->
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 </body>

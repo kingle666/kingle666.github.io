@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>vim自定义配置文件 | Hexo</title>
+  <meta name="description" content="内容复制即可使用 .vimrc  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
+<meta name="keywords" content="vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim自定义配置文件">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/vim自定义配置文件/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="内容复制即可使用 .vimrc  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-05T01:59:19.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim自定义配置文件">
+<meta name="twitter:description" content="内容复制即可使用 .vimrc  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/vim自定义配置文件/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ansible/">ansible</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lnmp-shell/">lnmp shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ulimit/">ulimit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单引号，双引号，反引号/">单引号，双引号，反引号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令-运维/">命令 运维</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Linux-etc-var-kingle/" style="font-size: 13px;">Linux etc var kingle</a> <a href="/tags/ansible/" style="font-size: 13px;">ansible</a> <a href="/tags/linux-优化-kingle/" style="font-size: 13px;">linux 优化 kingle</a> <a href="/tags/linux-删除-闹钟/" style="font-size: 13px;">linux 删除 闹钟</a> <a href="/tags/lnmp-shell/" style="font-size: 13px;">lnmp shell</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/ulimit/" style="font-size: 13px;">ulimit</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/单引号，双引号，反引号/" style="font-size: 13px;">单引号，双引号，反引号</a> <a href="/tags/命令-运维/" style="font-size: 13px;">命令 运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/跟我一起学正则表达式/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:42:58.740Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:40:37.622Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/lnmp-编译安装脚本/" class="title">lnmp 编译安装脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:59:58.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/vim自定义配置文件/" class="title">vim自定义配置文件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:57:31.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/linux-系统优化脚本/" class="title">linux 系统优化脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:52:18.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-vim自定义配置文件" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vim自定义配置文件
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/05/vim自定义配置文件/" class="article-date">
+	  <time datetime="2018-09-05T01:57:31.000Z" itemprop="datePublished">2018-09-05</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/vim/">vim</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/05/vim自定义配置文件/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>内容复制即可使用 .vimrc </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line">set tabstop=4</span><br><span class="line">set shiftwidth=4</span><br><span class="line">set softtabstop=4</span><br><span class="line">set noexpandtab</span><br><span class="line">set nu</span><br><span class="line">syntax on                       &quot; 语法高亮</span><br><span class="line">set ruler                       &quot; 显示标尺</span><br><span class="line">set showcmd                     &quot; 输入的命令显示出来，看的清楚些</span><br><span class="line">set cmdheight=1                 &quot; 命令行（在状态行下）的高度，设置为1</span><br><span class="line">set scrolloff=3                 &quot; 光标移动到buffer的顶部和底部时保持3行距离</span><br><span class="line">set statusline=%F%m%r%h%w\ [FORMAT=%&#123;&amp;ff&#125;]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %&#123;strftime(\&quot;%d/%m/%y\ -\ %H:%M\&quot;)&#125;   &quot; 状态行显示的内容</span><br><span class="line">set laststatus=2                &quot; 启动显示状态行(1),总是显示状态行(2)</span><br><span class="line">set nocompatible                &quot; 去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限</span><br><span class="line">&quot; 设置当文件被改动时自动载入</span><br><span class="line">set autoread</span><br><span class="line">&quot; 代码补全</span><br><span class="line">set completeopt=preview,menu</span><br><span class="line">&quot; 突出显示当前行</span><br><span class="line">set cursorline</span><br><span class="line">&quot; 在处理未保存或只读文件的时候，弹出确认</span><br><span class="line">set confirm</span><br><span class="line">&quot; 自动缩进</span><br><span class="line">set autoindent</span><br><span class="line">set cindent</span><br><span class="line">&quot;禁止生成临时文件</span><br><span class="line">set nobackup</span><br><span class="line">set noswapfile</span><br><span class="line">&quot;搜索忽略大小写</span><br><span class="line">set ignorecase</span><br><span class="line">&quot;搜索逐字符高亮</span><br><span class="line">set hlsearch</span><br><span class="line">set incsearch</span><br><span class="line">&quot;行内替换</span><br><span class="line">set gdefault</span><br><span class="line">&quot; 侦测文件类型</span><br><span class="line">filetype on</span><br><span class="line">&quot; 载入文件类型插件</span><br><span class="line">filetype plugin on</span><br><span class="line">&quot; 为特定文件类型载入相关缩进文件</span><br><span class="line">filetype indent on</span><br><span class="line">&quot; 保存全局变量</span><br><span class="line">set viminfo+=!</span><br><span class="line">&quot; 带有如下符号的单词不要被换行分割</span><br><span class="line">set iskeyword+=_,$,@,%,#,-</span><br><span class="line">&quot; 字符间插入的像素行数目</span><br><span class="line">set linespace=0</span><br><span class="line">&quot; 允许backspace和光标键跨越行边界</span><br><span class="line">set whichwrap+=&lt;,&gt;,h,l</span><br><span class="line">&quot; 高亮显示匹配的括号</span><br><span class="line">set showmatch</span><br><span class="line">&quot; 匹配括号高亮的时间（单位是十分之一秒）</span><br><span class="line">set matchtime=1</span><br><span class="line">&quot; 使回格键（backspace）正常处理indent, eol, start等</span><br><span class="line">set backspace=2</span><br><span class="line">&quot; 字符间插入的像素行数目</span><br><span class="line">set linespace=0</span><br><span class="line">&quot; 增强模式中的命令行自动完成操作</span><br><span class="line">set wildmenu</span><br><span class="line">&quot; 通过使用: commands命令，告诉我们文件的哪一行被改变过</span><br><span class="line">set report=0</span><br><span class="line">au BufRead,BufNewFile *  setfiletype txt</span><br><span class="line">&quot;自动补全</span><br><span class="line">:inoremap ( ()&lt;ESC&gt;i</span><br><span class="line">:inoremap ) &lt;c-r&gt;=ClosePair(&apos;)&apos;)&lt;CR&gt;</span><br><span class="line">:inoremap &#123; &#123;&lt;CR&gt;&#125;&lt;ESC&gt;O</span><br><span class="line">:inoremap &#125; &lt;c-r&gt;=ClosePair(&apos;&#125;&apos;)&lt;CR&gt;</span><br><span class="line">:inoremap [ []&lt;ESC&gt;i</span><br><span class="line">:inoremap ] &lt;c-r&gt;=ClosePair(&apos;]&apos;)&lt;CR&gt;</span><br><span class="line">:inoremap &quot; &quot;&quot;&lt;ESC&gt;i</span><br><span class="line">:inoremap &apos; &apos;&apos;&lt;ESC&gt;i</span><br><span class="line">function! ClosePair(char)</span><br><span class="line">    if getline(&apos;.&apos;)[col(&apos;.&apos;) - 1] == a:char</span><br><span class="line">        return &quot;\&lt;Right&gt;&quot;</span><br><span class="line">    else</span><br><span class="line">        return a:char</span><br><span class="line">    endif</span><br><span class="line">endfunction</span><br><span class="line">filetype plugin indent on</span><br><span class="line">&quot;打开文件类型检测, 加了这句才可以用智能补全</span><br><span class="line">set completeopt=longest,menu</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;新文件标题&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot;新建.c,.h,.sh,.java文件，自动插入文件头</span><br><span class="line">autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec &quot;:call SetTitle()&quot;</span><br><span class="line">&quot;&quot;定义函数SetTitle，自动插入文件头</span><br><span class="line">func SetTitle()</span><br><span class="line">    &quot;如果文件类型为.sh文件</span><br><span class="line">    if &amp;filetype == &apos;sh&apos;</span><br><span class="line">        call setline(1,&quot;\#########################################################################&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;), &quot;\#    File Name: &quot;.expand(&quot;%&quot;))</span><br><span class="line">        call append(line(&quot;.&quot;)+1, &quot;\#    Author: kingle&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+2, &quot;\#    Mail: kingle_work@163.com &quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+3, &quot;\#    Created Time: &quot;.strftime(&quot;%c&quot;))</span><br><span class="line">        call append(line(&quot;.&quot;)+4, &quot;\#########################################################################&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+5, &quot;\#!/bin/bash&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+6, &quot;&quot;)</span><br><span class="line">    else</span><br><span class="line">        call setline(1, &quot;//-------------------------------------------------------------------------&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;), &quot;//    File Name: &quot;.expand(&quot;%&quot;))</span><br><span class="line">        call append(line(&quot;.&quot;)+1, &quot;//    Author: kingle&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+2, &quot;//    Mail: kingle_work@163.com &quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+3, &quot;//    Created Time: &quot;.strftime(&quot;%c&quot;))</span><br><span class="line">        call append(line(&quot;.&quot;)+4, &quot;//-------------------------------------------------------------------------&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+5, &quot;&quot;)</span><br><span class="line">    endif</span><br><span class="line">    if &amp;filetype == &apos;cpp&apos;</span><br><span class="line">        call append(line(&quot;.&quot;)+6, &quot;#include&lt;iostream&gt;&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+7, &quot;using namespace std;&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+8, &quot;&quot;)</span><br><span class="line">    endif</span><br><span class="line">    if &amp;filetype == &apos;c&apos;</span><br><span class="line">        call append(line(&quot;.&quot;)+6, &quot;#include&lt;stdio.h&gt;&quot;)</span><br><span class="line">        call append(line(&quot;.&quot;)+7, &quot;&quot;)</span><br><span class="line">    endif</span><br><span class="line">    &quot;新建文件后，自动定位到文件末尾</span><br><span class="line">    autocmd BufNewFile * normal G</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot;键盘命令</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">nmap &lt;leader&gt;w :w!&lt;cr&gt;</span><br><span class="line">nmap &lt;leader&gt;f :find&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">&quot; 映射全选+复制 ctrl+a</span><br><span class="line">map &lt;C-A&gt; ggVGY</span><br><span class="line">map! &lt;C-A&gt; &lt;Esc&gt;ggVGY</span><br><span class="line">map &lt;F12&gt; gg=G</span><br><span class="line">&quot; 选中状态下 Ctrl+c 复制</span><br><span class="line">vmap &lt;C-c&gt; &quot;+y</span><br><span class="line">&quot;去空行</span><br><span class="line">nnoremap &lt;F2&gt; :g/^\s*$/d&lt;CR&gt;</span><br><span class="line">&quot;比较文件</span><br><span class="line">nnoremap &lt;C-F2&gt; :vert diffsplit</span><br><span class="line">&quot;新建标签</span><br><span class="line">map &lt;M-F2&gt; :tabnew&lt;CR&gt;</span><br><span class="line">&quot;列出当前目录文件</span><br><span class="line">map &lt;F3&gt; :tabnew .&lt;CR&gt;</span><br><span class="line">&quot;打开树状文件目录</span><br><span class="line">map &lt;C-F3&gt; \be</span><br><span class="line">&quot;C，C++ 按F5编译运行</span><br><span class="line">map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;</span><br><span class="line">func! CompileRunGcc()</span><br><span class="line">    exec &quot;w&quot;</span><br><span class="line">    if &amp;filetype == &apos;c&apos;</span><br><span class="line">        exec &quot;!g++ % -o %&lt;&quot;</span><br><span class="line">        exec &quot;! ./%&lt;&quot;</span><br><span class="line">    elseif &amp;filetype == &apos;cpp&apos;</span><br><span class="line">        exec &quot;!g++ % -o %&lt;&quot;</span><br><span class="line">        exec &quot;! ./%&lt;&quot;</span><br><span class="line">    elseif &amp;filetype == &apos;java&apos;</span><br><span class="line">        exec &quot;!javac %&quot;</span><br><span class="line">        exec &quot;!java %&lt;&quot;</span><br><span class="line">    elseif &amp;filetype == &apos;sh&apos;</span><br><span class="line">        :!./%</span><br><span class="line">    endif</span><br><span class="line">endfunc</span><br><span class="line">&quot;C,C++的调试</span><br><span class="line">map &lt;F8&gt; :call Rungdb()&lt;CR&gt;</span><br><span class="line">func! Rungdb()</span><br><span class="line">    exec &quot;w&quot;</span><br><span class="line">    exec &quot;!g++ % -g -o %&lt;&quot;</span><br><span class="line">    exec &quot;!gdb ./%&lt;&quot;</span><br><span class="line">endfunc</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">&quot; CTags的设定</span><br><span class="line">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span><br><span class="line">let Tlist_Sort_Type = &quot;name&quot;    &quot; 按照名称排序</span><br><span class="line">let Tlist_Use_Right_Window = 1  &quot; 在右侧显示窗口</span><br><span class="line">let Tlist_Compart_Format = 1    &quot; 压缩方式</span><br><span class="line">let Tlist_Exist_OnlyWindow = 1  &quot; 如果只有一个buffer，kill窗口也kill掉buffer</span><br><span class="line">let Tlist_File_Fold_Auto_Close = 0  &quot; 不要关闭其他文件的tags</span><br><span class="line">let Tlist_Enable_Fold_Column = 0    &quot; 不要显示折叠树</span><br><span class="line">let Tlist_Show_One_File=1            &quot;不同时显示多个文件的tag，只显示当前文件的</span><br><span class="line">&quot;设置tags</span><br><span class="line">set tags=tags</span><br><span class="line">&quot;set autochdir</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2018/09/05/vim自定义配置文件/" title="vim自定义配置文件" target="_blank" rel="external">http://yoursite.com/2018/09/05/vim自定义配置文件/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/09/05/lnmp-编译安装脚本/" title="lnmp 编译安装脚本"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/09/05/linux-系统优化脚本/" title="linux 系统优化脚本"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>

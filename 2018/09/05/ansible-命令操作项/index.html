@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>ansible 命令操作项 | Hexo</title>
+  <meta name="description" content="本文主要介绍Ansible的几个命令模块，包括： command - 在远程节点上执行命令 shell - 让远程主机在shell进程下执行命令 script - 将本地script传送到远程主机之后执行 raw - 执行低级的和脏的SSH命令 expect - 执行命令并响应提示 telnet - 执行低级的和脏的telnet命令 command模块简介 command模块用于在给的的节点上运行">
+<meta name="keywords" content="ansible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible 命令操作项">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/ansible-命令操作项/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文主要介绍Ansible的几个命令模块，包括： command - 在远程节点上执行命令 shell - 让远程主机在shell进程下执行命令 script - 将本地script传送到远程主机之后执行 raw - 执行低级的和脏的SSH命令 expect - 执行命令并响应提示 telnet - 执行低级的和脏的telnet命令 command模块简介 command模块用于在给的的节点上运行">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-05T01:36:22.991Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ansible 命令操作项">
+<meta name="twitter:description" content="本文主要介绍Ansible的几个命令模块，包括： command - 在远程节点上执行命令 shell - 让远程主机在shell进程下执行命令 script - 将本地script传送到远程主机之后执行 raw - 执行低级的和脏的SSH命令 expect - 执行命令并响应提示 telnet - 执行低级的和脏的telnet命令 command模块简介 command模块用于在给的的节点上运行">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/ansible-命令操作项/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ansible/">ansible</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lnmp-shell/">lnmp shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ulimit/">ulimit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单引号，双引号，反引号/">单引号，双引号，反引号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令-运维/">命令 运维</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Linux-etc-var-kingle/" style="font-size: 13px;">Linux etc var kingle</a> <a href="/tags/ansible/" style="font-size: 13px;">ansible</a> <a href="/tags/linux-优化-kingle/" style="font-size: 13px;">linux 优化 kingle</a> <a href="/tags/linux-删除-闹钟/" style="font-size: 13px;">linux 删除 闹钟</a> <a href="/tags/lnmp-shell/" style="font-size: 13px;">lnmp shell</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/ulimit/" style="font-size: 13px;">ulimit</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/单引号，双引号，反引号/" style="font-size: 13px;">单引号，双引号，反引号</a> <a href="/tags/命令-运维/" style="font-size: 13px;">命令 运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/跟我一起学正则表达式/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:42:58.740Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:40:37.622Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/lnmp-编译安装脚本/" class="title">lnmp 编译安装脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:59:58.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/vim自定义配置文件/" class="title">vim自定义配置文件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:57:31.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/linux-系统优化脚本/" class="title">linux 系统优化脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:52:18.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-ansible-命令操作项" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ansible 命令操作项
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/05/ansible-命令操作项/" class="article-date">
+	  <time datetime="2018-09-05T01:35:54.000Z" itemprop="datePublished">2018-09-05</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/ansible/">ansible</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/05/ansible-命令操作项/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>本文主要介绍Ansible的几个命令模块，包括：</p>
+<pre><code>command - 在远程节点上执行命令
+shell - 让远程主机在shell进程下执行命令
+script - 将本地script传送到远程主机之后执行
+raw - 执行低级的和脏的SSH命令
+expect - 执行命令并响应提示
+telnet - 执行低级的和脏的telnet命令
+</code></pre><p>command模块<br>简介</p>
+<pre><code>command模块用于在给的的节点上运行系统命令，比如echo hello。
+它不会通过shell处理命令，因此不支持像$HOME这样的变量和，以及&lt;, &gt;, |, ;和&amp;等都是无效的。也就是在command模块中无法使用管道符。
+</code></pre><p>模块参数<br>名称    必选    备注<br>chdir     no     运行command命令前先cd到这个目录<br>creates     no     如果这个参数对应的文件存在，就不运行command<br>free_form     yes     需要执行的脚本（没有真正的参数为free_form）<br>executable     no     改变用来执行命令的shell，应该是可执行文件的绝对路径。<br>removes     no     如果这个参数对应的文件不存在，就不运行command，与creates参数的作用相反<br>stdin(2.4后新增)     no     将命令的stdin设置为指定的值<br>示例</p>
+<pre><code>列出指定目录下的文件
+</code></pre><p>[root@centos7 ~]# ansible test -m command -a “ls /root”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;<br>anaconda-ks.cfg<br>test.sh<br>whoami.rst</p>
+<p>[root@centos7 ~]# ansible test -m command -a “ls /root creates=test.sh”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;<br>skipped, since test.sh exists</p>
+<p>[root@centos7 ~]# ansible test -m command -a “ls /root removes=test.sh1”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;<br>skipped, since test.sh1 does not exist</p>
+<p>在这个里面，首先更换目录到root目录中，然后查看test.sh是否存在，如果存在，那么命令不会执行；如果不存在，那么执行命令。</p>
+<p>在这里也可以看到，命令是必须存在的，但是没有参数名为free_form参数。</p>
+<pre><code>切换目录执行命令
+</code></pre><p>[root@centos7 ~]# ansible test -m command -a “cat test.sh chdir=/root”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;</p>
+<p>#!/bin/bash<br>i=0<br>echo $((i+1))</p>
+<p>[root@centos7 ~]# ansible test -m command -a “sh test.sh chdir=/root”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;<br>1</p>
+<pre><code>无法使用管道符
+</code></pre><p>[root@centos7 ~]# ansible test -m command -a “ls /root | grep test”<br>172.20.21.120 | FAILED | rc=2 &gt;&gt;<br>/root:<br>anaconda-ks.cfg<br>test.sh<br>whoami.rstls: 无法访问|: 没有那个文件或目录<br>ls: 无法访问grep: 没有那个文件或目录<br>ls: 无法访问test: 没有那个文件或目录non-zero return code</p>
+<p>注意事项</p>
+<pre><code>若要通过shell运行一个命令，比如&lt;, &gt;, |等，你实际上需要shell模块。
+command模块更安全，因为它不受用户环境的影响
+从版本2.4开始，executable参数被删除。如果您需要此参数，请改用shell模块。
+对于Windows节点，请改用win_command模块。
+</code></pre><p>shell模块<br>简介</p>
+<p>让远程主机在shell进程下执行命令，从而支持shell的特性，如管道等。与command模块几乎相同，但在执行命令的时候使用的是/bin/sh。<br>模块参数<br>名称    必选    备注<br>chdir     no     运行command命令前先cd到这个目录<br>creates     no     如果这个参数对应的文件存在，就不运行command<br>executable     no     改变用来执行命令的shell，应该是可执行文件的绝对路径。<br>free_form     yes     需要执行的脚本（没有真正的参数为free_form）<br>removes     no     如果这个参数对应的文件不存在，就不运行command，与creates参数的作用相反<br>stdin(2.4后新增)     no     将命令的stdin设置为指定的值<br>示例</p>
+<pre><code>切换目录，执行命令并保持输出
+</code></pre><p>[root@centos7 ~]# ansible test -m shell -a “sh test.sh &gt; result chdir=/root”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;</p>
+<p>[root@centos7 ~]# ansible test -m shell -a “cat result chdir=/root”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;<br>1</p>
+<p>注意事项</p>
+<pre><code>如果你想安全可靠的执行命令，请使用command模块，这也是编写playbook的最佳实践。
+</code></pre><p>script模块<br>简介</p>
+<pre><code>script模块的作用是将本地script传送到远程主机之后执行
+给定的脚本将通过远程节点上的shell环境进行处理
+script模块在远程系统上不需要python的支持
+</code></pre><p>模块参数<br>名称    必选    默认值    可选值    备注<br>chdir(2.4后新增)     no                 运行command命令前先cd到这个目录<br>creates     no                 如果这个参数对应的文件存在，就不运行command<br>decrypt     no     yes     yes/no     此选项控制使用保管库的源文件的自动解密<br>free_form     yes                 需要执行脚本的本地文件路径（没有真正的参数为free_form）<br>removes     no                 如果这个参数对应的文件不存在，就不运行command，与creates参数的作用相反<br>示例</p>
+<pre><code>在远程主机上执行脚本
+</code></pre><p>[root@centos7 ~]# ansible test -m script -a “test.sh chdir=/tmp”<br>172.20.21.120 | SUCCESS =&gt; {<br>    “changed”: true,<br>    “rc”: 0,<br>    “stderr”: “Shared connection to 172.20.21.120 closed.\r\n”,<br>    “stdout”: “/tmp\r\n”,<br>    “stdout_lines”: [<br>        “/tmp”<br>    ]<br>}</p>
+<p>注意事项</p>
+<pre><code>通常来说，使用Ansible模块比推送脚本更好
+当脚本执行时，ssh连接插件将通过-tt强制伪tty分配。伪ttys没有stderr通道，所有stderr被发送到标准输出。如果需要标准输出和标准错误分离，请使用到copy模块。
+</code></pre><p>raw模块<br>简介</p>
+<pre><code>raw模块主要用于执行一些低级的，脏的SSH命令，而不是通过command模块。 raw模块只适用于下列两种场景，第一种情况是在较老的（Python 2.4和之前的版本）主机上，另一种情况是对任何没有安装Python的设备（如路由器）。 在任何其他情况下，使用shell或command模块更为合适。
+就像script模块一样，raw模块不需要远程系统上的python
+</code></pre><p>模块参数<br>名称    必选    备注<br>executable     no     改变用来执行命令的shell，应该是可执行文件的绝对路径。<br>free_form     yes     需要执行的脚本（没有真正的参数为free_form）<br>示例</p>
+<pre><code>在远程主机上执行脚本
+</code></pre><p>[root@centos7 ~]# ansible test -m raw -a “pwd”<br>172.20.21.120 | SUCCESS | rc=0 &gt;&gt;<br>/root<br>Shared connection to 172.20.21.120 closed.</p>
+<p>注意事项</p>
+<pre><code>如果要安全可靠地执行命令，最好使用shell或command模块来代替。
+如果从playbook中使用raw，则可能需要使用gather_facts: no禁用事实收集
+</code></pre><p>expect模块<br>简介</p>
+<pre><code>expect模块用于在给的的节点上执行一个命令并响应提示。
+它不会通过shell处理命令，因此不支持像$HOME这样的变量和，以及&lt;, &gt;, |, ;和&amp;等都是无效的。也就是在command模块中无法使用管道符。
+</code></pre><p>使用要求（在执行模块的主机上）</p>
+<pre><code>python &gt;= 2.6
+pexpect &gt;= 3.3
+</code></pre><p>模块参数<br>名称    必选    默认值    备注<br>chdir     no           运行command命令前先cd到这个目录<br>command     yes           命令模块执行命令运行<br>echo     no           是否回显你的回应字符串<br>responses     yes           期望的字符串/正则表达式和字符串的映射来响应。 如果响应是一个列表，则连续的匹配将返回连续的响应。 列表功能是2.1中的新功能。<br>creates     no           如果这个参数对应的文件存在，就不运行command<br>removes     no           如果这个参数对应的文件不存在，就不运行command，与creates参数的作用相反<br>timeout     no     30     以秒为单位等待预期时间<br>示例</p>
+<pre><code>在远程主机上执行脚本
+</code></pre><ul>
+<li><p>name: Case insensitve password string match<br>expect:<br>  command: passwd username<br>  responses:</p>
+<pre><code>(?i)password: &quot;MySekretPa$$word&quot;
+</code></pre></li>
+<li><p>name: Generic question with multiple different responses<br>expect:<br>  command: /path/to/custom/command<br>  responses:</p>
+<pre><code>Question:
+  - response1
+  - response2
+  - response3
+</code></pre></li>
+</ul>
+<p>注意事项</p>
+<pre><code>如果你想通过shell运行一个命令（比如你正在使用&lt;,&gt;,|等），你必须在命令中指定一个shell，比如/bin/bash -c &quot;/path/to/something | grep else&quot;。
+在responses下关键是一个python正则表达式匹配，不区分大小写的搜索用前缀?i。
+默认情况下，如果多次遇到问题，则会重复其字符串响应。 如果连续问题匹配需要不同的响应，而不是字符串响应，请使用字符串列表作为响应。
+expect模块设计用于简单场景，对于更复杂的需求，应该考虑在shell或script模块中使用expect代码
+</code></pre><p>telnet模块<br>简介</p>
+<pre><code>expect模块用于执行一些低级的和脏telnet命令，不通过模块子系统。
+它不会通过shell处理命令，因此不支持像$HOME这样的变量和，以及&lt;, &gt;, |, ;和&amp;等都是无效的。也就是在command模块中无法使用管道符。
+</code></pre><p>模块参数<br>名称    必选    默认值    备注<br>command     yes           在telnet会话中执行的命令<br>host     no     remote_addr     要执行命令的主机/目标<br>password     yes           登录密码<br>pause     no     1     每发出一个命令之间的暂停秒<br>port     no     23     远程端口<br>prompts     no     [u’$’]     发送下一个命令之前预期的提示列表<br>timeout     no     30     远程操作超时时间<br>user     no     remote_user     登录用户<br>示例</p>
+<pre><code>在远程主机上执行脚本
+</code></pre><ul>
+<li><p>name: send configuration commands to IOS<br>telnet:<br>  user: cisco<br>  password: cisco<br>  login_prompt: “Username: “<br>  prompts:</p>
+<pre><code>- &quot;[&gt;|#]&quot;
+</code></pre><p>  command:</p>
+<pre><code>- terminal length 0
+- configure terminal
+- hostname ios01
+</code></pre></li>
+<li><p>name: run show commands<br>telnet:<br>  user: cisco<br>  password: cisco<br>  login_prompt: “Username: “<br>  prompts:</p>
+<pre><code>- &quot;[&gt;|#]&quot;
+</code></pre><p>  command:</p>
+<pre><code>- terminal length 0
+- show version
+</code></pre></li>
+</ul>
+<p>注意事项</p>
+<pre><code>如果你想通过shell运行一个命令（比如你正在使用&lt;,&gt;,|等），你必须在命令中指定一个shell，比如/bin/bash -c &quot;/path/to/something | grep else&quot;。
+在responses下关键是一个python正则表达式匹配，不区分大小写的搜索用前缀?i。
+默认情况下，如果多次遇到问题，则会重复其字符串响应。 如果连续问题匹配需要不同的响应，而不是字符串响应，请使用字符串列表作为响应。
+expect模块设计用于简单场景，对于更复杂的需求，应该考虑在shell或script模块中使用expect代码
+</code></pre><p>作者：hoxis<br>链接：<a href="https://www.jianshu.com/p/8661c107448d" target="_blank" rel="noopener">https://www.jianshu.com/p/8661c107448d</a><br>來源：简书</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2018/09/05/ansible-命令操作项/" title="ansible 命令操作项" target="_blank" rel="external">http://yoursite.com/2018/09/05/ansible-命令操作项/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/09/05/linux-系统优化脚本/" title="linux 系统优化脚本"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/08/28/运维工程师必备命令/" title="运维工程师必备命令"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>

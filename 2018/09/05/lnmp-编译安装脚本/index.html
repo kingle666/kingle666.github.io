@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>lnmp 编译安装脚本 | Hexo</title>
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="keywords" content="lnmp shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lnmp 编译安装脚本">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/lnmp-编译安装脚本/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-05T02:16:34.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lnmp 编译安装脚本">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/lnmp-编译安装脚本/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ansible/">ansible</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lnmp-shell/">lnmp shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ulimit/">ulimit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单引号，双引号，反引号/">单引号，双引号，反引号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令-运维/">命令 运维</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Linux-etc-var-kingle/" style="font-size: 13px;">Linux etc var kingle</a> <a href="/tags/ansible/" style="font-size: 13px;">ansible</a> <a href="/tags/linux-优化-kingle/" style="font-size: 13px;">linux 优化 kingle</a> <a href="/tags/linux-删除-闹钟/" style="font-size: 13px;">linux 删除 闹钟</a> <a href="/tags/lnmp-shell/" style="font-size: 13px;">lnmp shell</a> <a href="/tags/nginx/" style="font-size: 13px;">nginx</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/ulimit/" style="font-size: 13px;">ulimit</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/单引号，双引号，反引号/" style="font-size: 13px;">单引号，双引号，反引号</a> <a href="/tags/命令-运维/" style="font-size: 13px;">命令 运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/跟我一起学正则表达式/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:42:58.740Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T03:40:37.622Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/lnmp-编译安装脚本/" class="title">lnmp 编译安装脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:59:58.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/vim自定义配置文件/" class="title">vim自定义配置文件</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:57:31.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/linux-系统优化脚本/" class="title">linux 系统优化脚本</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T01:52:18.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-lnmp-编译安装脚本" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      lnmp 编译安装脚本
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/05/lnmp-编译安装脚本/" class="article-date">
+	  <time datetime="2018-09-05T01:59:58.000Z" itemprop="datePublished">2018-09-05</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/lnmp-shell/">lnmp shell</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/05/lnmp-编译安装脚本/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#########################################################</span><br><span class="line">#by：kingle												#</span><br><span class="line">#use: fast lnmp											#</span><br><span class="line">#version:1.0											#</span><br><span class="line">#php:php-7.2.8											#</span><br><span class="line">#nginx:	1.15.1											#</span><br><span class="line">#mysql:5.6.41											#</span><br><span class="line">#cenos:	2.6.32-754.2.1.el6.x86_64						#		</span><br><span class="line">#########################################################</span><br><span class="line">dir=/root/opt</span><br><span class="line">nginx_install_dir=&quot;/lnmp/nginx&quot;</span><br><span class="line">mysql_install_dir=&quot;/lnmp/mysql&quot;</span><br><span class="line">php_install_path=&quot;/lnmp/php&quot;</span><br><span class="line">nginx_name=&quot;nginx-1.15.1.tar.gz&quot;</span><br><span class="line">mysql_name=&quot;mysql-5.6.41.tar.gz&quot;</span><br><span class="line">php_name=&quot;php-7.2.8.tar.gz&quot;</span><br><span class="line">[ -f /etc/init.d/functions ] &amp;&amp; . /etc/init.d/functions || exit 1</span><br><span class="line">#安装nginx</span><br><span class="line">install_nginx()&#123;</span><br><span class="line">	#跟新源</span><br><span class="line">  wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo</span><br><span class="line"> # 安装依赖包</span><br><span class="line">  yum install -y pcre pcre-devel openssl openssl-devel gcc make gcc-c++</span><br><span class="line">  [ -e $dir ] &amp;&amp; cd $dir</span><br><span class="line">  if [ -f $nginx_name ]</span><br><span class="line">    then</span><br><span class="line">      echo &apos;nginx need have&apos;</span><br><span class="line">      # t解压文件</span><br><span class="line">      tar zxf $nginx_name &amp;&amp; cd nginx-1.15.1</span><br><span class="line">      # 添加僵尸用户</span><br><span class="line">      useradd nginx -s /sbin/nologin -M</span><br><span class="line">      # 编译安装</span><br><span class="line">      ./configure --user=nginx --group=nginx --prefix=/lnmp/nginx-1.15.1/ --with-http_stub_status_module --with-http_ssl_module</span><br><span class="line">      [ $(echo $?) -eq 0 ] &amp;&amp; make &amp;&amp; make install</span><br><span class="line">      [ $(echo $?) -eq 0 ] &amp;&amp; echo &quot;nginx install success....&quot;    </span><br><span class="line">  	  #创建软链接</span><br><span class="line">  	  ln -s  /lnmp/nginx-1.15.1 /lnmp/nginx</span><br><span class="line">  fi</span><br><span class="line">&#125;</span><br><span class="line">#开启脚本</span><br><span class="line">start_nginx()&#123;</span><br><span class="line">	service iptables stop</span><br><span class="line">	setenforce 0 </span><br><span class="line">	/lnmp/nginx/sbin/nginx -c  /lnmp/nginx-1.15.1//conf/nginx.conf</span><br><span class="line">	$nginx_install_dir/sbin/nginx -t </span><br><span class="line">	 if [ $(echo $?) -eq 0 ]</span><br><span class="line">	   then</span><br><span class="line">	     $nginx_install_dir/sbin/nginx -s reload</span><br><span class="line">	     if [ $(netstat -lutnp|grep 80|wc -l) -eq 1 ]</span><br><span class="line">	       then</span><br><span class="line">	         action &quot;nginx success...&quot;  /bin/true</span><br><span class="line">	     else</span><br><span class="line">	         echo &quot;nginx error！&quot;</span><br><span class="line">	     fi</span><br><span class="line">	 fi</span><br><span class="line">	&#125;</span><br><span class="line">install_mysql()&#123;</span><br><span class="line">  yum install -y ncurses-devel automake autoconf bison libtool-ltdl-devel</span><br><span class="line">  [ -e $dir ] &amp;&amp; cd $dir</span><br><span class="line">  if [ -f $mysql_name ]</span><br><span class="line">    then</span><br><span class="line">      yum install cmake -y</span><br><span class="line">      tar zxvf $mysql_name</span><br><span class="line">      if [ ! -d $mysql_install_dir ]</span><br><span class="line">        then</span><br><span class="line">          mkdir -p $mysql_install_dir</span><br><span class="line">      fi</span><br><span class="line">      groupadd mysql</span><br><span class="line">      useradd -s /sbin/nologin -g mysql -M mysql</span><br><span class="line">      mkdir -p /lnmp/mysql-5.6.41/data</span><br><span class="line">      cd $dir/mysql-5.6.41</span><br><span class="line">	  cmake -DCMAKE_INSTALL_PREFIX=/lnmp/mysql-5.6.41 -DMYSQL_DATADIR=/lnmp/mysql-5.6.41/data -DMYSQL_UNIX_ADDR=/lnmp/mysql-5.6.41/tmp/mysql.sock -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_ZLIB=bundled -DWITH_SSL=bundled -DWITH_EMBEDDED_SERVER=1 -DENABLED_LOCAL_INFILE=1 -DENABLE_DOWNLOADS=1 -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DEXTRA_CHARSETS=all -DMYSQL_TCP_PORT=3306 -DWITH_DEBUG=0      </span><br><span class="line">	  make &amp;&amp; make install</span><br><span class="line">      ln -s /lnmp/mysql-5.6.41/ /lnmp/mysql</span><br><span class="line">      /lnmp/mysql-5.6.41/scripts/mysql_install_db --user=mysql --basedir=/lnmp/mysql-5.6.41 --datadir=/lnmp/mysql-5.6.41/data --user=mysql</span><br><span class="line">      #授权</span><br><span class="line">      chown -R mysql:mysql /lnmp/mysql-5.6.41/</span><br><span class="line">      #创建目录，默认不会创建，但是启动会报错</span><br><span class="line">      mkdir /lnmp/mysql/tmp</span><br><span class="line">      [ $(echo $?) -eq 0 ] &amp;&amp; \cp -f /lnmp/mysql-5.6.41/support-files/my*.cnf /etc/my.cnf</span><br><span class="line">      cp /lnmp/mysql-5.6.41/support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line">      # 加权限</span><br><span class="line">      chmod +x /etc/init.d/mysqld</span><br><span class="line">	# 自启</span><br><span class="line">      chkconfig --add mysqld</span><br><span class="line">      chkconfig mysqld on</span><br><span class="line">      # 加环境</span><br><span class="line">      PATH=$PATH:/lnmp/mysql-5.6.41/bin/</span><br><span class="line">      #添加环境</span><br><span class="line">      echo &quot;export PATH=$PATH:/lnmp/mysql/bin/&quot; &gt;&gt;/etc/profile</span><br><span class="line">      source /etc/profile</span><br><span class="line">  fi   </span><br><span class="line">&#125;</span><br><span class="line">#启动函数</span><br><span class="line">start_mysql()&#123;</span><br><span class="line">	  /etc/init.d/mysqld start   </span><br><span class="line">	  if [ $(netstat -lutnp|grep 3306|wc -l) -eq 1 ]</span><br><span class="line">	    then</span><br><span class="line">	      action &quot;mysql success&quot;  /bin/true</span><br><span class="line">	  else</span><br><span class="line">	      echo &quot;mysql error！&quot;</span><br><span class="line">	  fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 安装php</span><br><span class="line">install_php()&#123;</span><br><span class="line"> 	   yum install zlib-devel openssl-devel openssl libxml2-devel libjpeg-devel libjpeg-turbo-devel libiconv-devel freetype-devel libpng-devel gd-devel libcurl-devel libxslt-devel libxslt-devel libmcrypt-devel mcrypt mhash -y</span><br><span class="line">	  [ -e $dir ] &amp;&amp; cd $dir</span><br><span class="line">	  if [ -f $php_name ]</span><br><span class="line">	    then</span><br><span class="line">	      tar zxf $php_name  &amp;&amp; cd php-7.2.8</span><br><span class="line"></span><br><span class="line">	      echo &quot;Please witing loding................................................................&quot;</span><br><span class="line">       #编译安装</span><br><span class="line">        ./configure --prefix=/lnmp/php7.2.8 --with-mysql=/lnmp/mysql --with-iconv-dir=/usr/local/libiconv  --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --with-curlwrappers --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt --enable-gd-native-ttf --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc  --enable-zip --enable-soap --enable-short-tags --enable-zend-multibyte --enable-static --with-xsl --with-fpm-user=nginx --with-fpm-group=nginx --enable-ftp       </span><br><span class="line">        [ $(echo $?) -eq 0 ] &amp;&amp; ln -s /lnmp/mysql/lib/libmysqlclient.so.18 /usr/lib64/ &amp;&amp; touch ext/phar/phar.phar</span><br><span class="line">	      make &gt;&gt; /dev/null 2&gt;&amp;1</span><br><span class="line">	      make install</span><br><span class="line"> 	      ln -s /lnmp/php7.2.8 /lnmp/php</span><br><span class="line">       	  cp ./php.ini-production /lnmp/php/lib/php.ini</span><br><span class="line">	      cp /lnmp/php/etc/php-fpm.conf.default /lnmp/php/etc/php-fpm.conf</span><br><span class="line">	      cp /lnmp/php/etc/php-fpm.d/www.conf.default /lnmp/php/etc/php-fpm.d/www.conf</span><br><span class="line">	      cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm    </span><br><span class="line">	      #授予权限最好是700</span><br><span class="line">	      chmod +x /etc/init.d/php-fpm  </span><br><span class="line">	      PATH=$PATH:/lnmp/php/bin/</span><br><span class="line">	      echo &quot;export PATH=$PATH:/lnmp/php/bin/&quot; &gt;&gt;/etc/profile</span><br><span class="line">	      source /etc/profile</span><br><span class="line">	      chkconfig --add php-fpm</span><br><span class="line">	      chkconfig php-fpm  on</span><br><span class="line">fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 启动函数</span><br><span class="line">start_phpfpm()&#123;</span><br><span class="line">  /etc/init.d/php-fpm start</span><br><span class="line">  if [ $(netstat -lutnp|grep 9000|wc -l) -eq 1 ]</span><br><span class="line">    then</span><br><span class="line">      action &quot;php-fpm success&quot; /bin/true</span><br><span class="line">  else</span><br><span class="line">      echo &quot;php-fpm error&quot;</span><br><span class="line">  fi</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()&#123;</span><br><span class="line">   install_nginx</span><br><span class="line">   sleep 3</span><br><span class="line">   install_mysql</span><br><span class="line">   sleep 3</span><br><span class="line">   install_php</span><br><span class="line">   start_nginx</span><br><span class="line">   sleep 2</span><br><span class="line">   start_mysql</span><br><span class="line">   sleep 2</span><br><span class="line">   start_phpfpm</span><br><span class="line">&#125;</span><br><span class="line">main</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2018/09/05/lnmp-编译安装脚本/" title="lnmp 编译安装脚本" target="_blank" rel="external">http://yoursite.com/2018/09/05/lnmp-编译安装脚本/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/09/05/hello-world/" title="Hello World"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/09/05/vim自定义配置文件/" title="vim自定义配置文件"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>
