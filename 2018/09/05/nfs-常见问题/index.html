@@ -17,16 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Hexo</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kingle">
-<meta property="og:url" content="https://kingle.xyz/page/2/index.html">
+  <title>nfs 常见问题 | Hexo</title>
+  <meta name="description" content="总结nfs服务常见问题:  [root@backup read]# touch r01.txttouch: cannot touch `r01.txt’: Stale file handle使用共享目录创建文件出现文件句柄错误原因:nfs服务端对共享目录进行了调整, 但是调整时客户端还在使用相应的共享目录解决方法:将和相应共享目录相关的所有挂载点进行卸载,然后重新挂载即可  [root@nfs-">
+<meta name="keywords" content="nfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nfs 常见问题">
+<meta property="og:url" content="https://kingle.xyz/2018/09/05/nfs-常见问题/index.html">
 <meta property="og:site_name" content="kingle">
+<meta property="og:description" content="总结nfs服务常见问题:  [root@backup read]# touch r01.txttouch: cannot touch `r01.txt’: Stale file handle使用共享目录创建文件出现文件句柄错误原因:nfs服务端对共享目录进行了调整, 但是调整时客户端还在使用相应的共享目录解决方法:将和相应共享目录相关的所有挂载点进行卸载,然后重新挂载即可  [root@nfs-">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-05T09:50:33.681Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kingle">
+<meta name="twitter:title" content="nfs 常见问题">
+<meta name="twitter:description" content="总结nfs服务常见问题:  [root@backup read]# touch r01.txttouch: cannot touch `r01.txt’: Stale file handle使用共享目录创建文件出现文件句柄错误原因:nfs服务端对共享目录进行了调整, 但是调整时客户端还在使用相应的共享目录解决方法:将和相应共享目录相关的所有挂载点进行卸载,然后重新挂载即可  [root@nfs-">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.xyz/page/2/index.html">
+  <link rel="canonical" href="https://kingle.xyz/2018/09/05/nfs-常见问题/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -337,226 +342,187 @@
 </aside>
 
   
-  <main class="main" role="main">
   
-  <div class="content article-list">
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-nfs-常见问题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-      <article class="article article-type-w" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+    <div class="article-header">
+      
+        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/16/单引号，双引号，反引号区别/">单引号，双引号，反引号区别</a>
+    <h1 class="article-title" itemprop="name">
+      nfs 常见问题
     </h1>
   
 
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
+      
+      <div class="article-meta">
+        <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/16/单引号，双引号，反引号区别/" class="article-date">
-	  <time datetime="2018-07-16T06:46:01.000Z" itemprop="datePublished">Jul 16</time>
+	<a href="/2018/09/05/nfs-常见问题/" class="article-date">
+	  <time datetime="2018-09-05T09:48:51.000Z" itemprop="datePublished">2018-09-05</time>
 	</a>
 </span>
-    
-    
+        
+        
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/单引号，双引号，反引号/">单引号，双引号，反引号</a>
+	<a class="article-tag-link" href="/tags/nfs/">nfs</a>
   </span>
 
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/16/单引号，双引号，反引号区别/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
+        
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/高并发之ulimit/">高并发文件描述符之ulimit</a>
-    </h1>
-  
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/05/nfs-常见问题/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p> 总结nfs服务常见问题:</p>
+<ol>
+<li><p>[root@backup read]# touch r01.txt<br>touch: cannot touch `r01.txt’: Stale file handle<br>使用共享目录创建文件出现文件句柄错误<br>原因:<br>nfs服务端对共享目录进行了调整, 但是调整时客户端还在使用相应的共享目录<br>解决方法:<br>将和相应共享目录相关的所有挂载点进行卸载,然后重新挂载即可</p>
+</li>
+<li><p>[root@nfs-client1 ~]# showmount -e 10.0.0.7        &lt;- 恭喜·各位，这里遇到了故障<br>clnt_create: RPC: Port mapper failure - Unable to receive: errno 113 (No route to host)<br>原因:<br>防火墙iptables服务开启了<br>解决:<br>关闭防火墙即可</p>
+</li>
+<li><p>第二个错误：<br>“RPC: Program not registered”<br>原因:<br>提示很清楚了，是服务器端RPC服务和NFS服务存在启动顺序问题。</p>
+</li>
+<li><p>客户端挂载报错“No such file or directory”<br>[root@nfs-client ~]# showmount -e 172.16.1.31<br>Export list for 172.16.1.31:<br>/data    172.16.1.0/24<br>[root@nfs-client ~]# mount -t nfs 172.16.1.31:/data /mnt<br>mount.nfs: mounting 172.16.1.31:/data failed, reason given by server: No such file or directory<br>解答：原因是NFS服务器端没有共享目录/data，创建即可。命令如下：<br>[root@nfs-server ~]# mkdir /data</p>
+</li>
+<li><p>卸载挂载设备时显示device is busy。<br>[root@nfs-client mnt]# umount /mnt<br>umount.nfs: /mnt: device is busy<br>umount.nfs: /mnt: device is busy<br>解决方式:<br>umount -lf /read/<br>-l   Lazy  unmount  – 懒惰的进行卸载<br>-f   Force unmount (in case of an unreachable NFS system)  — 实现强制卸载</p>
+</li>
+<li><p>共享目录挂载后,创建文件很慢<br>mount -t nfs 172.16.1.31:/data /mnt<br>cd /mnt<br>time touch test.txt<br>原因分析：<br>l NFS服务端重启之后。立刻进行挂载会出现此问题，因为NFS自身重启的时候，拥有无敌的时间，默认是90秒；在无敌时间内，是不能对共享目录进行更改的操作；<br>l 在系统配置中/etc/sysconfig/nfs中指定了无敌时间的配置参数<br>NFSD_V4_GRACE=90<br>NFSD_V4_LEASE=90<br>NLM_GRACE_PERI0D=90</p>
+</li>
+</ol>
 
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://kingle.xyz/2018/09/05/nfs-常见问题/" title="nfs 常见问题" target="_blank" rel="external">https://kingle.xyz/2018/09/05/nfs-常见问题/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://kingle666.github.io" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://kingle666.github.io" target="_blank"><span class="text-dark">kingle</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
   </div>
+</div>
+
+
+    </div>
+  </article>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/14/高并发之ulimit/" class="article-date">
-	  <time datetime="2018-07-14T08:22:14.000Z" itemprop="datePublished">Jul 14</time>
-	</a>
-</span>
     
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/ulimit/">ulimit</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/14/高并发之ulimit/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
 
     
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
     
+  </section>
+
+
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/linux-etc文件系统介绍/">linux etc,var文件系统介绍</a>
-    </h1>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
   
-
-  </div>
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/09/05/rsync-常见问题/" title="rsync 常见问题"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/09/05/跟我一起学正则表达式/" title="(no title)"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/13/linux-etc文件系统介绍/" class="article-date">
-	  <time datetime="2018-07-13T11:04:51.000Z" itemprop="datePublished">Jul 13</time>
-	</a>
-</span>
-    
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/13/linux-etc文件系统介绍/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/">linux 删除文件深入了解及任务定时--Linux的闹钟</a>
-    </h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
   
-
-  </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/" class="article-date">
-	  <time datetime="2018-07-13T11:01:18.000Z" itemprop="datePublished">Jul 13</time>
-	</a>
-</span>
+  <div class="bar-right">
     
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/12/命令/">命令</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/12/命令/" class="article-date">
-	  <time datetime="2018-07-12T11:34:40.000Z" itemprop="datePublished">Jul 12</time>
-	</a>
-</span>
-    
-    
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/12/命令/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/11/linux系统优化基础/">linux系统优化基础</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/11/linux系统优化基础/" class="article-date">
-	  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">Jul 11</time>
-	</a>
-</span>
-    
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/11/linux系统优化基础/#comments" class="article-comment-link">Comments</a></span>
-    
-  </p>
-</article>
-
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
     
   </div>
-
+  </div>
+</nav>
   
-    
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
-            
-            <li class="prev">
-                <a href="/">
-                    <i class="icon icon-angle-left"></i>
-                    Prev
-                </a>
-            </li>
-            
-            
-            <li class="next disabled">
-                <a href="javascript:;">
-                    Next
-                    <i class="icon icon-angle-right"></i>                    
-                </a>
-            </li>
-            
-        </ul>
-        <div class="total-article bar-right">Page 2 of 2</div>
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
-    
- 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -621,6 +587,33 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
     
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
     
     
 

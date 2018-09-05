@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kingle.xyz/"/>
-  <updated>2018-07-11T12:32:21.092Z</updated>
+  <updated>2018-09-05T09:59:14.956Z</updated>
   <id>https://kingle.xyz/</id>
   
   <author>
@@ -15,6 +15,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx 常见问题</title>
+    <link href="https://kingle.xyz/2018/09/05/nginx-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    <id>https://kingle.xyz/2018/09/05/nginx-常见问题/</id>
+    <published>2018-09-05T09:49:18.000Z</published>
+    <updated>2018-09-05T09:59:14.956Z</updated>
+    
+    <content type="html"><![CDATA[<p>1, 403错误</p><p>403是很常见的错误代码，一般就是未授权被禁止访问的意思。</p><p>可能的原因有两种：<br>Nginx程序用户无权限访问web目录文件<br>Nginx需要访问目录，但是autoindex选项被关闭</p><p>修复方法：<br>授予Nginx程序用户权限读取web目录文件<br>设置autoindex目录为on</p><p>location /path/to/website/folder {<br>…<br>autoindex on;<br>… }</p><p>2, 413错误</p><p>在上传时Nginx返回了413错误：“413 Request Entity Too Large”，这一般就是上传文件大小超过Nginx配置引起。</p><p>修复方法：<br>在Nginx.conf增加client_max_body_size的设置，这个值默认是1M，可以增加到8M以提高文件大小限制；<br>如果运行的是php，那么还要检查php.ini，这个大小client_max_body_size要和php.ini中的如下值的最大值一致或者稍大，这样就不会因为提交数据大小不一致出现的错误。</p><p>post_max_size = 8M<br>upload_max_filesize = 2M</p><p>3, 502错误<br>Nginx 502 Bad Gateway的含义是请求的PHP-CGI已经执行，但是由于某种原因（一般是读取资源的问题）没有执行完毕而导致PHP-CGI进程终止。一般来说Nginx 502 Bad Gateway和php-fpm.conf的设置有关。</p><p>修复方法：<br>1、查看FastCGI进程是否已经启动</p><p>ps -aux | grep php-cgi</p><p>2、检查系统Fastcgi进程运行情况</p><p>除了第一种情况，fastcgi进程数不够用、php执行时间长、或者是php-cgi进程死掉也可能造成Nginx的502错误。</p><p>运行以下命令判断是否接近FastCGI进程，如果fastcgi进程数接近配置文件中设置的数值，表明worker进程数设置太少。</p><p>netstat -anpo | grep “php-cgi” | wc -l</p><p>3、FastCGI执行时间过长</p><p>根据实际情况调高以下参数值</p><p>fastcgi_connect_timeout 300;<br>fastcgi_send_timeout 300;<br>fastcgi_read_timeout 300;</p><p>4, 504错误</p><p>Nginx 504 Gateway Time-out的含义是所请求的网关没有请求到，简单来说就是没有请求到可以执行的PHP-CGI。</p><p>Nginx 504 Gateway Time-out一般与Nginx.conf的设置有关。</p><p>头部太大这种情况可能是由于Nginx默认的fastcgi进程响应的缓冲区太小造成的， 这将导致fastcgi进程被挂起，如果你的fastcgi服务对这个挂起处理的不好，那么最后就极有可能导致504 Gateway Time-out。</p><p>默认的fastcgi进程响应的缓冲区是8K，可以调大以下参数：</p><p>fastcgi_buffer_size 128k;<br>fastcgi_buffers 8 128k;<br>fastcgi_busy_buffers_size 由 128K 改为 256K；<br>fastcgi_temp_file_write_size 由 128K 改为 256K。</p><p>此外，也可能是php-cgi的问题，需要修改php.ini的配置：</p><p>将max_children由之前的10改为30，这样操作是为了保证有充足的php-cgi进程可以被使用。<br>将request_terminate_timeout由之前的0秒改成60秒，这样使php-cgi进程处理脚本的超时时间提高到60秒，可以防止进程被挂起以提高利用效率</p><p>5, 域名重复<br>    nginx: [warn] conflicting server name “bbs.kingle.org” on 0.0.0.0:80, ignored<br>    打开nginx配置文件 查看看自己的配置文件是否域名有配置相同的</p><p>6,  pid<br> nginx: [error] open() “/application/nginx-1.14.0/logs/nginx.pid” failed (2: No such file or directory)</p><p> pid 文件没找到<br>  使用命令 nginx -c conf/nginx.conf<br>7,  worker进程用户被删除了<br>    nginx: [emerg] getpwnam(“www”) failed<br>    worker进程管理用户被删除了</p><p>8,  服务已经启动,不要反复启动<br>    [root@web01 www]# nginx<br>    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)<br>    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)<br>    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)<br>    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)<br>    nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)<br>    nginx: [emerg] still could not bind()</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1, 403错误&lt;/p&gt;
+&lt;p&gt;403是很常见的错误代码，一般就是未授权被禁止访问的意思。&lt;/p&gt;
+&lt;p&gt;可能的原因有两种：&lt;br&gt;Nginx程序用户无权限访问web目录文件&lt;br&gt;Nginx需要访问目录，但是autoindex选项被关闭&lt;/p&gt;
+&lt;p&gt;修复方法：&lt;br&gt;授
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://kingle.xyz/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rsync 常见问题</title>
+    <link href="https://kingle.xyz/2018/09/05/rsync-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    <id>https://kingle.xyz/2018/09/05/rsync-常见问题/</id>
+    <published>2018-09-05T09:49:06.000Z</published>
+    <updated>2018-09-05T09:52:10.228Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Rsync服务常见问题汇总讲解："><a href="#Rsync服务常见问题汇总讲解：" class="headerlink" title="Rsync服务常见问题汇总讲解："></a>Rsync服务常见问题汇总讲解：</h1><ol><li><p>rsync服务端开启的iptables防火墙<br>【客户端的错误】<br>No route to host<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>rsync: failed to connect to 172.16.1.41: No route to host (113)<br>rsync error: error in socket IO (code 10) at clientserver.c(124) [sender=3.0.6]<br>【异常问题解决】<br>关闭rsync服务端的防火墙服务（iptables）<br>[root@backup mnt]# /etc/init.d/iptables stop<br>iptables: Setting chains to policy ACCEPT: filter          [  OK  ]<br>iptables: Flushing firewall rules:                         [  OK  ]<br>iptables: Unloading modules:                               [  OK  ]<br>[root@backup mnt]# /etc/init.d/iptables status<br>iptables: Firewall is not running.</p></li><li><p>rsync客户端执行rsync命令错误<br>【客户端的错误】<br>The remote path must start with a module name not a /<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::/backup<br>ERROR: The remote path must start with a module name not a /<br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [sender=3.0.6]<br>【异常问题解决】<br>rsync命令语法理解错误，::/backup是错误的语法，应该为::backup(rsync模块)</p></li><li><p>rsync服务认证用户失败<br>【客户端的错误】<br>auth failed on module kingle<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>Password:<br>@ERROR: auth failed on module backup<br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [sender=3.0.6]<br>【异常问题解决】</p><ol><li>密码真的输入错误，用户名真的错误</li><li>secrets file = /etc/rsync.password指定的密码文件和实际密码文件名称不一致</li><li>/etc/rsync.password文件权限不是600</li><li>rsync_backup:123456密码配置文件后面注意不要有空格</li><li>rsync客户端密码文件中只输入密码信息即可，不要输入虚拟认证用户名称</li></ol></li><li><p>rsync服务位置模块错误<br>【客户端的错误】<br>Unknown module ‘backup’<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>@ERROR: Unknown module ‘backup’<br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [sender=3.0.6]<br>【异常问题解决】</p><ol><li>/etc/rsyncd.conf配置文件模块名称书写错误</li></ol></li><li><p>rsync服务权限阻止问题<br>【客户端的错误】<br>Permission denied<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>Password:<br>sending incremental file list<br>hosts<br>rsync: mkstemp “.hosts.5z3AOA” (in backup) failed: Permission denied (13)<br>sent 196 bytes  received 27 bytes  63.71 bytes/sec<br>total size is 349  speedup is 1.57<br>rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1039) [sender=3.0.6]<br>【异常问题解决】</p><ol><li>共享目录的属主和属组不正确，不是rsync</li><li>共享目录的权限不正确，不是755</li></ol></li><li><p>rsync服务备份目录异常<br>【客户端的错误】<br>chdir failed<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>Password:<br>@ERROR: chdir failed<br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [sender=3.0.6]<br>【异常问题解决】  </p><ol><li>备份存储目录没有建立</li><li>建立的备份存储目录和配置文件定义不一致<br>说明：如果没有备份存储目录</li></ol></li><li><p>rsync服务无效用户信息<br>【客户端的错误】<br>invalid uid rsync<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>Password:<br>@ERROR: invalid uid rsync<br>rsync error: error starting client-server protocol (code 5) at main.c(1503) [sender=3.0.6]<br>【异常问题解决】<br>rsync服务对应rsync虚拟用户不存在了</p></li><li><p>客户端已经配置了密码文件，但免秘钥登录方式，依旧需要输入密码<br>【客户端的错误】<br>password file must not be other-accessible<br>【错误演示过程】<br>[root@nfs01 tmp]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup –password-file=/etc/rsync.password<br>password file must not be other-accessible<br>continuing without password file<br>Password:<br>sending incremental file list<br>sent 26 bytes  received 8 bytes  5.23 bytes/sec<br>total size is 349  speedup is 10.26<br>【异常问题解决】<br>rsync客户端的秘钥文件也必须是600权限</p></li><li><p>rsync客户端连接慢问题<br>【错误日志信息】<br>错误日志输出<br>2017/03/08 20:14:43 [3422] params.c:Parameter() - Ignoring badly formed line in configuration file: ignore errors<br>2017/03/08 20:14:43 [3422] name lookup failed for 172.16.1.31: Name or service not known<br>2017/03/08 20:14:43 [3422] connect from UNKNOWN (172.16.1.31)<br>2017/03/08 20:14:43 [3422] rsync to backup/ from rsync_backup@unknown (172.16.1.31)<br>2017/03/08 20:14:43 [3422] receiving file list<br>2017/03/08 20:14:43 [3422] sent 76 bytes  received 83 bytes  total size 349<br>正确日志输出<br>2017/03/08 20:16:45 [3443] params.c:Parameter() - Ignoring badly formed line in configuration file: ignore errors<br>2017/03/08 20:16:45 [3443] connect from nfs02 (172.16.1.31)<br>2017/03/08 20:16:45 [3443] rsync to backup/ from rsync_backup@nfs02 (172.16.1.31)<br>2017/03/08 20:16:45 [3443] receiving file list<br>2017/03/08 20:16:45 [3443] sent 76 bytes  received 83 bytes  total size 349<br>【异常问题解决】<br>查看日志进行分析，编写rsync服务端hosts解析文件</p></li></ol><p>10 rsync服务没有正确启动<br>  【错误日志信息】<br>   Connection refused (111)<br>  【错误演示过程】<br>   [root@kingle-muban ~]#  rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>   rsync: failed to connect to 172.16.1.41: Connection refused (111)<br>   rsync error: error in socket IO (code 10) at clientserver.c(124) [sender=3.0.6]<br>  【异常问题解决】<br>   [root@kingle-muban ~]# rsync –daemon<br>   [root@kingle-muban ~]# ss -lntup |grep rsync<br>   tcp    LISTEN     0      5                     :::873                  :::<em>      users:((“rsync”,1434,5))<br>   tcp    LISTEN     0      5                      </em>:873                   <em>:</em>      users:((“rsync”,1434,4))<br>   [root@kingle-muban ~]# rsync -avz /etc/hosts <a href="mailto:rsync_backup@172.16.1.41" target="_blank" rel="noopener">rsync_backup@172.16.1.41</a>::backup<br>   Password:<br>   sending incremental file list<br>   hosts<br>   sent 196 bytes  received 27 bytes  49.56 bytes/sec<br>   total size is 349  speedup is 1.57</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Rsync服务常见问题汇总讲解：&quot;&gt;&lt;a href=&quot;#Rsync服务常见问题汇总讲解：&quot; class=&quot;headerlink&quot; title=&quot;Rsync服务常见问题汇总讲解：&quot;&gt;&lt;/a&gt;Rsync服务常见问题汇总讲解：&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;rsync
+      
+    
+    </summary>
+    
+    
+      <category term="rsync" scheme="https://kingle.xyz/tags/rsync/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nfs 常见问题</title>
+    <link href="https://kingle.xyz/2018/09/05/nfs-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    <id>https://kingle.xyz/2018/09/05/nfs-常见问题/</id>
+    <published>2018-09-05T09:48:51.000Z</published>
+    <updated>2018-09-05T09:50:33.681Z</updated>
+    
+    <content type="html"><![CDATA[<p> 总结nfs服务常见问题:</p><ol><li><p>[root@backup read]# touch r01.txt<br>touch: cannot touch `r01.txt’: Stale file handle<br>使用共享目录创建文件出现文件句柄错误<br>原因:<br>nfs服务端对共享目录进行了调整, 但是调整时客户端还在使用相应的共享目录<br>解决方法:<br>将和相应共享目录相关的所有挂载点进行卸载,然后重新挂载即可</p></li><li><p>[root@nfs-client1 ~]# showmount -e 10.0.0.7        &lt;- 恭喜·各位，这里遇到了故障<br>clnt_create: RPC: Port mapper failure - Unable to receive: errno 113 (No route to host)<br>原因:<br>防火墙iptables服务开启了<br>解决:<br>关闭防火墙即可</p></li><li><p>第二个错误：<br>“RPC: Program not registered”<br>原因:<br>提示很清楚了，是服务器端RPC服务和NFS服务存在启动顺序问题。</p></li><li><p>客户端挂载报错“No such file or directory”<br>[root@nfs-client ~]# showmount -e 172.16.1.31<br>Export list for 172.16.1.31:<br>/data    172.16.1.0/24<br>[root@nfs-client ~]# mount -t nfs 172.16.1.31:/data /mnt<br>mount.nfs: mounting 172.16.1.31:/data failed, reason given by server: No such file or directory<br>解答：原因是NFS服务器端没有共享目录/data，创建即可。命令如下：<br>[root@nfs-server ~]# mkdir /data</p></li><li><p>卸载挂载设备时显示device is busy。<br>[root@nfs-client mnt]# umount /mnt<br>umount.nfs: /mnt: device is busy<br>umount.nfs: /mnt: device is busy<br>解决方式:<br>umount -lf /read/<br>-l   Lazy  unmount  – 懒惰的进行卸载<br>-f   Force unmount (in case of an unreachable NFS system)  — 实现强制卸载</p></li><li><p>共享目录挂载后,创建文件很慢<br>mount -t nfs 172.16.1.31:/data /mnt<br>cd /mnt<br>time touch test.txt<br>原因分析：<br>l NFS服务端重启之后。立刻进行挂载会出现此问题，因为NFS自身重启的时候，拥有无敌的时间，默认是90秒；在无敌时间内，是不能对共享目录进行更改的操作；<br>l 在系统配置中/etc/sysconfig/nfs中指定了无敌时间的配置参数<br>NFSD_V4_GRACE=90<br>NFSD_V4_LEASE=90<br>NLM_GRACE_PERI0D=90</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 总结nfs服务常见问题:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;[root@backup read]# touch r01.txt&lt;br&gt;touch: cannot touch `r01.txt’: Stale file handle&lt;br&gt;使用共享目录创建文件出现文件句柄错误
+      
+    
+    </summary>
+    
+    
+      <category term="nfs" scheme="https://kingle.xyz/tags/nfs/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
