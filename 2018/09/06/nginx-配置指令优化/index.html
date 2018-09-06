@@ -17,16 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Archive: 2018 | Hexo</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kingle">
-<meta property="og:url" content="https://kingle.xyz/archives/2018/page/2/index.html">
+  <title>nginx 配置指令优化 | Hexo</title>
+  <meta name="description" content="send_timeout 　　send_timeout  120s; 用于设置nginx服务器响应客户端的超时时间，这个超时时间仅针对两个客户端和服务器之间建立连接后，某次活动之间的时间。如果这个时间后客户端没有任何活动，nginx服务器将会关闭连接 　　   keepalive_timeout 　　keepalive_timeout  160s 指定客户端连接保持的超时时间，该设置表示ngi">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx 配置指令优化">
+<meta property="og:url" content="https://kingle.xyz/2018/09/06/nginx-配置指令优化/index.html">
 <meta property="og:site_name" content="kingle">
+<meta property="og:description" content="send_timeout 　　send_timeout  120s; 用于设置nginx服务器响应客户端的超时时间，这个超时时间仅针对两个客户端和服务器之间建立连接后，某次活动之间的时间。如果这个时间后客户端没有任何活动，nginx服务器将会关闭连接 　　   keepalive_timeout 　　keepalive_timeout  160s 指定客户端连接保持的超时时间，该设置表示ngi">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-06T00:38:56.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kingle">
+<meta name="twitter:title" content="nginx 配置指令优化">
+<meta name="twitter:description" content="send_timeout 　　send_timeout  120s; 用于设置nginx服务器响应客户端的超时时间，这个超时时间仅针对两个客户端和服务器之间建立连接后，某次活动之间的时间。如果这个时间后客户端没有任何活动，nginx服务器将会关闭连接 　　   keepalive_timeout 　　keepalive_timeout  160s 指定客户端连接保持的超时时间，该设置表示ngi">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.xyz/archives/2018/page/2/index.html">
+  <link rel="canonical" href="https://kingle.xyz/2018/09/06/nginx-配置指令优化/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -339,164 +344,233 @@
   
   
 <main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">Archive: 2018</h1>
-	      <p class="text-muted">Total 10 articles</p>
-	    </header>
-	    <div class="article-body">
-	      
-  
-  
+  <div class="content">
+  <article id="post-nginx-配置指令优化" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-    
+    <div class="article-header">
       
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx 配置指令优化
+    </h1>
+  
+
       
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2018" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2018
-            </a>
-            <!-- <a href="/archives/2018" class="archive-year">2018</a> -->
-          </h3>
-        </div>
-        <div id="collapse2018" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2018">
-        <div class="panel-body">
-          <div class="collection">
-    
-    
-<a href="/2018/09/05/linux-系统优化脚本/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-09-05T01:52:18.000Z" itemprop="datePublished">2018-09-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux 系统优化脚本
-</a>
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/06/nginx-配置指令优化/" class="article-date">
+	  <time datetime="2018-09-06T00:31:56.000Z" itemprop="datePublished">2018-09-06</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/nginx/">nginx</a>
+  </span>
 
 
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/06/nginx-配置指令优化/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>  send_timeout</p>
+<p>　　send_timeout  120s;</p>
+<p>用于设置nginx服务器响应客户端的超时时间，这个超时时间仅针对两个客户端和服务器之间建立连接后，某次活动之间的时间。如果这个时间后客户端没有任何活动，nginx服务器将会关闭连接</p>
+<p>　　</p>
+<p>  keepalive_timeout</p>
+<p>　　keepalive_timeout  160s</p>
+<p>指定客户端连接保持的超时时间，该设置表示nginx服务器与客户端保持活动时间是60s，60s后服务器与客户端断开连接</p>
+<p>　　client_header_buffer_size</p>
+<p>　　client_header_buffer_size  4k;</p>
+<p>　　　　设置nginx 服务器允许的客户端请求头部的缓冲区大小，默认为1KB。此指令的赋值可以根据系统分页大小来设置。分页大小也可以用”# getconf PAGESIZE”命令取得</p>
+<p>有过nginx服务器工作经验的朋友可能会遇到nginx 服务器返回400错误的情况，查找nginx服务器的400错误原因比较困难，因为此错误并不是每次都会出现，出现错误的时候，通常在浏览器和日志里也看不到任何有关提示信息。</p>
+<p>根据实际经验来看，有很大一部分情况是客户端的请求头部过大造成的。请求头部过大，通常是客户端cookie中写入了较大的值引起的。于是适当增大此指令的赋值，允许nginx服务器接收较大的请求头部，可以改善服务器对客户端</p>
+<p>的支持能力。一般将此指令设置为4KB.</p>
+<p>　　client_header_timeout</p>
+<p>　　client_header_timeout  20s;</p>
+<p>　　设置读取客户端请求头数据的超时时间。此处值是15s,为经验参考值，默认是60s。</p>
+<p>如果超过这个时间，客户端还没有发送完整的header数据，服务端将返回”Request timeout(408)”错误，</p>
+<p>　　　multi_accept</p>
+<p>　　　配置nginx服务器时候经可能多的接受客户端的网络连接请求,默认off</p>
+<p>驱动相关指定　</p>
+<p>　</p>
+<p> 　　　use</p>
+<p>参数详解：use指令用于指定Nginx服务器使用的事件驱动模型</p>
+<p>　　　worker_connections</p>
+<p>该指令用于设置Nginx服务器的每个工作进程允许同时连接客户端的最大数量，语法为</p>
+<pre><code>worker_connections number;
+</code></pre><p>结合worker_processes 指令，我们可以计算出Nginx 服务器允许同时练级的客户端最大数量 Client=worker_processes * worker_connections / 2 。</p>
+<p>在看一本书的过程中看到作者 在使用Nginx服务器的过程中遇到无法访问Nginx 服务器的情况。查看日志信息发现一直报如下错误</p>
+<p>他是怎么分析解决的呢： </p>
+<p>根据报错信息，推测可能是Nginx 服务器的最大访问链接数量设置小了。此指令设置的就是Nginx服务器能接受的最大访问量，其中包括前端用户链接也包括其他链接，这个值在理论上等于此指令的值与它允许开启的工作进程最大数的乘积。 此指令一般为65535；</p>
+<pre><code>worker_connections 65535;
+</code></pre><p>此指令的赋值与linux 操作系统中进程可以打开 的文件句柄数量有关系。按照以上设置修改了赋值以后，Nginx 服务器报如下错误：</p>
+<p>究其原因，在linux 系统中有一个系统指令open file resource limit ，它设置了进程可以打开的文件句柄数量，worker_connections 指令的赋值不能超过 open file resource limit 的赋值可以使用以下的命令查看 linux 系统中 该指令的值</p>
+<pre><code>#  cat  /proc/sys/fs/file-max 
+</code></pre><p>可以通过下面命令将open file resource limit 指令的值设为 2390251：</p>
+<pre><code># echo &quot;2390251&quot; &gt; /proc/sys/fs/file-max;  sysctl -p
+</code></pre><p>这样Nginx 的worker_connections 指令赋值65535 就没问题了</p>
+<p> 　　 worker_rlimit_sigpending </p>
+<p>参数详解：该指令用于设置linux 2.6.6-mm2 版本之后的 linux 平台的事件信号队列长度上线。其语法结构为</p>
+<pre><code>worker_rlimit_sigpending  limit;
+</code></pre><p>注：limit 为linux 平台事件信号队列的长度上限值。</p>
+<p>该指令主要影响事件驱动模型中rtsig 模型可以保存的最大信号数。Nginx 服务器的每一个工作进程有自己的事件信号队列用于存储客户端请求发生的信号，如果超过长度上限，nginx 服务器自动转用poll 模型处理未处理的客户端请求，为了保证Nginx 服务器对客户端请求的高效处理，请大家根据实际的客户端并发请求数量和服务器运行环境能力设定该值，设置示范</p>
+<pre><code>worker_rlimit_sifpending 1024;
+</code></pre><p>　　devpoll_changes 和 devpoll_events </p>
+<p>参数详解：这两个指令用于设置在 /dev/poll 事件驱动模式下，Nginx服务器可以与内核之间传递事件的数量，前者设置传递给内核的事件数量，后者设置从内核获取的事件数量，语法结构为：</p>
+<pre><code>devpoll_changes number;
+
+devpoll_events number;
+</code></pre><p>注：number 为要设置的数量，默认值为32.</p>
+<p>　　kqueue_changes 和 kqueue_events </p>
+<p>参数详解：这两个指令用于设置在kqueue 时间驱动模式下，Nginx 服务器可以与内核之间传递事件的数量，前者设置传递给内核的事件数量，后者设置从内核获取的事件数量，其语法结构为：</p>
+<p>kqueue_changes number;</p>
+<p>kqueue_events number;</p>
+<p>注：number 为要设置的数量，默认值均为512。</p>
+<p>　　epoll_events </p>
+<p>参数详解：该指令用于设置在epoll 事件驱动模式下Nginx 服务器可以与内核之间传递事件的数量，与其他事件驱动模型不同，在epoll事件驱动模式下Nginx 服务器向内核传递事件的数量和从内核传递事件数量是相等得。因此没有类似epoll_changes 这样的指令,默认值为512.</p>
+<p> epoll_events 512;</p>
+<p> 　　rtsig_signo</p>
+<p>　　该指令用于设置rtsig模式使用两个信号中的第一个,</p>
+<p>　　rtsig_signo signo</p>
+<p>　　</p>
+<p>　　rtsig_overfloe_* number</p>
+<p>　　用于代表三个具体的指令 分别是:rtsig_overflow_events  rtsig_overflow_test</p>
+<p>rtsig_over_thresold</p>
+<p>　　rtsig_overflow_events:指定对垒米处时使用poll库处理的事件数</p>
+<p>　　rtsig_overflow_test: 指定poll库处理地几件事见后将清空rtsig模型使用的信号队列,默认32</p>
+<p>　　rtsig_over_thresold: 指定rtsig模式使用的信号队列中的时间超过多少时就清空队列</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://kingle.xyz/2018/09/06/nginx-配置指令优化/" title="nginx 配置指令优化" target="_blank" rel="external">https://kingle.xyz/2018/09/06/nginx-配置指令优化/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://kingle666.github.io" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://kingle666.github.io" target="_blank"><span class="text-dark">kingle</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
   
     
-    
-    
-<a href="/2018/09/05/ansible-命令操作项/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-09-05T01:35:54.000Z" itemprop="datePublished">2018-09-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> ansible 命令操作项
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/08/28/运维工程师必备命令/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-08-28T09:17:28.000Z" itemprop="datePublished">2018-08-28</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 运维工程师必备命令
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/16/nginx-安装与排错/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-16T09:25:23.000Z" itemprop="datePublished">2018-07-16</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> nginx 安装与排错
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/16/单引号，双引号，反引号区别/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-16T06:46:01.000Z" itemprop="datePublished">2018-07-16</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 单引号，双引号，反引号区别
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/14/高并发之ulimit/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-14T08:22:14.000Z" itemprop="datePublished">2018-07-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 高并发文件描述符之ulimit
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/13/linux-etc文件系统介绍/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-13T11:04:51.000Z" itemprop="datePublished">2018-07-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux etc,var文件系统介绍
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-13T11:01:18.000Z" itemprop="datePublished">2018-07-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux 删除文件深入了解及任务定时--Linux的闹钟
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/12/命令/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-12T11:34:40.000Z" itemprop="datePublished">2018-07-12</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 命令
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/11/linux系统优化基础/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">2018-07-11</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux系统优化基础
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
+  <section id="comments">
   	
+       
+    <div id="vcomments"></div>
+
     
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
-            
-            <li class="prev">
-                <a href="/archives/2018/">
-                    <i class="icon icon-angle-left"></i>
-                    Prev
-                </a>
-            </li>
-            
-            
-            <li class="next disabled">
-                <a href="javascript:;">
-                    Next
-                    <i class="icon icon-angle-right"></i>                    
-                </a>
-            </li>
-            
-        </ul>
-        <div class="total-article bar-right">Page 2 of 2</div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/09/06/nginx-内核优化/" title="nginx 内核优化"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
-    
- 	
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -557,6 +631,37 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     
     
     
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
     
     
 

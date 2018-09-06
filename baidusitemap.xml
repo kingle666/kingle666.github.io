@@ -4,6 +4,106 @@
 
     
   <url>
+    <loc>https://kingle.xyz/2018/09/05/ansible-%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E9%A1%B9/</loc>
+    <lastmod>2018-09-06T00:40:53.219Z</lastmod>
+    <data>
+        <display>
+        <title>ansible 命令操作项</title>
+        <pubTime>2018-09-05T01:35:54.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://kingle.xyz/2018/09/06/nginx-%E9%85%8D%E7%BD%AE%E6%8C%87%E4%BB%A4%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2018-09-06T00:38:56.003Z</lastmod>
+    <data>
+        <display>
+        <title>nginx 配置指令优化</title>
+        <pubTime>2018-09-06T00:31:56.000Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://kingle.xyz/2018/09/06/nginx-%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2018-09-06T00:38:15.401Z</lastmod>
+    <data>
+        <display>
+        <title>nginx 模块介绍</title>
+        <pubTime>2018-09-06T00:30:58.000Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://kingle.xyz/2018/09/06/nginx-%E5%86%85%E6%A0%B8%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2018-09-06T00:32:40.289Z</lastmod>
+    <data>
+        <display>
+        <title>nginx 内核优化</title>
+        <pubTime>2018-09-06T00:31:44.000Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://kingle.xyz/2018/09/05/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2018-09-06T00:29:46.917Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2018-09-05T03:42:58.740Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://kingle.xyz/2018/09/05/nginx-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%8C%87%E4%BB%A4/</loc>
+    <lastmod>2018-09-05T12:46:10.132Z</lastmod>
+    <data>
+        <display>
+        <title>nginx 服务器配置指令</title>
+        <pubTime>2018-09-05T12:45:25.000Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://kingle.xyz/2018/09/05/nginx-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2018-09-05T09:59:14.956Z</lastmod>
     <data>
@@ -97,23 +197,6 @@
         <pubTime>2018-09-05T01:57:31.000Z</pubTime>
         
         <tag>vim</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://kingle.xyz/2018/09/05/ansible-%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E9%A1%B9/</loc>
-    <lastmod>2018-09-05T01:36:22.991Z</lastmod>
-    <data>
-        <display>
-        <title>ansible 命令操作项</title>
-        <pubTime>2018-09-05T01:35:54.000Z</pubTime>
-        
-        <tag>ansible</tag>
          
          
            
@@ -232,21 +315,6 @@
         <display>
         <title>命令</title>
         <pubTime>2018-07-12T11:34:40.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://kingle.xyz/2018/09/05/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
-    <lastmod>2018-07-11T12:32:21.092Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2018-09-05T03:42:58.740Z</pubTime>
         
          
            

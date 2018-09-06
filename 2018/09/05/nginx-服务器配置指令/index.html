@@ -17,16 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Archive: 2018 | Hexo</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kingle">
-<meta property="og:url" content="https://kingle.xyz/archives/2018/page/2/index.html">
+  <title>nginx 服务器配置指令 | Hexo</title>
+  <meta name="description" content="nginx 基础配置 localtion 配置语法结构: location [ =  ~  ~* ^~ ] uri{ ... } uri 变量是带匹配的请求字符, 可以是不含正则表达的字符串, 也可以是包含正则的字符串 其中[ ] 中的是可选项 uri 的是必选项: 用来改变请求字符串与uri的匹配方式  =  用于标准uri 前面 , 要求请求字符串与uri严格匹配,如果已经匹配成功,就停止匹配">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx 服务器配置指令">
+<meta property="og:url" content="https://kingle.xyz/2018/09/05/nginx-服务器配置指令/index.html">
 <meta property="og:site_name" content="kingle">
+<meta property="og:description" content="nginx 基础配置 localtion 配置语法结构: location [ =  ~  ~* ^~ ] uri{ ... } uri 变量是带匹配的请求字符, 可以是不含正则表达的字符串, 也可以是包含正则的字符串 其中[ ] 中的是可选项 uri 的是必选项: 用来改变请求字符串与uri的匹配方式  =  用于标准uri 前面 , 要求请求字符串与uri严格匹配,如果已经匹配成功,就停止匹配">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-05T12:46:10.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kingle">
+<meta name="twitter:title" content="nginx 服务器配置指令">
+<meta name="twitter:description" content="nginx 基础配置 localtion 配置语法结构: location [ =  ~  ~* ^~ ] uri{ ... } uri 变量是带匹配的请求字符, 可以是不含正则表达的字符串, 也可以是包含正则的字符串 其中[ ] 中的是可选项 uri 的是必选项: 用来改变请求字符串与uri的匹配方式  =  用于标准uri 前面 , 要求请求字符串与uri严格匹配,如果已经匹配成功,就停止匹配">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.xyz/archives/2018/page/2/index.html">
+  <link rel="canonical" href="https://kingle.xyz/2018/09/05/nginx-服务器配置指令/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -339,164 +344,370 @@
   
   
 <main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">Archive: 2018</h1>
-	      <p class="text-muted">Total 10 articles</p>
-	    </header>
-	    <div class="article-body">
-	      
-  
-  
+  <div class="content">
+  <article id="post-nginx-服务器配置指令" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-    
+    <div class="article-header">
       
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx 服务器配置指令
+    </h1>
+  
+
       
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2018" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2018
-            </a>
-            <!-- <a href="/archives/2018" class="archive-year">2018</a> -->
-          </h3>
-        </div>
-        <div id="collapse2018" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2018">
-        <div class="panel-body">
-          <div class="collection">
-    
-    
-<a href="/2018/09/05/linux-系统优化脚本/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-09-05T01:52:18.000Z" itemprop="datePublished">2018-09-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux 系统优化脚本
-</a>
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/05/nginx-服务器配置指令/" class="article-date">
+	  <time datetime="2018-09-05T12:45:25.000Z" itemprop="datePublished">2018-09-05</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/nginx/">nginx</a>
+  </span>
 
 
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/05/nginx-服务器配置指令/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>nginx 基础配置</p>
+<h3 id="localtion-配置"><a href="#localtion-配置" class="headerlink" title="localtion 配置"></a>localtion 配置</h3><pre><code>语法结构: location [ =  ~  ~* ^~ ] uri{ ... }
+uri 变量是带匹配的请求字符, 可以是不含正则表达的字符串, 也可以是包含正则的字符串
+其中[ ] 中的是可选项 uri 的是必选项: 用来改变请求字符串与uri的匹配方式
+
+=  用于标准uri 前面 , 要求请求字符串与uri严格匹配,如果已经匹配成功,就停止匹配立即处理这个请求
+
+~  表示uri包含正则表达式 并且区分大小写
+
+~*  用于表示uri包含正则表达式 不区分大小写
+
+^~  要求找到表示uri和请求字符串匹配度最高的location, 然后处理这个要求
+</code></pre><h3 id="网站错误页面"><a href="#网站错误页面" class="headerlink" title="网站错误页面"></a>网站错误页面</h3><pre><code> 1xx：指示信息--表示请求已接收，继续处理
+ 2xx：成功--表示请求已被成功接收、理解、接受
+ 3xx：重定向--要完成请求必须进行更进一步的操作
+ 4xx：客户端错误--请求有语法错误或请求无法实现
+ 5xx：服务器端错误--服务器未能实现合法的请求
+ http消息    代码    含义
+ 以移动      301     请求的数据具有新的位置,而且更改是永久的
+ 重定向      302     请求数据临时位置更改
+ 无法找到网页 400   可以连接到服务器,但是由于地址问题,无法找到网页
+ 网站拒绝显示  404  可以连接到网站但是找不到网页
+ 无法显示该页面 405  可以连接网站,页面内容无法下载,网页编写方式问题
+ 网站无法显示该页面 500 服务器问题
+ 未执行          501 没有讲正在访问的网站设置显示为浏览器所请求的网站
+ 不支持版本      505  请求的协议版本信息
+常见:
+ 200 OK      //客户端请求成功
+ 400 Bad Request  //客户端请求有语法错误，不能被服务器所理解
+ 401 Unauthorized //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 
+ 403 Forbidden  //服务器收到请求，但是拒绝提供服务
+ 404 Not Found  //请求资源不存在，eg：输入了错误的URL
+ 500 Internal Server Error //服务器发生不可预期的错误
+ 503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
+ eg：HTTP/1.1 200 OK （CRLF）        
+</code></pre><h3 id="常见的配置文件说明"><a href="#常见的配置文件说明" class="headerlink" title="常见的配置文件说明"></a>常见的配置文件说明</h3><pre><code>1, error_log file | stderr [debug | info | notice | warn | error | crit | alert | emerg ]
+
+nginx服务器的日志文件输出到某一文件或者输出到标准输出错误输出到stder:
+后面则是跟的日志级别可选项, 由低到高分为debug .... emerg 设置级别后联通高级别也会别记录
+
+2, user user group
+
+配置启动程序的用户 用户 组 希望所有能启动则不写
+
+3, worker_processes number | auto
+
+number 指定nginx进程做多产生woker peocess数
+auto nginx 自动检测进程数
+
+4, pid file
+
+指定pid文件凡在哪里
+pid log/nginx.pid  注意设置的时候要配置文件名,不然找不到
+
+5, include file
+
+包含的配置文件,引入其他的配置
+
+6, acept_mutex on | off
+
+设置网络的连接序列化
+
+7, multi_accept on| off 
+
+设置是否允许同时接受多个网络连接
+
+8, use method
+
+事件驱动模型的选择
+
+9, worker_connections number
+
+配置允许每一个workr process 最大连接数, 默认是1024
+
+10, mime-type
+
+配置资源类型,mime-type是网络资源的一种媒体类型 
+格式: default_type mime-type
+
+11, access_log path[format[buffer=size]]
+
+自定义服务器的日志
+ path: 配置服务器日志文件的存放的路径和名称
+ format: 可选项,自定义服务器日志的格式字符串
+ size: 配置临时存放日志的内存缓冲区大小
+
+12, log_format name sting ...;
+
+与access_log联合使用 ,专门用于定义服务器日志的格式
+并且可以为格式定义一个名字, 让access_log 方便调用
+
+name : 格式字符串的名字 默认combined
+string 服务日志的格式字符串
+
+13, sendfile no | off
+
+配置允许sendfile方式传输文件
+
+14, sendfile_max_chunk size
+
+配置nginx进程的每个worker_process每次调用senfile()传输数据量最大不能超过的值
+
+15, keepalive_timeout timeout[header_timeout];
+
+配置连接超时时间
+timeout 服务端对连接的保持时间
+header_timeout, 应答报文头部的keeplive域设置超时时间
+
+16, keepalive_repuests number
+
+单链接请求数上限
+
+17, 配置网络监听
+
+配置监听有三种方法:
+    监听IP地址:
+    listen address[:port] [default_server] [setfib=number] [backlog=number] [rcvbuf=size]
+    [sndbuf=size] [deferred]
+    监听配置端口:
+    listen port [default_server] [setfib=number] [backlog=number] [rcvbuf=size] [sndbuf=size]
+    [accept_file=filter]
+    监听socket
+    listen unix:path [default_server] [backlog=number] [rcvbuf=size] [sndbuf=size] [accept_file=filter]
+    [deferred]
+
+    address : IP地址
+    port: 端口号
+    path: socket文件路径
+    default_server: 标识符,将此虚拟主机设置为address:port默认主机
+    setfib=number: 目前支队freeBSD有用 以前是0.8.44版本监听scoket关联路由表
+    backlog=number: 设置监听函数listen()最多永续多少网络连接挂起 freeBSD默认为-1 其他511
+    rcvbuf=size: 监听socket接受缓存区大小
+    sndbuf=size: 监听socket发送缓存区大小
+    deferred :标识符 将accept()设置为Deferred
+    accept_file=filter: 设置监听端口对请求的过滤, 自对freeBSD和netBSd 5.0+的游泳
+    bind: 标识符 使用独立的bind()处理address:port
+    ssl: 标识符,设置绘画连接使用ssl模式进行
+
+18, server_name name
+
+基于名称的虚拟主机配置
+对于多个匹配成功的处理优先级:
+    准确匹配server_name
+    通配符在开始时匹配server_name成功
+    通配符在结尾是匹配server_那么成功
+    正则表达式匹配server_name成功
+在上诉匹配模式中被多次匹配会首先处理首次匹配成的清求
+
+19, root path
+
+配置请求的根目录
+web服务器接收到请求后,需要在服务器指定的目录寻找请求资源,
+这个路径就是指定文件目录
+
+20, alias path (location模块中使用)
+
+更改location接收到的URI的请求路径 可以跟着变量信息
+
+21, index file ...;
+
+设置网站的默认首页
+
+22, error_page  code ...[=[response]] uri
+
+设置错误页面信息
+
+    code 要处理的http错误代码
+    resoonse 可选项 讲code指定的错误代码转化为新的错误代码
+    uri 错误页面的路径或者网站地址
+
+23, allow address | CIDR |all 
+
+配置基于ip的访问允许权限
+
+address 允许访问客户端的ip 不支持设置多个
+CIDR 允许访问的客户端的CIDR 如185.199.110.153/24
+all 表示所有客户端可以访问
+
+24, deny address | CIDR |all
+
+配置基于ip的访问禁止权限
+
+address 允许访问客户端的ip 不支持设置多个
+CIDR 允许访问的客户端的CIDR 如185.199.110.153/24
+all 表示所有客户端可以访问        
+
+
+25, auth_basic string |off
+
+配置基于密码的nginx访问权限
+
+string 开启认证功能,并配置验证式的指示信息
+
+off 关闭
+
+26, auth_basic_user_file file
+
+配置基于密码访问nginx访问的权限文件
+
+file文件需要使用绝对路径
+</code></pre>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://kingle.xyz/2018/09/05/nginx-服务器配置指令/" title="nginx 服务器配置指令" target="_blank" rel="external">https://kingle.xyz/2018/09/05/nginx-服务器配置指令/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://kingle666.github.io" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://kingle666.github.io" target="_blank"><span class="text-dark">kingle</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
   
     
-    
-    
-<a href="/2018/09/05/ansible-命令操作项/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-09-05T01:35:54.000Z" itemprop="datePublished">2018-09-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> ansible 命令操作项
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/08/28/运维工程师必备命令/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-08-28T09:17:28.000Z" itemprop="datePublished">2018-08-28</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 运维工程师必备命令
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/16/nginx-安装与排错/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-16T09:25:23.000Z" itemprop="datePublished">2018-07-16</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> nginx 安装与排错
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/16/单引号，双引号，反引号区别/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-16T06:46:01.000Z" itemprop="datePublished">2018-07-16</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 单引号，双引号，反引号区别
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/14/高并发之ulimit/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-14T08:22:14.000Z" itemprop="datePublished">2018-07-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 高并发文件描述符之ulimit
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/13/linux-etc文件系统介绍/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-13T11:04:51.000Z" itemprop="datePublished">2018-07-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux etc,var文件系统介绍
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-13T11:01:18.000Z" itemprop="datePublished">2018-07-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux 删除文件深入了解及任务定时--Linux的闹钟
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/12/命令/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-12T11:34:40.000Z" itemprop="datePublished">2018-07-12</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 命令
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/11/linux系统优化基础/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">2018-07-11</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux系统优化基础
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
+  <section id="comments">
   	
+       
+    <div id="vcomments"></div>
+
     
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
-            
-            <li class="prev">
-                <a href="/archives/2018/">
-                    <i class="icon icon-angle-left"></i>
-                    Prev
-                </a>
-            </li>
-            
-            
-            <li class="next disabled">
-                <a href="javascript:;">
-                    Next
-                    <i class="icon icon-angle-right"></i>                    
-                </a>
-            </li>
-            
-        </ul>
-        <div class="total-article bar-right">Page 2 of 2</div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/09/06/nginx-模块介绍/" title="nginx 模块介绍"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/09/05/nginx-常见问题/" title="nginx 常见问题"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
-    
- 	
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -557,6 +768,37 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     
     
     
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
     
     
 

@@ -17,16 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Archive: 2018 | Hexo</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kingle">
-<meta property="og:url" content="https://kingle.xyz/archives/2018/page/2/index.html">
+  <title>nginx 内核优化 | Hexo</title>
+  <meta name="description" content="1）nginx进程数，建议按照cpu数目来指定，一般跟cpu核数相同或为它的倍数。worker_processes 8; 2）为每个进程分配cpu，上例中将8个进程分配到8个cpu，当然可以写多个，或者将一个进程分配到多个cpu。worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx 内核优化">
+<meta property="og:url" content="https://kingle.xyz/2018/09/06/nginx-内核优化/index.html">
 <meta property="og:site_name" content="kingle">
+<meta property="og:description" content="1）nginx进程数，建议按照cpu数目来指定，一般跟cpu核数相同或为它的倍数。worker_processes 8; 2）为每个进程分配cpu，上例中将8个进程分配到8个cpu，当然可以写多个，或者将一个进程分配到多个cpu。worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-06T00:32:40.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kingle">
+<meta name="twitter:title" content="nginx 内核优化">
+<meta name="twitter:description" content="1）nginx进程数，建议按照cpu数目来指定，一般跟cpu核数相同或为它的倍数。worker_processes 8; 2）为每个进程分配cpu，上例中将8个进程分配到8个cpu，当然可以写多个，或者将一个进程分配到多个cpu。worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.xyz/archives/2018/page/2/index.html">
+  <link rel="canonical" href="https://kingle.xyz/2018/09/06/nginx-内核优化/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -339,164 +344,188 @@
   
   
 <main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">Archive: 2018</h1>
-	      <p class="text-muted">Total 10 articles</p>
-	    </header>
-	    <div class="article-body">
-	      
-  
-  
+  <div class="content">
+  <article id="post-nginx-内核优化" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-    
+    <div class="article-header">
       
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nginx 内核优化
+    </h1>
+  
+
       
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2018" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2018
-            </a>
-            <!-- <a href="/archives/2018" class="archive-year">2018</a> -->
-          </h3>
-        </div>
-        <div id="collapse2018" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2018">
-        <div class="panel-body">
-          <div class="collection">
-    
-    
-<a href="/2018/09/05/linux-系统优化脚本/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-09-05T01:52:18.000Z" itemprop="datePublished">2018-09-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux 系统优化脚本
-</a>
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/06/nginx-内核优化/" class="article-date">
+	  <time datetime="2018-09-06T00:31:44.000Z" itemprop="datePublished">2018-09-06</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/nginx/">nginx</a>
+  </span>
 
 
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/06/nginx-内核优化/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>1）nginx进程数，建议按照cpu数目来指定，一般跟cpu核数相同或为它的倍数。<br>worker_processes 8;</p>
+<p>2）为每个进程分配cpu，上例中将8个进程分配到8个cpu，当然可以写多个，或者将一个进程分配到多个cpu。<br>worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000;</p>
+<p>3）下面这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是系统的最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n的值保持一致。<br>worker_rlimit_nofile 65535;</p>
+<p>4）使用epoll的I/O模型，用这个模型来高效处理异步事件<br>use epoll;</p>
+<p>5）每个进程允许的最多连接数，理论上每台nginx服务器的最大连接数为worker_processes*worker_connections。<br>worker_connections 65535;</p>
+<p>6）http连接超时时间，默认是60s，功能是使客户端到服务器端的连接在设定的时间内持续有效，当出现对服务器的后继请求时，该功能避免了建立或者重新建立连接。切记这个参数也不能设置过大！否则会导致许多无效的http连接占据着nginx的连接数，终nginx崩溃！<br>keepalive_timeout 60;</p>
+<p>7）客户端请求头部的缓冲区大小，这个可以根据你的系统分页大小来设置，一般一个请求的头部大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。分页大小可以用命令getconf PAGESIZE取得。<br>client_header_buffer_size 4k;</p>
+<p>8）下面这个参数将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。<br>open_file_cache max=102400 inactive=20s;</p>
+<p>9）下面这个是指多长时间检查一次缓存的有效信息。<br>open_file_cache_valid 30s;</p>
+<p>10）open_file_cache指令中的inactive参数时间内文件的最少使用次数，如果超过这个数字，文件描述符一直是在缓存中打开的，如上例，如果有一个文件在inactive时间内一次没被使用，它将被移除。<br>open_file_cache_min_uses 1;</p>
+<p>11）隐藏响应头中的有关操作系统和web server（Nginx）版本号的信息，这样对于安全性是有好处的。<br>server_tokens off;</p>
+<p>12）可以让sendfile()发挥作用。sendfile()可以在磁盘和TCP socket之间互相拷贝数据(或任意两个文件描述符)。Pre-sendfile是传送数据之前在用户空间申请数据缓冲区。之后用read()将数据从文件拷贝到这个缓冲区，write()将缓冲区数据写入网络。sendfile()是立即将数据从磁盘读到OS缓存。因为这种拷贝是在内核完成的，sendfile()要比组合read()和write()以及打开关闭丢弃缓冲更加有效(更多有关于sendfile)。<br>sendfile on;</p>
+<p>13）告诉nginx在一个数据包里发送所有头文件，而不一个接一个的发送。就是说数据包不会马上传送出去，等到数据包最大时，一次性的传输出去，这样有助于解决网络堵塞。<br>tcp_nopush on;</p>
+<p>14）告诉nginx不要缓存数据，而是一段一段的发送–当需要及时发送数据时，就应该给应用设置这个属性，这样发送一小块数据信息时就不能立即得到返回值。<br>tcp_nodelay on;<br>比如：<br>http {<br>server_tokens off;<br>sendfile on;<br>tcp_nopush on;<br>tcp_nodelay on;<br>……<br>}</p>
+<p>15）客户端请求头部的缓冲区大小，这个可以根据系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。<br>client_header_buffer_size 4k;<br>客户端请求头部的缓冲区大小，这个可以根据系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。<br>分页大小可以用命令getconf PAGESIZE取得。<br>[root@test-huanqiu ~]# getconf PAGESIZE<br>4096<br>但也有client_header_buffer_size超过4k的情况，但是client_header_buffer_size该值必须设置为“系统分页大小”的整倍数。</p>
+<p>16）为打开文件指定缓存，默认是没有启用的，max 指定缓存数量，建议和打开文件数一致，inactive 是指经过多长时间文件没被请求后删除缓存。<br>open_file_cache max=65535 inactive=60s;</p>
+<p>17）open_file_cache 指令中的inactive 参数时间内文件的最少使用次数，如果超过这个数字，文件描述符一直是在缓存中打开的，如上例，如果有一个文件在inactive 时间内一次没被使用，它将被移除。<br>open_file_cache_min_uses 1;</p>
+<p>18）指定多长时间检查一次缓存的有效信息。<br>open_file_cache_valid 80s;<br>人生就像一滴水，非要落下才后悔！ –kingle</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://kingle.xyz/2018/09/06/nginx-内核优化/" title="nginx 内核优化" target="_blank" rel="external">https://kingle.xyz/2018/09/06/nginx-内核优化/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://kingle666.github.io" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://kingle666.github.io" target="_blank"><span class="text-dark">kingle</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
   
     
-    
-    
-<a href="/2018/09/05/ansible-命令操作项/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-09-05T01:35:54.000Z" itemprop="datePublished">2018-09-05</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> ansible 命令操作项
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/08/28/运维工程师必备命令/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-08-28T09:17:28.000Z" itemprop="datePublished">2018-08-28</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 运维工程师必备命令
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/16/nginx-安装与排错/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-16T09:25:23.000Z" itemprop="datePublished">2018-07-16</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> nginx 安装与排错
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/16/单引号，双引号，反引号区别/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-16T06:46:01.000Z" itemprop="datePublished">2018-07-16</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 单引号，双引号，反引号区别
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/14/高并发之ulimit/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-14T08:22:14.000Z" itemprop="datePublished">2018-07-14</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 高并发文件描述符之ulimit
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/13/linux-etc文件系统介绍/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-13T11:04:51.000Z" itemprop="datePublished">2018-07-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux etc,var文件系统介绍
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/13/linux-删除文件深入了解及任务定时-Linux的闹钟/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-13T11:01:18.000Z" itemprop="datePublished">2018-07-13</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux 删除文件深入了解及任务定时--Linux的闹钟
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/12/命令/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-12T11:34:40.000Z" itemprop="datePublished">2018-07-12</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 命令
-</a>
-
-
-  
-    
-    
-    
-<a href="/2018/07/11/linux系统优化基础/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">2018-07-11</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> linux系统优化基础
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
+  <section id="comments">
   	
+       
+    <div id="vcomments"></div>
+
     
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
-            
-            <li class="prev">
-                <a href="/archives/2018/">
-                    <i class="icon icon-angle-left"></i>
-                    Prev
-                </a>
-            </li>
-            
-            
-            <li class="next disabled">
-                <a href="javascript:;">
-                    Next
-                    <i class="icon icon-angle-right"></i>                    
-                </a>
-            </li>
-            
-        </ul>
-        <div class="total-article bar-right">Page 2 of 2</div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/09/06/nginx-配置指令优化/" title="nginx 配置指令优化"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/09/06/nginx-模块介绍/" title="nginx 模块介绍"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
-    
- 	
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -557,6 +586,37 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     
     
     
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
     
     
 
