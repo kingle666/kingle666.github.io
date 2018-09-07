@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>mysql 问题总结 | Hexo</title>
+  <meta name="description" content="###一、Can’t connect to MySQL server on ‘localhost’ (10061)   不能连接到 localhost 上的mysql分析：这说明“localhost”计算机是存在的，但在这台机器上却没提供MySQL服务。需要启动这台机器上的MySQL服务,如果机子负载太高没空相应请求也会产生这个错误。解决:既然没有启动那就去启动这台机子的mysql。如果启动不成功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql 问题总结">
+<meta property="og:url" content="https://kingle.我爱你/2018/09/07/mysql-问题总结/index.html">
+<meta property="og:site_name" content="kingle">
+<meta property="og:description" content="###一、Can’t connect to MySQL server on ‘localhost’ (10061)   不能连接到 localhost 上的mysql分析：这说明“localhost”计算机是存在的，但在这台机器上却没提供MySQL服务。需要启动这台机器上的MySQL服务,如果机子负载太高没空相应请求也会产生这个错误。解决:既然没有启动那就去启动这台机子的mysql。如果启动不成功">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-07T10:00:53.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql 问题总结">
+<meta name="twitter:description" content="###一、Can’t connect to MySQL server on ‘localhost’ (10061)   不能连接到 localhost 上的mysql分析：这说明“localhost”计算机是存在的，但在这台机器上却没提供MySQL服务。需要启动这台机器上的MySQL服务,如果机子负载太高没空相应请求也会产生这个错误。解决:既然没有启动那就去启动这台机子的mysql。如果启动不成功">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://kingle.我爱你/2018/09/07/mysql-问题总结/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://kingle666.github.io" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">kingle</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> kingle, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://kingle666.github.io" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/ling222kingle" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/" target="_blank" title="Facebook" data-toggle=tooltip data-placement=top><i class="icon icon-facebook"></i></a></li>
+        
+        <li><a href="/" target="_blank" title="Dribbble" data-toggle=tooltip data-placement=top><i class="icon icon-dribbble"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ansible/">ansible</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lnmp-shell/">lnmp shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nfs/">nfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rsync/">rsync</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ulimit/">ulimit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单引号，双引号，反引号/">单引号，双引号，反引号</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令-运维/">命令 运维</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Linux-etc-var-kingle/" style="font-size: 13px;">Linux etc var kingle</a> <a href="/tags/ansible/" style="font-size: 13px;">ansible</a> <a href="/tags/linux-优化-kingle/" style="font-size: 13px;">linux 优化 kingle</a> <a href="/tags/linux-删除-闹钟/" style="font-size: 13px;">linux 删除 闹钟</a> <a href="/tags/lnmp-shell/" style="font-size: 13px;">lnmp shell</a> <a href="/tags/nfs/" style="font-size: 13px;">nfs</a> <a href="/tags/nginx/" style="font-size: 14px;">nginx</a> <a href="/tags/rsync/" style="font-size: 13px;">rsync</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/ulimit/" style="font-size: 13px;">ulimit</a> <a href="/tags/vim/" style="font-size: 13px;">vim</a> <a href="/tags/单引号，双引号，反引号/" style="font-size: 13px;">单引号，双引号，反引号</a> <a href="/tags/命令-运维/" style="font-size: 13px;">命令 运维</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/07/mysql-问题总结/" class="title">mysql 问题总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-07T09:58:57.000Z" itemprop="datePublished">2018-09-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/06/nginx-配置指令优化/" class="title">nginx 配置指令优化</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-06T00:31:56.000Z" itemprop="datePublished">2018-09-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/06/nginx-内核优化/" class="title">nginx 内核优化</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-06T00:31:44.000Z" itemprop="datePublished">2018-09-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/06/nginx-模块介绍/" class="title">nginx 模块介绍</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-06T00:30:58.000Z" itemprop="datePublished">2018-09-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/05/nginx-服务器配置指令/" class="title">nginx 服务器配置指令</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-05T12:45:25.000Z" itemprop="datePublished">2018-09-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-mysql-问题总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql 问题总结
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/09/07/mysql-问题总结/" class="article-date">
+	  <time datetime="2018-09-07T09:58:57.000Z" itemprop="datePublished">2018-09-07</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/09/07/mysql-问题总结/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>###一、Can’t connect to MySQL server on ‘localhost’ (10061)<br>   不能连接到 localhost 上的mysql<br>分析：这说明“localhost”计算机是存在的，但在这台机器上却没提供MySQL服务。<br>需要启动这台机器上的MySQL服务,如果机子负载太高没空相应请求也会产生这个错误。<br>解决:既然没有启动那就去启动这台机子的mysql。如果启动不成功，多数是因为你的my.ini配置的有问题。重新配置其即可。<br>如果觉得mysql负载异常，可以到mysql/bin 的目录下执行mysqladmin -uroot -p123 processlist来查看mysql当前的进程。</p>
+<p>###二、Unknown MySQL Server Host ‘localhosadst’ (11001)<br>    未知的MySQL服务器 localhosadst<br>分析：服务器 localhosasdst 不存在。或者根本无法连接<br>解决：仔细检查自己论坛下面的 ./config.inc.php 找到$dbhost重新设置为正确的mysql 服务器地址。</p>
+<p>###三、Access denied for user: ‘roota@localhost’ (Using password: YES)<br>    用户 roota 访问 localhost 被拒绝（没有允许通过）<br>分析：造成这个错误一般数据库用户名和密码相对mysql服务器不正确<br>解决：仔细检查自己论坛下面的 ./config.inc.php 找到dbuser、</p>
+<p>dbpw核实后重新设置保存即可。</p>
+<p>###四、Access denied for user: ‘red@localhost’ to database ‘newbbs’<br>    用户 red 在localhost 服务器上没有权限操作数据库newbbs<br>分析：这个提示和问题三是不同的。那个是在连接数据库的时候就被阻止了，而这个错误是在对数据库进行操作时引起的。比如在select update等等。这个是因为该用户没有操作数据库相应的权力。比如select 这个操作在mysql.user.Select_priv里记录 Y 可以操作N 不可以操作。<br>解决：如果是自己的独立主机那么更新mysql.user 的相应用户记录，比如这里要更新的用户为red 。或者直接修改 ./config.inc.php 为其配置一个具有对数据库操作权限的用户<br>或者通过如下的命令来更新授权grant all privileges on dbname.* to ‘user‘@’localhost’ identified by ‘password’<br>提示：更新了mysql库中的记录一定要重启mysql服务器才能使更新生效<br>FLUSH PRIVILEGES;</p>
+<p>###五、No Database Selected<br>    没有数据库被选择上<br>分析：产生的原因有两种<br>config.inc.php 里面dbname设置的不对。致使数据库根本不存在，所以在<br>db-&gt;select_db(dbname);时返回了false和上面问题四是一样的，数据库用户没有select权限，同样会导致这样的错误。当你发现config.inc.php的设置没有任何问题，但还是提示这个错误，那一定就是这种情况了。解决：对症下药打开config.inc.php找到</p>
+<p>dbname核实重新配置并保存<br>同问题四的解决方法</p>
+<p>###六、Can’t open file: ‘xxx_forums.MYI’. (errno: 145)<br>    不能打开xxx_forums.MYI<br>问题分析：<br>这种情况是不能打开 cdb_forums.MYI 造成的，引起这种情况可能的原因有：<br>1、服务器非正常关机，数据库所在空间已满，或一些其它未知的原因，对数据库表造成了损坏。<br>2、类 unix 操作系统下直接将数据库文件拷贝移动会因为文件的属组问题而产生这个错误。<br>解决方法：<br>1、修复数据表<br>可以使用下面的两种方式修复数据表：（第一种方法仅适合独立主机用户）<br>1）使用 myisamchk ，MySQL 自带了专门用户数据表检查和修复的工具 —— myisamchk 。更改当前目录到 MySQL/bin 下面，一般情况下只有在这个下面才能运行 myisamchk 命令。常用的修复命令为：myisamchk -r 数据文件目录/数据表名.MYI；<br>2）通过 phpMyAdmin 修复， phpMyAdmin 带有修复数据表的功能，进入到某一个表中后，点击“操作”，在下方的“表维护”中点击“修复表”即可。<br>注意：以上两种修复方式在执行前一定要备份数据库。<br>2、修改文件的属组（仅适合独立主机用户）<br>1）复制数据库文件的过程中没有将数据库文件设置为 MySQL 运行的帐号可读写（一般适用于 Linux 和 FreeBSD 用户）。</p>
+<p>###七、Table ‘test.xxx_sessions’ doesn’t exist<br>    xxxxx表不存在<br>分析：在执行sql语句时没有找到表，比如：SELECT * FROM xxx_members WHERE uid=’XX’ 这里如果表xxx_members不存在于$dbname库里，那么就会提示这个错误。具体可分为以下三种情况来讨论：<br>安装插件或者hack时修改了程序文件，而忘记了对数据库作相应的升级。<br>后台使用了不完全备份，导入数据时没有导入到已经安装了相应版本的论坛的数据库中。<br>解决： 同样对症下药，不同的原因不同的处理方法。<br>仔细对照插件作者提供的安装说明，把遗漏的对数据库的操作补上，如果仍然不能解决问题，那么应该怀疑该插件的可用性了。去咨询一下插件作者，或者将其卸载。<br>不要张冠李戴，多大的脚就穿多大的鞋。总之使得程序文件和数据库配套即可.</p>
+<p>###八、Unknown column ‘column_name’ in ‘field list’<br>    未知的字段名 column_name<br>分析：在执行sql语句是出现了指定表中没有的字段名称，就会出现这个错误。具体导致的原因可分为以下两种<br>安装插件或者hack时修改了程序文件，而忘记了对数据库作相应的升级。<br>程序文件和数据库不配套，比如d2.5的数据库配置给d4.1的程序来用肯定会出现这个错误。<br>解决： 导致的原因和问题八的1和 3是相同的，所以解决方法也一样。</p>
+<p>###九、You have an error in your SQL syntax<br>    有一个语法错误在你的sql中<br>分析：论坛标准的程序是没有sql语法错误的。所以造成这个错误的原因一般就两类<br>安装插件或擅自修改程序。<br>不同的数据库版本数据库导出导入，比如MySQL4.1的数据在导出的语句包含了MySQL4.0没有的功能，像字符集的设定，这时如果将这些sql导入到MySQL4.0的时候就会产生sql语法错误。<br>解决：<br>仔细检查看到底是哪里的错误，将其修正，实在不行就用标准程序把出错的程序替换。<br>在数据库备份的时候要留意，如果不打算倒入到其他版本的mysql中则不用特殊考虑，反之要特殊的设定。使用DZ4.1的后台数据备份，可以按照提示去设定想要的格式。独立主机的也可以在到处的时候将其导出为mysql4.0的格式。<br>mysqldump -uroot -p –default-character-set=latin1 –set-charset=gbk –skip-opt databse &gt; test.sql</p>
+<p>###十、Duplicate entry ‘xxx’ for key 1<br>    插入 xxx 使索引1重复<br>分析：索引如果是primary unique这两两种，那么数据表的数据对应的这个字段就必须保证其每条记录的唯一性。否则就会产生这个错误。<br>一般发生在对数据库写操作的时候，例如Discuz!4.1论坛程序要求所有会员的用户名username必须唯一，即username的索引是 unique，这时如果强行往cdb_members表里插入一个已有的username的记录就会发上这个错误，或者将一条记录的username更新 为已有的一个username。<br>改变表结构的时候也有可能导致这个错误。例如 Discuz!4.0论坛的数据库中cdb_members.username 的索引类型是index这个时候是允许有相同username的记录存在的，在升级到4.1的时候，因为要将username的索引由原来的index变 为unique。如果这时cdb_members里存在有相同的username的记录，那么就会引发这个错误。<br>导出数据据时有时会因为一些原因（作者目前还不清楚）导致同一条记录被重复导出，那么这个备份数据在导入的时候出现这个错误是在所难免的了。<br>修改了auto_increment的值，致使“下一个 Autoindex”为一条已经存在的记录<br>解决： 两种思路，一是破坏掉唯一性的索引。二是把重复的数据记录干掉，只保留一条。很显然第一种思路是不可取的。那么按照二的思路我们得出以下几种解决方法，对应上面的i ii iii<br>略<br>按照错误提示里的信息到数据库中将重复的记录删除，仅保留一条即可。之后继续执行升级操作。<br>这种情况发生的概率很小，可以用文本编辑器打开备份文档，查找重复的信息。将其多余的拿掉，仅保留一条即可。<br>查询出表中auto_increment最大的一条记录，设置auto_incerment比其大一即可。<br>PS：repaire table “表名“，可以暂时解决问题。</p>
+<p>###十一、 Duplicate key name ‘xxx’<br>    索引名重复<br>分析：要创建的索引已经存在了，就会引发这个错误，这个错误多发生在升级的时候。可能是已经升级过的，重复升级引起的错误。也有可能是之前用户擅自加的索引，刚好与升级文件中的所以相同了。<br>解决： 看看已经存在的索引和要添加的索引是否一样，一样的话可以跳过这条sql语句，如果不一样那么现删除已存在的所以，之后再执行。</p>
+<p>###十二、 Duplicate column name ‘xxx’<br>    字段名xxx重复<br>分析：添加的字段xxx已经存在，多发生在升级过程中，与问题十二的产生是一样的。<br>解决： 看一下已经存在的字段是否和将要添加的字段属性完全相同，如果相同则可以跳过不执行这句sql，如果不一样则删除掉这个字段。之后继续执行升级程序。</p>
+<p>###十三、 Table ‘xxx’ already exists<br>    数据表xxx已经存在<br>分析：xxx表已经存在于库中，再次试图创建这个名字的表就会引发这个错误。同样多发生在论坛的升级中。类似于问题十二。<br>解决： 看看已经存在的表是否和将要创建的表完全一样，一样的话可以跳过不执行这个sql，否则请将存在的表先删除，之后继续执行升级文件。</p>
+<p>###十四、 Can’t create database ‘xxx’. Database exists<br>    不能创建数据库xxx，数据库已经存在<br>分析：一个mysql下面的数据库名称必须保证唯一性，否则就会有这个错误。<br>解决：把已经存在的数据库改名或者把将要创建的数据库改名，总之不让他们的名称冲突。</p>
+<p>###十五、 小结（针对问题 11\12\13\14\15）<br>此类问题错误提示中都暗藏一个关键词duplicate（重复）<br>那么对于mysql数据库来说什么东西是不能重复的呢？<br>数据库 database<br>同一个数据库下数据表 table<br>同一个数据表下字段 column<br>同一个数据表下索引 key<br>同一个数据表在索引唯一（UNIQUE PRIMARY）的情况下记录中的这些字段不可以重复</p>
+<p>###十六、Unknown system variable ‘NAMES’<br>    未知的系统变量NAMES<br>分析：Mysql版本不支持字符集设定，此时强行设定字符集就会出现这个错误。<br>解决： 将sql语句中的SET NAMES ‘xxx’ 语句去掉</p>
+<p>###十七、 Lost connection to MySQL server during query<br>    MySQL服务器失去连接在查询期间<br>分析：远程连接数据库是有时会有这个问题。MySQL服务器在执行一条sql语句的时候失去了连接造成的。<br>解决： 一般不需要怎么去处理，如果频繁的出现那么考虑改善硬件环境。</p>
+<p>###十八、User ‘red’ has exceeded the ‘max_updates’ resource (current value: 500)<br>    msql用户red已经超过了’max_updates’（最大更新次数），’max_questions’（最大查询次数），’max_connections’（最大连接数），当前设定为500<br>分析：在mysql数据库的下有一个库为mysql，它其中有一个表为user这里面的纪录每一条都对应为一个mysql用户的授权。其中字段 max_questions max_updates max_connections分别记录着最大查询次数 最大更新数 最大连接数，当目前的任何一个参数大于任何一个设定的值就会产生这个错误。<br>解决： 独立主机用户可以直接修改授权表。修改完之后重启mysql或者跟新授权表，进入mysql提示符下执行<br>FLUSH PRIVILEGES;<br>记得后面要有分号’;’<br>虚拟主机的用户如果总是出现这个问题可找空间商协商解决。</p>
+<p>###十九、Too many connections (1040)链接过多<br>    达到最大连接数<br>问题分析：<br>连接数超过了mysql设置的值，与max_connections 和wait_timeout 都有关系。wait_timeout的值越大，连接的空闲等待就越长，这样就会造成当前连接数越大<br>解决方法：<br>1.虚拟主机用户请联系空间商优化 MySQL 服务器的配置；<br>2.独立主机用户请联系服务器管理员优化 MySQL 服务器的配置，可参考：<br>修改 MySQL 配置文件 my.ini 或者 my.cnf 中的参数：<br>max_connections= 1000<br>wait_timeout = 10<br>修改后重启 MySQL ，如果经常性的报此错误，请做一下服务器的整体优化。</p>
+<p>###二十、There is no such grant defined for user ‘%s’ on host ‘%s’<br>错误编号：1141<br>问题分析：<br>MySQL 当前用户无权访问数据库。<br>解决方法：<br>1、虚拟主机用户请联系空间商，确认给你提供的帐号是否有授权数据库的权限。<br>2、独立主机用户请联系服务器管理员，确认给您提供的数据库帐号是否有管理此数据库的权限。</p>
+<p>###二十一、Error on rename of ‘%s’ to ‘%s’ (errno: %d)<br>error.:1025<br>问题分析：<br>请检查一下您的程序是否有修改数据库表名的语句。<br>解决方法：<br>1.请检查您的程序中哪些地方需要修改数据库表名；<br>2.如果您的实际应用确实需要修改到数据库表名的话，请联系空间商或者服务器管理员给您开放修改库名的权限和服务器本身是否正常。</p>
+<p>###二十二、Error reading file ‘%s’ (errno: %d)<br>error.:1023<br>问题分析：<br>数据库文件不能被读取。<br>解决方法：<br>1.虚拟主机用户请联系空间商查看数据库是否完好。<br>2.独立主机用户请联系服务器管理员检查一下 MySQL 本身是否正常， MySQL 是否可以读取文件，Linux 用户可以检查一下 MySQL 的数据库文件的属主是否正确以及本身的文件是否损坏。</p>
+<p>###二十三、Host ‘<strong>*</strong>‘ is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’<br>error.:1129<br>问题分析：<br>数据库出现异常，请重启数据库。<br>解决方法：</p>
+<ol>
+<li>由于存在很多连接错误，主机’<em>**</em>‘被屏蔽，虚拟主机用户请联系空间商处理，独立主机用户请联系服务器管理员，在 MySQL 的命令控制台下执行’mysqladmin flush-hosts’解除屏蔽即可，或者重启 MySQL 数据库</li>
+</ol>
+<p>###二十四、dropping database (can’t delete ‘%s’, errno: %d)<br>error.:1009<br>问题分析：<br>不能删除数据库文件，导致删除数据库失败。<br>解决方法：<br>1.检查您使用的数据库管理帐号是否有权限删除数据。<br>2.检查数据库是否存在。</p>
+<p>###二十五、Got error 28 from table handler<br>error.:1030<br>问题分析：<br>数据库所在磁盘空间已满。<br>解决方法：<br>1.虚拟主机用户请联系空间商增加 MySQL 所在的磁盘空间或者清理一些无用文件；<br>2.独立主机用户请联系服务器管理员增加 MySQL 所在的磁盘空间或者清理一些无用文件</p>
+<p>###二十六、Can’t create a new thread; if you are not out of available memory, you can consult the manual for a possible OS-dependent bug。<br>error.:11/35<br>问题分析：<br>数据库服务器问题，数据库操作无法创建新线程。一般是两个原因：<br>1.服务器系统内存溢出。<br>2.环境软件损坏或系统损坏。<br>解决方法：<br>1.虚拟主机用户请联系下空间商数据库服务器的内存和系统是否正常。<br>2.独立主机用户请联系服务器管理员检查服务器的内存和系统是否正常，如果服务器内存紧张，请检查一下哪些进程消耗了服务器的内存，同时考虑是否增加服务器的内存来提高整个的负载能力。</p>
+<p>###二十七、Error: Client does not support authentication protocol requested by server; consider upgrading MySQL client<br>error.:1251<br>问题分析：<br>如果你升级 MySQL 到 4.1 以上版本后遇到以上问题,请先确定你的 MySQL Client 是 4.1 或者更高版本( Windows 下有问题你就直接跳到下面看解决方法了，因为 MySQL 在 Windows 是 client 和 server 一起装上了的)。<br>解决方法：</p>
+<ol>
+<li>Windows 平台<br>主要是改变连接 MySQL 的帐户的加密方式，MySQL 4.1/5.0 是通过 PASSWORD 这种方式加密的。可以通过以下两种方法得到解决：<br>1) mysql-&gt;SET PASSWORD FOR ‘some_user‘@’some_host’=OLD_PASSWORD(‘new_password’);<br>2) mysql-&gt;UPDATE mysql.user SET Password=OLD_PASSWORD(‘new_password’) WHERE Host=’some_host’ AND User=’some_user’;</li>
+<li>Linux/Unix 平台<br>Linux 平台下首先确定是否安装过 MySQL 的客户端，这个用 rpm 安装很简单，Linux 代码为：<br>rpm -ivh MySQL-client-4.1.15-0.i386.rpm<br>然后在编译 php 的时候要加上：<br>–with-mysql=/your/path/to/mysql<br>一般情况下都可以解决。如果还出现这种错误，可以按照下面的方法来做：<br>mysql-&gt;SET PASSWORD FOR ‘some_user‘@’some_host’=OLD_PASSWORD(‘new_password’);<br>mysql-&gt;UPDATE mysql.user SET Password=OLD_PASSWORD(‘new_password’) WHERE Host=’some_host’ AND User=’some_user’;</li>
+</ol>
+<p>###二十八、Error: Can’t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock’<br>error.:2002<br>问题分析：<br>出现这个错误一般情况下是因为下面两个原因：<br>1.MySQL 服务器没有开启。<br>2.MySQL 服务器开启了，但不能找到 socket 文件。<br>解决方法：<br>1.虚拟主机用户，请联系空间商确认数据库是否正常启动。<br>2.独立主机用户，请检查一下 MySQL 服务是否已经开启，没有开启，请启动 MySQL 服务；如果已经开启，并且是 Linux 系统，请检查一下 MySQL 的 socket 的路径，然后打开 config.inc.php 找到<br>dbhost=′localhost′;在hostname后面加冒号‘:′和MySQL的socket的路径。比如MySQL服务器为localhostMySQL的socket的路径为/tmp/mysql.sock那么就改成如下：</p>
+<p>dbhost = ‘localhost:/temp/mysql.sock’;</p>
+<p>###二十九、Can’t connect to MySQL server on ‘localhost’<br>error.:2003<br>问题分析：<br>MySQL 服务没有启动，一般是在异常的情况下 MySQL 无法启动导致的，比如无可用的磁盘空间，my.ini 里 MySQL 的 basedir 路径设置错误等。<br>解决方法：<br>1.检查磁盘空间是否还有剩余可用空间，尽量保持有足够的磁盘空间可用。<br>2.检查 my.ini 里的 basedir 等参数设置是否正确，然后重新启动下 MySQL 服务。</p>
+<p>###三十、Lost connection to MySQL server during query<br>error.:2013<br>问题分析：<br>数据库查询过程中丢失了与 MySQL 服务器的连接。<br>解决方法：<br>1.请确认您的程序中是否有效率很低的程序，比如某些插件，可以卸载掉插件，检查一下服务器是否正常；<br>2.服务器本身资源紧张，虚拟主机用户请联系空间商确认，独立主机用户请联系服务器管理员，检查一下服务器是否正常。</p>
+<p>###三十一、Got a packet bigger than \’max_allowed_packet\’ bytes<br>错误编号：1153<br>问题分析：调整了 Mantis 的上传附件的大小却没有调整 MySQL 的配置文件。<br>解决办法：<br>1、独立主机用户请按照以下方法调整：<br>查找 MySQL 的配置文件（my.cnf 或者 my.ini）<br>在 [mysqld] 部分添加一句（如果存在，调整其值就可以）：<br>max_allowed_packet=10M<br>重启 MySQL 服务就可以了。这里设置的是 10MB。<br>2、虚拟主机用户请联系空间商调整此参数。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://kingle.我爱你/2018/09/07/mysql-问题总结/" title="mysql 问题总结" target="_blank" rel="external">https://kingle.我爱你/2018/09/07/mysql-问题总结/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://kingle666.github.io" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://kingle666.github.io" target="_blank"><span class="text-dark">kingle</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/09/06/nginx-配置指令优化/" title="nginx 配置指令优化"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://kingle666.github.io" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/ling222kingle" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/" target="_blank" title="Facebook" data-toggle=tooltip data-placement=top><i class="icon icon-facebook"></i></a></li>
+        
+        <li><a href="/" target="_blank" title="Dribbble" data-toggle=tooltip data-placement=top><i class="icon icon-dribbble"></i></a></li>
+        
+        <li><a href="https://www.behance.net/" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>

@@ -17,16 +17,16 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Tag: ansible | Hexo</title>
+  <title>Hexo</title>
   <meta property="og:type" content="website">
 <meta property="og:title" content="kingle">
-<meta property="og:url" content="https://kingle.我爱你/tags/ansible/index.html">
+<meta property="og:url" content="https://kingle.我爱你/page/3/index.html">
 <meta property="og:site_name" content="kingle">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kingle">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.我爱你/tags/ansible/index.html">
+  <link rel="canonical" href="https://kingle.我爱你/page/3/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -338,75 +338,161 @@
 
   
   <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">Tag: ansible</h1>
-      <p class="text-muted hidden-xs">Total 1 articles</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/ansible/">ansible</a></li>
-          
-          <li><a href="/tags/linux-删除-闹钟/">linux 删除 闹钟</a></li>
-          
-          <li><a href="/tags/shell/">shell</a></li>
-          
-          <li><a href="/tags/Linux-etc-var-kingle/">Linux etc var kingle</a></li>
-          
-          <li><a href="/tags/linux-优化-kingle/">linux 优化 kingle</a></li>
-          
-          <li><a href="/tags/nginx/">nginx</a></li>
-          
-          <li><a href="/tags/lnmp-shell/">lnmp shell</a></li>
-          
-          <li><a href="/tags/vim/">vim</a></li>
-          
-          <li><a href="/tags/单引号，双引号，反引号/">单引号，双引号，反引号</a></li>
-          
-          <li><a href="/tags/rsync/">rsync</a></li>
-          
-          <li><a href="/tags/nfs/">nfs</a></li>
-          
-          <li><a href="/tags/命令-运维/">命令 运维</a></li>
-          
-          <li><a href="/tags/ulimit/">ulimit</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
-        
-<div class="col-md-6">
+  
+  
+    <div class="content">
+  <article id="post-linux系统优化基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2018-09-05T01:35:54.000Z" itemprop="datePublished">2018-09-05</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2018/09/05/ansible-命令操作项/">ansible 命令操作项</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/ansible/" class="label label-default mb">ansible</a>
-     
-     
-   </div>
-   
-</article>
+    <div class="article-header">
+      
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/11/linux系统优化基础/">linux系统优化基础</a>
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/11/linux系统优化基础/" class="article-date">
+	  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">2018-07-11</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a>
+  </span>
 
 
-</div>
+        
 
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/11/linux系统优化基础/#comments" class="article-comment-link">Comments</a></span>
+        
       </div>
     </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <h3 id="1，-查看centos版本：cat-etc-redhat-release"><a href="#1，-查看centos版本：cat-etc-redhat-release" class="headerlink" title="1， 查看centos版本：cat etc/redhat-release"></a>1， 查看centos版本：cat etc/redhat-release</h3><pre><code>看看centos架构信息：uname -m
+
+查看内核信息：uname -r
+                    -r 显示内核信息
+                    -m 显示系统架构信息
+                    -a 显示系统所欲信息
+                    -n 网络节点主机
+</code></pre><h3 id="2，-ctrl-L-清屏操作"><a href="#2，-ctrl-L-清屏操作" class="headerlink" title="2，    ctrl+ L 清屏操作"></a>2，    ctrl+ L 清屏操作</h3><pre><code>ctrl＋ｄ　退出当前用户
+ｃｔｒｌ　＋　ｃ　结束操作
+</code></pre><h3 id="3，-创建用户-useradd"><a href="#3，-创建用户-useradd" class="headerlink" title="3， 创建用户 useradd"></a>3， 创建用户 useradd</h3><pre><code>创建密码　ｐａｓｓｗｄ　 
+    免交互设置密码 echo“” |passwd --stdin oldgilr
+切换：  su   不指定用户默认root
+        su -
+    su 进入的普通用户后 环境变量还是原本用户的变量及pwd后 显示的是/root
+    su - 进入普通用户原本的环境变量也会改变
+    及pwd显示是 /home/kingle 
+</code></pre><p>###　4, 查看当前用户whoami </p>
+<h3 id="5，如果用户需要重置密码，需要以root用户重置"><a href="#5，如果用户需要重置密码，需要以root用户重置" class="headerlink" title="5，如果用户需要重置密码，需要以root用户重置"></a>5，如果用户需要重置密码，需要以root用户重置</h3><pre><code>root草鸡管理员 其他普通用户只能独立访问长度 
+</code></pre><h3 id="6，-export-PS1-”-u-h-w-A-“"><a href="#6，-export-PS1-”-u-h-w-A-“" class="headerlink" title="6， export PS1=”[\u@\h \w\A]\$ “"></a>6， export PS1=”[\u@\h \w\A]\$ “</h3><pre><code>\u--&gt;root
+\h--&gt;标示
+\w-&gt;当前路径
+\A--时间
+</code></pre><h3 id="7，系统优化：selinux"><a href="#7，系统优化：selinux" class="headerlink" title="7，系统优化：selinux"></a>7，系统优化：selinux</h3><pre><code>    关闭：临时关闭：     setenforce 
+                    service selinux stop
+
+                    enforcing - selinux 服务器处于开启状态
+                    permisssive- 临时关闭，有问一题还会报告
+                    disable -- 临时关闭
+
+          永久关闭：selinux 修改自己的配置文件生效
+
+      iptables
+    /etc/init.d 目录存放服务程序的脚本文件
+chkconfig 设置系统的各种服务
+chkconfig iptables off 关闭服务
+</code></pre><h3 id="系统乱码："><a href="#系统乱码：" class="headerlink" title="系统乱码："></a>系统乱码：</h3><pre><code>修改一个字符集的环境变量
+临时修改
+echo $LANG 
+LANG=en_US.UTF-8  ------&gt;正确的设定
+永久修改
+export LANG=en_US.UTF-8 &gt;&gt;/etc/profile
+
+
+vim /etc/sysconfig/i18n
+
+修改生效 source /etc/sysconfig/i18n
+source 经常可以加载的配置文件
+
+/etc/profile /etc/bashrc    ~/.bash_profile ~/.bashrc /etc/sysconfig/i18n
+</code></pre>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://kingle.我爱你/2018/07/11/linux系统优化基础/" title="linux系统优化基础" target="_blank" rel="external">https://kingle.我爱你/2018/07/11/linux系统优化基础/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://kingle666.github.io" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://kingle666.github.io" target="_blank"><span class="text-dark">kingle</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
   </article>
-   
+  
+</div>
+
+  
+
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/page/2/">
+                    <i class="icon icon-angle-left"></i>
+                    Prev
+                </a>
+            </li>
+            
+            
+            <li class="next disabled">
+                <a href="javascript:;">
+                    Next
+                    <i class="icon icon-angle-right"></i>                    
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 3 of 3</div>
+        </div>
+    </nav>
+    
+ 
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -466,6 +552,10 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 <script src="/js/insight.js"></script>
     
     
+    
+        
+
+
     
     
     

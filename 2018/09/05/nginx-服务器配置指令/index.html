@@ -22,16 +22,16 @@
 <meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx 服务器配置指令">
-<meta property="og:url" content="https://kingle.xyz/2018/09/05/nginx-服务器配置指令/index.html">
+<meta property="og:url" content="https://kingle.我爱你/2018/09/05/nginx-服务器配置指令/index.html">
 <meta property="og:site_name" content="kingle">
 <meta property="og:description" content="nginx 基础配置 localtion 配置语法结构: location [ =  ~  ~* ^~ ] uri{ ... } uri 变量是带匹配的请求字符, 可以是不含正则表达的字符串, 也可以是包含正则的字符串 其中[ ] 中的是可选项 uri 的是必选项: 用来改变请求字符串与uri的匹配方式  =  用于标准uri 前面 , 要求请求字符串与uri严格匹配,如果已经匹配成功,就停止匹配">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-05T12:46:10.132Z">
+<meta property="og:updated_time" content="2018-09-06T02:54:39.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx 服务器配置指令">
 <meta name="twitter:description" content="nginx 基础配置 localtion 配置语法结构: location [ =  ~  ~* ^~ ] uri{ ... } uri 变量是带匹配的请求字符, 可以是不含正则表达的字符串, 也可以是包含正则的字符串 其中[ ] 中的是可选项 uri 的是必选项: 用来改变请求字符串与uri的匹配方式  =  用于标准uri 前面 , 要求请求字符串与uri严格匹配,如果已经匹配成功,就停止匹配">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.xyz/2018/09/05/nginx-服务器配置指令/index.html">
+  <link rel="canonical" href="https://kingle.我爱你/2018/09/05/nginx-服务器配置指令/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -245,7 +245,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -257,6 +257,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/09/07/mysql-问题总结/" class="title">mysql 问题总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-09-07T09:58:57.000Z" itemprop="datePublished">2018-09-07</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -313,21 +328,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2018-09-05T12:45:25.000Z" itemprop="datePublished">2018-09-05</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2018/09/05/nginx-常见问题/" class="title">nginx 常见问题</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-09-05T09:49:18.000Z" itemprop="datePublished">2018-09-05</time>
               </p>
             </div>
           </li>
@@ -415,42 +415,50 @@ uri 变量是带匹配的请求字符, 可以是不含正则表达的字符串, 
  500 Internal Server Error //服务器发生不可预期的错误
  503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
  eg：HTTP/1.1 200 OK （CRLF）        
-</code></pre><h3 id="常见的配置文件说明"><a href="#常见的配置文件说明" class="headerlink" title="常见的配置文件说明"></a>常见的配置文件说明</h3><pre><code>1, error_log file | stderr [debug | info | notice | warn | error | crit | alert | emerg ]
+</code></pre><h3 id="常见的配置文件说明"><a href="#常见的配置文件说明" class="headerlink" title="常见的配置文件说明"></a>常见的配置文件说明</h3><pre><code>1, error_log  file | stderr [debug | info | notice | warn | error | crit | alert | emerg ]
 
+    debug  --- 调试级别      输出日志信息最全
+    info   --- 普通级别      输出提示信息
+    notice --- 注意级别      输出注意信息
+    warn   --- 警告级别      输出一些无关紧要的错误信息
+    error  --- 错误级别      有影响服务正常运行的错误
+    crit   --- 严重错误级别   严重错误级别
+    alert  --- 十分严重级别   十分严重
+    emerg  ---  超级严重      超级严重
 nginx服务器的日志文件输出到某一文件或者输出到标准输出错误输出到stder:
 后面则是跟的日志级别可选项, 由低到高分为debug .... emerg 设置级别后联通高级别也会别记录
 
-2, user user group
+2, user   user group
 
 配置启动程序的用户 用户 组 希望所有能启动则不写
 
-3, worker_processes number | auto
+3, worker_processes  number | auto
 
 number 指定nginx进程做多产生woker peocess数
 auto nginx 自动检测进程数
 
-4, pid file
+4, pid  file
 
 指定pid文件凡在哪里
 pid log/nginx.pid  注意设置的时候要配置文件名,不然找不到
 
-5, include file
+5, include  file
 
 包含的配置文件,引入其他的配置
 
-6, acept_mutex on | off
+6, acept_mutex  on | off
 
 设置网络的连接序列化
 
-7, multi_accept on| off 
+7, multi_accept  on| off 
 
 设置是否允许同时接受多个网络连接
 
-8, use method
+8, use  method
 
 事件驱动模型的选择
 
-9, worker_connections number
+9, worker_connections   number
 
 配置允许每一个workr process 最大连接数, 默认是1024
 
@@ -459,14 +467,14 @@ pid log/nginx.pid  注意设置的时候要配置文件名,不然找不到
 配置资源类型,mime-type是网络资源的一种媒体类型 
 格式: default_type mime-type
 
-11, access_log path[format[buffer=size]]
+11, access_log   path[format[buffer=size]]
 
 自定义服务器的日志
  path: 配置服务器日志文件的存放的路径和名称
  format: 可选项,自定义服务器日志的格式字符串
  size: 配置临时存放日志的内存缓冲区大小
 
-12, log_format name sting ...;
+12, log_format   name sting ...;
 
 与access_log联合使用 ,专门用于定义服务器日志的格式
 并且可以为格式定义一个名字, 让access_log 方便调用
@@ -474,21 +482,21 @@ pid log/nginx.pid  注意设置的时候要配置文件名,不然找不到
 name : 格式字符串的名字 默认combined
 string 服务日志的格式字符串
 
-13, sendfile no | off
+13, sendfile   no | off
 
 配置允许sendfile方式传输文件
 
-14, sendfile_max_chunk size
+14, sendfile_max_chunk   size
 
 配置nginx进程的每个worker_process每次调用senfile()传输数据量最大不能超过的值
 
-15, keepalive_timeout timeout[header_timeout];
+15, keepalive_timeout   timeout[header_timeout];
 
 配置连接超时时间
 timeout 服务端对连接的保持时间
 header_timeout, 应答报文头部的keeplive域设置超时时间
 
-16, keepalive_repuests number
+16, keepalive_repuests   number
 
 单链接请求数上限
 
@@ -589,7 +597,7 @@ file文件需要使用绝对路径
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://kingle.xyz/2018/09/05/nginx-服务器配置指令/" title="nginx 服务器配置指令" target="_blank" rel="external">https://kingle.xyz/2018/09/05/nginx-服务器配置指令/</a>
+      <a href="https://kingle.我爱你/2018/09/05/nginx-服务器配置指令/" title="nginx 服务器配置指令" target="_blank" rel="external">https://kingle.我爱你/2018/09/05/nginx-服务器配置指令/</a>
     </li>
     
     
