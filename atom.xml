@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kingle.%E6%88%91%E7%88%B1%E4%BD%A0/"/>
-  <updated>2018-09-07T10:00:53.264Z</updated>
+  <updated>2018-10-09T02:04:13.579Z</updated>
   <id>https://kingle.我爱你/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx 优化</title>
+    <link href="https://kingle.%E6%88%91%E7%88%B1%E4%BD%A0/2018/10/09/nginx-web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E5%8C%96/"/>
+    <id>https://kingle.我爱你/2018/10/09/nginx-web服务器优化/</id>
+    <published>2018-10-09T02:03:00.000Z</published>
+    <updated>2018-10-09T02:04:13.579Z</updated>
+    
+    <content type="html"><![CDATA[<p>###隐藏版本信息 server_tokens<br>Syntax:     server_tokens on | off | build | string;<br>Default:     server_tokens on;<br>Context:     http, server, location</p><p>###设置cpu棵树<br>Syntax:     worker_processes number | auto;<br>Default:    worker_processes 1;<br>Context:     main</p><p>###cpu优化<br>worker_processes    4;<br>worker_cpu_affinity 0001 0010 0100 1000;</p><p>###work最大连接数<br>Syntax:     worker_connections number;<br>Default:    worker_connections 512;<br>Context:     events</p><p>###打开文件数<br>Syntax:     worker_rlimit_nofile number;<br>Default:     —<br>Context:     main</p><p>###开启高校传输——-&gt;零拷贝<br>Syntax:     sendfile on | off;<br>Default:     sendfile off;<br>Context:     http, server, location, if in location</p><p>###讲数据信息进行快速传输<br>Syntax:     tcp_nodelay on | off;<br>Default:     tcp_nodelay on;<br>Context:     stream, server<br>This directive appeared in version 1.9.4. </p><p>###将数据积攒传输<br>Syntax:     tcp_nopush on | off;<br>Default:     tcp_nopush off;<br>Context:     http, server, location</p><p>###优化客户端访问nginx服务器超时时间<br>Syntax:     keepalive_timeout timeout [header_timeout];<br>Default:     keepalive_timeout 75s;<br>Context:     http, server, location</p><p>###优化服务器短请求超时时间<br>Syntax:     client_header_timeout time;<br>Default:     client_header_timeout 60s;<br>Context:     http, server</p><p>###优化两个请求主体发送间隔超时时间<br>Syntax:     client_max_body_size size;<br>Default:     client_max_body_size 1m;<br>Context:     http, server, location</p><p>###优化两个响应信息的间隔时间 send_timeout<br>Syntax:     send_timeout time;<br>Default:     send_timeout 60s;<br>Context:     http, server, location</p><p>###设置客户端请求报文主题最大尺寸  client_max_body_size<br>Syntax:     client_max_body_size size;<br>Default:     client_max_body_size 1m;<br>Context:     http, server, location</p><p>###设置使用类型<br>Syntax:     user user [group];<br>Default:     user nobody nobody;<br>Context:     main</p><p>###设置缓冲区大小   fastcgi_buffer<br>Syntax:     fastcgi_buffer_size size;<br>Default:     fastcgi_buffer_size 4k|8k;<br>Context:     http, server, location</p><p>###设置缓冲区数量和缓冲区大小  fastcgi_buffers<br>Syntax:     fastcgi_buffers number size;<br>Default:     fastcgi_buffers 8 4k|8k;<br>Context:     http, server, location</p><p>###用于设置系统很忙时可以使用的fastcgi_buffers,调整为原来大小的二倍<br>Syntax:     fastcgi_busy_buffers_size size;<br>Default:     fastcgi_busy_buffers_size 8k|16k;<br>Context:     http, server, location</p><p>###指定临时存储缓冲区目录<br>Syntax:     fastcgi_temp_path path [level1 [level2 [level3]]];<br>Default:     fastcgi_temp_path fastcgi_temp;<br>Context:     http, server, location<br>fastcgi临时文件的大小可以设置为128~256kb<br>Syntax:     fastcgi_temp_file_write_size size;<br>Default:     fastcgi_temp_file_write_size 8k|16k;<br>Context:     http, server, location</p><p>###设置请求几次之后响应将被缓存<br>Syntax:     fastcgi_cache_min_uses number;<br>Default:    fastcgi_cache_min_uses 1;<br>Context:     http, server, location</p><p>###开启缓存并为其指定一个名称<br>Syntax:     fastcgi_cache zone | off;<br>Default:     fastcgi_cache off;<br>Context:     http, server, location</p><p>###访问页面缓存生成MD5<br>Syntax:     fastcgi_cache_key string;<br>Default:     fastcgi_cache_key http://$host$request_uri;<br>Context:     http, server, location</p><p>###缓存路径配置信息<br>Syntax:     fastcgi_cache_path path [levels=levels目录级别] [use_temp_path=on|off] keys_zone=name:size缓存空间的名字和大小 [inactive=time 提示缓存超时时间删除缓存] [max_size=size 最大值 ] [manager_files=number] [manager_sleep=time] [manager_threshold=time] [loader_files=number] [loader_sleep=time] [loader_threshold=time] [purger=on|off] [purger_files=number] [purger_sleep=time] [purger_threshold=time];<br>Default:     fastcgi_cache_path /data/ngx_fcgi_cache levels=2:2 keys_zone=ngx_fcgi_cache:512m inactive=1d max_size=40g；<br>Context:     http</p><p>###指定应答代码的缓存时间<br>Syntax:     fastcgi_cache_valid [code …] time;<br>Default:     —<br>Context:     http, server, location<br>使用过期的缓存<br>Syntax:     fastcgi_cache_use_stale error | timeout | invalid_header | updating | http_500 | http_503 | http_403 | http_404 | http_429 | off …;<br>Default:     fastcgi_cache_use_stale off;<br>Context:     http, server, location</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;###隐藏版本信息 server_tokens&lt;br&gt;Syntax:     server_tokens on | off | build | string;&lt;br&gt;Default:     server_tokens on;&lt;br&gt;Context:     http, s
+      
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="https://kingle.%E6%88%91%E7%88%B1%E4%BD%A0/tags/nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql 问题总结</title>
@@ -469,30 +492,6 @@ lin
     
     
       <category term="linux 删除 闹钟" scheme="https://kingle.%E6%88%91%E7%88%B1%E4%BD%A0/tags/linux-%E5%88%A0%E9%99%A4-%E9%97%B9%E9%92%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>命令</title>
-    <link href="https://kingle.%E6%88%91%E7%88%B1%E4%BD%A0/2018/07/12/%E5%91%BD%E4%BB%A4/"/>
-    <id>https://kingle.我爱你/2018/07/12/命令/</id>
-    <published>2018-07-12T11:34:40.000Z</published>
-    <updated>2018-07-12T11:38:05.069Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1-tree"><a href="#1-tree" class="headerlink" title="1,tree"></a>1,tree</h3><pre><code>-d /etc/ 参数表示只显示目录-f 显示内容的完整-i 不显示树枝显示完整路径</code></pre><h3 id="2-mkdir"><a href="#2-mkdir" class="headerlink" title="2,mkdir"></a>2,mkdir</h3><pre><code>-p 递归创建多级目录-v 显示创建目录的过程-m 设置目录的默认权限mkdir -p `cat ~/oldbay.txt` </code></pre><h3 id="3-touch"><a href="#3-touch" class="headerlink" title="3,touch"></a>3,touch</h3><pre><code>-a 只更改指定文件最后访问-m 修改最后的修改时间-d 指定文件的修改时间</code></pre><h3 id="4-stat"><a href="#4-stat" class="headerlink" title="4,stat"></a>4,stat</h3><pre><code>查看文件的时间搓</code></pre><h3 id="5-ls"><a href="#5-ls" class="headerlink" title="5,ls"></a>5,ls</h3><pre><code>-l 详细信息-a 显示隐藏文件-t 根据时间排序-F 文件类型    * 代表普通文件    / 代表目录    = 代表套接字（socket）    | ------    @ 符号链接-i 显示inode节点--time-style=long-iso 显示完整的时间属性-lhi含义 第一列：inode 索引节点编号第二列：文件类型属性第三列：硬链接个数第四列：文件所属的用户第五列：文件所属的组第六列：文件的大小</code></pre><h3 id="6-cp"><a href="#6-cp" class="headerlink" title="6,cp"></a>6,cp</h3><pre><code>-p 复制文件保持源文件属性-d 符号链接-r 递归复制 -a 上面总和-i 覆盖前提示-t 颠倒格式</code></pre><h3 id="7-mv"><a href="#7-mv" class="headerlink" title="7,mv"></a>7,mv</h3><pre><code>-f 不提示覆盖-i 询问覆盖-n 不覆盖已存在的文件-t 源文件和目标文件对调</code></pre><h3 id="8-rm"><a href="#8-rm" class="headerlink" title="8,rm"></a>8,rm</h3><pre><code>-f 强制删除-i 删除前提示-I 删除文件过多需要提示-r 递归删除</code></pre><h3 id="9-rmdir"><a href="#9-rmdir" class="headerlink" title="9,rmdir"></a>9,rmdir</h3><pre><code>-p 递归删除目录-v 显示命令执行的过程</code></pre><h3 id="10-in"><a href="#10-in" class="headerlink" title="10,in"></a>10,in</h3><pre><code>-s 创建软连接（符号链接）</code></pre><h3 id="11-find"><a href="#11-find" class="headerlink" title="11,find"></a>11,find</h3><pre><code>pathname :路径Options 模块    -depth 从指定目录下最深的子目录    -maxdepth levelsTests模块    -atime 按照文件的访问时间查找文件-type        b 块设备文件    c 字符设备文件    d 目录    p 管道文件    l 符号链接    f 普通文件    $ socket 文件    D dooractions模块    -delete 讲查找的文件删除    -exec 对匹配的文件执行改参数给出的shell命令    -ok 和-exec作用相同    -print 讲匹配的文件输出到标准输出    ！取反    忽略目录：find /data \(/data/dir2 -o -path /data/dirs \) -prune -o -print</code></pre><h3 id="12-xargs"><a href="#12-xargs" class="headerlink" title="12,xargs"></a>12,xargs</h3><pre><code>-n 指定每行最大参数量-d 自定义分隔符-i 以{}代替前面的结果-I 指定一个符号代替前面的结果-p 提示用户是否执行</code></pre><h3 id="13-rename"><a href="#13-rename" class="headerlink" title="13,rename"></a>13,rename</h3><pre><code>rename form to file    form 代表需要提哈U呢或者处理的字符    to 把前面的from 代表内容替换我to的代表内容    file 待处理的文件</code></pre><h3 id="14-dasename"><a href="#14-dasename" class="headerlink" title="14,dasename"></a>14,dasename</h3><pre><code>显示文件名或目录名    用于去除文件后缀部分</code></pre><h3 id="15-dirname"><a href="#15-dirname" class="headerlink" title="15,dirname"></a>15,dirname</h3><pre><code>显示文件或者目录路径</code></pre><h3 id="16-chattr-option-选项-mode-模式-files-问价或者路径"><a href="#16-chattr-option-选项-mode-模式-files-问价或者路径" class="headerlink" title="16,chattr [option 选项] [mode 模式] [files 问价或者路径]"></a>16,chattr [option 选项] [mode 模式] [files 问价或者路径]</h3><pre><code>改变文件扩展属性    -R 递归更改目录属性    -V 显示命令执行的过程    mode项：    + 增加参数    - 移除参数    = 跟新为指定参数    A 告诉系统不要修改这个文件的最后访问时间    a 只能向文件添加数据，不能删除更改或者删除    i 设定文件锁定不允许操作</code></pre><h3 id="17-lsattr-option-选项-file-目标-文件"><a href="#17-lsattr-option-选项-file-目标-文件" class="headerlink" title="17,lsattr [option 选项] [file 目标 文件]"></a>17,lsattr [option 选项] [file 目标 文件]</h3><pre><code>-R 递归查看目录的扩展属性-a 显示所有文件包括隐藏文件的扩展属性-d 显示目录的扩展属性</code></pre><h3 id="18-file-option-选项-file-目标-文件"><a href="#18-file-option-选项-file-目标-文件" class="headerlink" title="18,file    [option 选项] [file 目标 文件]"></a>18,file    [option 选项] [file 目标 文件]</h3><pre><code>-b 输出信息使用精简格式</code></pre><h3 id="19-md5sum"><a href="#19-md5sum" class="headerlink" title="19,md5sum"></a>19,md5sum</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1-tree&quot;&gt;&lt;a href=&quot;#1-tree&quot; class=&quot;headerlink&quot; title=&quot;1,tree&quot;&gt;&lt;/a&gt;1,tree&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;-d /etc/ 参数表示只显示目录
--f 显示内容的完整
--i 不显示树枝显示完整路径
-&lt;
-      
-    
-    </summary>
-    
     
   </entry>
   

@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>linux系统优化基础 | Hexo</title>
-  <meta name="description" content="1， 查看centos版本：cat etc/redhat-release看看centos架构信息：uname -m  查看内核信息：uname -r                     -r 显示内核信息                     -m 显示系统架构信息                     -a 显示系统所欲信息                     -n 网络节点主机 2">
-<meta name="keywords" content="linux 优化 kingle">
+  <title>nginx 优化 | Hexo</title>
+  <meta name="description" content="###隐藏版本信息 server_tokensSyntax:     server_tokens on | off | build | string;Default:     server_tokens on;Context:     http, server, location ###设置cpu棵树Syntax:     worker_processes number | auto;Defaul">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux系统优化基础">
-<meta property="og:url" content="https://kingle.我爱你/2018/07/11/linux系统优化基础/index.html">
+<meta property="og:title" content="nginx 优化">
+<meta property="og:url" content="https://kingle.我爱你/2018/10/09/nginx-web服务器优化/index.html">
 <meta property="og:site_name" content="kingle">
-<meta property="og:description" content="1， 查看centos版本：cat etc/redhat-release看看centos架构信息：uname -m  查看内核信息：uname -r                     -r 显示内核信息                     -m 显示系统架构信息                     -a 显示系统所欲信息                     -n 网络节点主机 2">
+<meta property="og:description" content="###隐藏版本信息 server_tokensSyntax:     server_tokens on | off | build | string;Default:     server_tokens on;Context:     http, server, location ###设置cpu棵树Syntax:     worker_processes number | auto;Defaul">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-11T11:34:36.663Z">
+<meta property="og:updated_time" content="2018-10-09T02:04:13.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux系统优化基础">
-<meta name="twitter:description" content="1， 查看centos版本：cat etc/redhat-release看看centos架构信息：uname -m  查看内核信息：uname -r                     -r 显示内核信息                     -m 显示系统架构信息                     -a 显示系统所欲信息                     -n 网络节点主机 2">
+<meta name="twitter:title" content="nginx 优化">
+<meta name="twitter:description" content="###隐藏版本信息 server_tokensSyntax:     server_tokens on | off | build | string;Default:     server_tokens on;Context:     http, server, location ###设置cpu棵树Syntax:     worker_processes number | auto;Defaul">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.我爱你/2018/07/11/linux系统优化基础/index.html">
+  <link rel="canonical" href="https://kingle.我爱你/2018/10/09/nginx-web服务器优化/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -345,14 +345,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-linux系统优化基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-nginx-web服务器优化" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      linux系统优化基础
+      nginx 优化
     </h1>
   
 
@@ -360,76 +360,50 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/11/linux系统优化基础/" class="article-date">
-	  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">2018-07-11</time>
+	<a href="/2018/10/09/nginx-web服务器优化/" class="article-date">
+	  <time datetime="2018-10-09T02:03:00.000Z" itemprop="datePublished">2018-10-09</time>
 	</a>
 </span>
         
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a>
+	<a class="article-tag-link" href="/tags/nginx/">nginx</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/11/linux系统优化基础/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/09/nginx-web服务器优化/#comments" class="article-comment-link">Comments</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <h3 id="1，-查看centos版本：cat-etc-redhat-release"><a href="#1，-查看centos版本：cat-etc-redhat-release" class="headerlink" title="1， 查看centos版本：cat etc/redhat-release"></a>1， 查看centos版本：cat etc/redhat-release</h3><pre><code>看看centos架构信息：uname -m
+        <p>###隐藏版本信息 server_tokens<br>Syntax:     server_tokens on | off | build | string;<br>Default:     server_tokens on;<br>Context:     http, server, location</p>
+<p>###设置cpu棵树<br>Syntax:     worker_processes number | auto;<br>Default:    worker_processes 1;<br>Context:     main</p>
+<p>###cpu优化<br>worker_processes    4;<br>worker_cpu_affinity 0001 0010 0100 1000;</p>
+<p>###work最大连接数<br>Syntax:     worker_connections number;<br>Default:    worker_connections 512;<br>Context:     events</p>
+<p>###打开文件数<br>Syntax:     worker_rlimit_nofile number;<br>Default:     —<br>Context:     main</p>
+<p>###开启高校传输——-&gt;零拷贝<br>Syntax:     sendfile on | off;<br>Default:     sendfile off;<br>Context:     http, server, location, if in location</p>
+<p>###讲数据信息进行快速传输<br>Syntax:     tcp_nodelay on | off;<br>Default:     tcp_nodelay on;<br>Context:     stream, server<br>This directive appeared in version 1.9.4. </p>
+<p>###将数据积攒传输<br>Syntax:     tcp_nopush on | off;<br>Default:     tcp_nopush off;<br>Context:     http, server, location</p>
+<p>###优化客户端访问nginx服务器超时时间<br>Syntax:     keepalive_timeout timeout [header_timeout];<br>Default:     keepalive_timeout 75s;<br>Context:     http, server, location</p>
+<p>###优化服务器短请求超时时间<br>Syntax:     client_header_timeout time;<br>Default:     client_header_timeout 60s;<br>Context:     http, server</p>
+<p>###优化两个请求主体发送间隔超时时间<br>Syntax:     client_max_body_size size;<br>Default:     client_max_body_size 1m;<br>Context:     http, server, location</p>
+<p>###优化两个响应信息的间隔时间 send_timeout<br>Syntax:     send_timeout time;<br>Default:     send_timeout 60s;<br>Context:     http, server, location</p>
+<p>###设置客户端请求报文主题最大尺寸  client_max_body_size<br>Syntax:     client_max_body_size size;<br>Default:     client_max_body_size 1m;<br>Context:     http, server, location</p>
+<p>###设置使用类型<br>Syntax:     user user [group];<br>Default:     user nobody nobody;<br>Context:     main</p>
+<p>###设置缓冲区大小   fastcgi_buffer<br>Syntax:     fastcgi_buffer_size size;<br>Default:     fastcgi_buffer_size 4k|8k;<br>Context:     http, server, location</p>
+<p>###设置缓冲区数量和缓冲区大小  fastcgi_buffers<br>Syntax:     fastcgi_buffers number size;<br>Default:     fastcgi_buffers 8 4k|8k;<br>Context:     http, server, location</p>
+<p>###用于设置系统很忙时可以使用的fastcgi_buffers,调整为原来大小的二倍<br>Syntax:     fastcgi_busy_buffers_size size;<br>Default:     fastcgi_busy_buffers_size 8k|16k;<br>Context:     http, server, location</p>
+<p>###指定临时存储缓冲区目录<br>Syntax:     fastcgi_temp_path path [level1 [level2 [level3]]];<br>Default:     fastcgi_temp_path fastcgi_temp;<br>Context:     http, server, location<br>fastcgi临时文件的大小可以设置为128~256kb<br>Syntax:     fastcgi_temp_file_write_size size;<br>Default:     fastcgi_temp_file_write_size 8k|16k;<br>Context:     http, server, location</p>
+<p>###设置请求几次之后响应将被缓存<br>Syntax:     fastcgi_cache_min_uses number;<br>Default:    fastcgi_cache_min_uses 1;<br>Context:     http, server, location</p>
+<p>###开启缓存并为其指定一个名称<br>Syntax:     fastcgi_cache zone | off;<br>Default:     fastcgi_cache off;<br>Context:     http, server, location</p>
+<p>###访问页面缓存生成MD5<br>Syntax:     fastcgi_cache_key string;<br>Default:     fastcgi_cache_key http://$host$request_uri;<br>Context:     http, server, location</p>
+<p>###缓存路径配置信息<br>Syntax:     fastcgi_cache_path path [levels=levels目录级别] [use_temp_path=on|off] keys_zone=name:size缓存空间的名字和大小 [inactive=time 提示缓存超时时间删除缓存] [max_size=size 最大值 ] [manager_files=number] [manager_sleep=time] [manager_threshold=time] [loader_files=number] [loader_sleep=time] [loader_threshold=time] [purger=on|off] [purger_files=number] [purger_sleep=time] [purger_threshold=time];<br>Default:     fastcgi_cache_path /data/ngx_fcgi_cache levels=2:2 keys_zone=ngx_fcgi_cache:512m inactive=1d max_size=40g；<br>Context:     http</p>
+<p>###指定应答代码的缓存时间<br>Syntax:     fastcgi_cache_valid [code …] time;<br>Default:     —<br>Context:     http, server, location<br>使用过期的缓存<br>Syntax:     fastcgi_cache_use_stale error | timeout | invalid_header | updating | http_500 | http_503 | http_403 | http_404 | http_429 | off …;<br>Default:     fastcgi_cache_use_stale off;<br>Context:     http, server, location</p>
 
-查看内核信息：uname -r
-                    -r 显示内核信息
-                    -m 显示系统架构信息
-                    -a 显示系统所欲信息
-                    -n 网络节点主机
-</code></pre><h3 id="2，-ctrl-L-清屏操作"><a href="#2，-ctrl-L-清屏操作" class="headerlink" title="2，    ctrl+ L 清屏操作"></a>2，    ctrl+ L 清屏操作</h3><pre><code>ctrl＋ｄ　退出当前用户
-ｃｔｒｌ　＋　ｃ　结束操作
-</code></pre><h3 id="3，-创建用户-useradd"><a href="#3，-创建用户-useradd" class="headerlink" title="3， 创建用户 useradd"></a>3， 创建用户 useradd</h3><pre><code>创建密码　ｐａｓｓｗｄ　 
-    免交互设置密码 echo“” |passwd --stdin oldgilr
-切换：  su   不指定用户默认root
-        su -
-    su 进入的普通用户后 环境变量还是原本用户的变量及pwd后 显示的是/root
-    su - 进入普通用户原本的环境变量也会改变
-    及pwd显示是 /home/kingle 
-</code></pre><p>###　4, 查看当前用户whoami </p>
-<h3 id="5，如果用户需要重置密码，需要以root用户重置"><a href="#5，如果用户需要重置密码，需要以root用户重置" class="headerlink" title="5，如果用户需要重置密码，需要以root用户重置"></a>5，如果用户需要重置密码，需要以root用户重置</h3><pre><code>root草鸡管理员 其他普通用户只能独立访问长度 
-</code></pre><h3 id="6，-export-PS1-”-u-h-w-A-“"><a href="#6，-export-PS1-”-u-h-w-A-“" class="headerlink" title="6， export PS1=”[\u@\h \w\A]\$ “"></a>6， export PS1=”[\u@\h \w\A]\$ “</h3><pre><code>\u--&gt;root
-\h--&gt;标示
-\w-&gt;当前路径
-\A--时间
-</code></pre><h3 id="7，系统优化：selinux"><a href="#7，系统优化：selinux" class="headerlink" title="7，系统优化：selinux"></a>7，系统优化：selinux</h3><pre><code>    关闭：临时关闭：     setenforce 
-                    service selinux stop
-
-                    enforcing - selinux 服务器处于开启状态
-                    permisssive- 临时关闭，有问一题还会报告
-                    disable -- 临时关闭
-
-          永久关闭：selinux 修改自己的配置文件生效
-
-      iptables
-    /etc/init.d 目录存放服务程序的脚本文件
-chkconfig 设置系统的各种服务
-chkconfig iptables off 关闭服务
-</code></pre><h3 id="系统乱码："><a href="#系统乱码：" class="headerlink" title="系统乱码："></a>系统乱码：</h3><pre><code>修改一个字符集的环境变量
-临时修改
-echo $LANG 
-LANG=en_US.UTF-8  ------&gt;正确的设定
-永久修改
-export LANG=en_US.UTF-8 &gt;&gt;/etc/profile
-
-
-vim /etc/sysconfig/i18n
-
-修改生效 source /etc/sysconfig/i18n
-source 经常可以加载的配置文件
-
-/etc/profile /etc/bashrc    ~/.bash_profile ~/.bashrc /etc/sysconfig/i18n
-</code></pre>
       
     </div>
     <div class="article-footer">
@@ -438,7 +412,7 @@ source 经常可以加载的配置文件
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://kingle.我爱你/2018/07/11/linux系统优化基础/" title="linux系统优化基础" target="_blank" rel="external">https://kingle.我爱你/2018/07/11/linux系统优化基础/</a>
+      <a href="https://kingle.我爱你/2018/10/09/nginx-web服务器优化/" title="nginx 优化" target="_blank" rel="external">https://kingle.我爱你/2018/10/09/nginx-web服务器优化/</a>
     </li>
     
     
@@ -485,10 +459,10 @@ source 经常可以加载的配置文件
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2018/07/12/命令/" title="命令"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
     
+    <li class="next">
+      <a href="/2018/09/07/mysql-问题总结/" title="mysql 问题总结"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
   </ul>

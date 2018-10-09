@@ -17,21 +17,16 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>linux系统优化基础 | Hexo</title>
-  <meta name="description" content="1， 查看centos版本：cat etc/redhat-release看看centos架构信息：uname -m  查看内核信息：uname -r                     -r 显示内核信息                     -m 显示系统架构信息                     -a 显示系统所欲信息                     -n 网络节点主机 2">
-<meta name="keywords" content="linux 优化 kingle">
-<meta property="og:type" content="article">
-<meta property="og:title" content="linux系统优化基础">
-<meta property="og:url" content="https://kingle.我爱你/2018/07/11/linux系统优化基础/index.html">
+  <title>Archive: 2018/10 | Hexo</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="kingle">
+<meta property="og:url" content="https://kingle.我爱你/archives/2018/10/index.html">
 <meta property="og:site_name" content="kingle">
-<meta property="og:description" content="1， 查看centos版本：cat etc/redhat-release看看centos架构信息：uname -m  查看内核信息：uname -r                     -r 显示内核信息                     -m 显示系统架构信息                     -a 显示系统所欲信息                     -n 网络节点主机 2">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-11T11:34:36.663Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux系统优化基础">
-<meta name="twitter:description" content="1， 查看centos版本：cat etc/redhat-release看看centos架构信息：uname -m  查看内核信息：uname -r                     -r 显示内核信息                     -m 显示系统架构信息                     -a 显示系统所欲信息                     -n 网络节点主机 2">
+<meta name="twitter:title" content="kingle">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://kingle.我爱你/2018/07/11/linux系统优化基础/index.html">
+  <link rel="canonical" href="https://kingle.我爱你/archives/2018/10/index.html">
   
     <link rel="alternate" href="/atom.xml" title="kingle" type="application/atom+xml">
   
@@ -344,215 +339,48 @@
   
   
 <main class="main" role="main">
-  <div class="content">
-  <article id="post-linux系统优化基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  	<article class="content article article-archives article-type-list" itemscope="">
+	    <header class="article-header">
+	      <h1 itemprop="title">Archive: 2018/10</h1>
+	      <p class="text-muted">Total 1 articles</p>
+	    </header>
+	    <div class="article-body">
+	      
+  
+  
     
-    <div class="article-header">
+    
       
-        
-  
-    <h1 class="article-title" itemprop="name">
-      linux系统优化基础
-    </h1>
-  
-
       
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/07/11/linux系统优化基础/" class="article-date">
-	  <time datetime="2018-07-11T11:19:29.000Z" itemprop="datePublished">2018-07-11</time>
-	</a>
-</span>
-        
-        
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/linux-优化-kingle/">linux 优化 kingle</a>
-  </span>
-
-
-        
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/11/linux系统优化基础/#comments" class="article-comment-link">Comments</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry markdown-body" itemprop="articleBody">
-      
-        <h3 id="1，-查看centos版本：cat-etc-redhat-release"><a href="#1，-查看centos版本：cat-etc-redhat-release" class="headerlink" title="1， 查看centos版本：cat etc/redhat-release"></a>1， 查看centos版本：cat etc/redhat-release</h3><pre><code>看看centos架构信息：uname -m
-
-查看内核信息：uname -r
-                    -r 显示内核信息
-                    -m 显示系统架构信息
-                    -a 显示系统所欲信息
-                    -n 网络节点主机
-</code></pre><h3 id="2，-ctrl-L-清屏操作"><a href="#2，-ctrl-L-清屏操作" class="headerlink" title="2，    ctrl+ L 清屏操作"></a>2，    ctrl+ L 清屏操作</h3><pre><code>ctrl＋ｄ　退出当前用户
-ｃｔｒｌ　＋　ｃ　结束操作
-</code></pre><h3 id="3，-创建用户-useradd"><a href="#3，-创建用户-useradd" class="headerlink" title="3， 创建用户 useradd"></a>3， 创建用户 useradd</h3><pre><code>创建密码　ｐａｓｓｗｄ　 
-    免交互设置密码 echo“” |passwd --stdin oldgilr
-切换：  su   不指定用户默认root
-        su -
-    su 进入的普通用户后 环境变量还是原本用户的变量及pwd后 显示的是/root
-    su - 进入普通用户原本的环境变量也会改变
-    及pwd显示是 /home/kingle 
-</code></pre><p>###　4, 查看当前用户whoami </p>
-<h3 id="5，如果用户需要重置密码，需要以root用户重置"><a href="#5，如果用户需要重置密码，需要以root用户重置" class="headerlink" title="5，如果用户需要重置密码，需要以root用户重置"></a>5，如果用户需要重置密码，需要以root用户重置</h3><pre><code>root草鸡管理员 其他普通用户只能独立访问长度 
-</code></pre><h3 id="6，-export-PS1-”-u-h-w-A-“"><a href="#6，-export-PS1-”-u-h-w-A-“" class="headerlink" title="6， export PS1=”[\u@\h \w\A]\$ “"></a>6， export PS1=”[\u@\h \w\A]\$ “</h3><pre><code>\u--&gt;root
-\h--&gt;标示
-\w-&gt;当前路径
-\A--时间
-</code></pre><h3 id="7，系统优化：selinux"><a href="#7，系统优化：selinux" class="headerlink" title="7，系统优化：selinux"></a>7，系统优化：selinux</h3><pre><code>    关闭：临时关闭：     setenforce 
-                    service selinux stop
-
-                    enforcing - selinux 服务器处于开启状态
-                    permisssive- 临时关闭，有问一题还会报告
-                    disable -- 临时关闭
-
-          永久关闭：selinux 修改自己的配置文件生效
-
-      iptables
-    /etc/init.d 目录存放服务程序的脚本文件
-chkconfig 设置系统的各种服务
-chkconfig iptables off 关闭服务
-</code></pre><h3 id="系统乱码："><a href="#系统乱码：" class="headerlink" title="系统乱码："></a>系统乱码：</h3><pre><code>修改一个字符集的环境变量
-临时修改
-echo $LANG 
-LANG=en_US.UTF-8  ------&gt;正确的设定
-永久修改
-export LANG=en_US.UTF-8 &gt;&gt;/etc/profile
-
-
-vim /etc/sysconfig/i18n
-
-修改生效 source /etc/sysconfig/i18n
-source 经常可以加载的配置文件
-
-/etc/profile /etc/bashrc    ~/.bash_profile ~/.bashrc /etc/sysconfig/i18n
-</code></pre>
-      
-    </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="https://kingle.我爱你/2018/07/11/linux系统优化基础/" title="linux系统优化基础" target="_blank" rel="external">https://kingle.我爱你/2018/07/11/linux系统优化基础/</a>
-    </li>
-    
-    
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://kingle666.github.io" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://kingle666.github.io" target="_blank"><span class="text-dark">kingle</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
-        <div>个人简介。</div>
-      </div>
-    </figure>
-  </div>
-</div>
-
-
-    </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-       
-    <div id="vcomments"></div>
-
-    
-    
-  </section>
-
-
-  
-</div>
-
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2018/07/12/命令/" title="命令"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
-    
-    
-  </ul>
-  
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
-  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
-    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
-  </div> -->
-  
-  
-  <div class="bar-right">
-    
-    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
-    
-  </div>
-  </div>
-</nav>
-  
-<!-- Modal -->
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content donate">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modal-body">
-        <div class="donate-box">
-          <div class="donate-head">
-            <p>Maybe you could buy me a cup of coffee.</p>
-          </div>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-              <div class="donate-payimg">
-                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
-              </div>
-              <p class="text-muted mv">Scan this qrcode</p>
-              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-              <div class="donate-payimg">
-                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
-              </div>
-              <p class="text-muted mv">Scan this qrcode</p>
-              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
-            </div>
-          </div>
-          <div class="donate-footer">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
-              </li>
-              <li role="presentation" class="">
-                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
-              </li>
-            </ul>
-          </div>
+      <section class="panel panel-default b-no">
+        <div class="panel-heading" role="tab">
+          <h3 class="panel-title">
+            <a data-toggle="collapse" href="#collapse2018" aria-expanded="true">
+              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
+              2018
+            </a>
+            <!-- <a href="/archives/2018" class="archive-year">2018</a> -->
+          </h3>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <div id="collapse2018" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2018">
+        <div class="panel-body">
+          <div class="collection">
+    
+    
+<a href="/2018/10/09/nginx-web服务器优化/" class="collection-item" target="_blank" itemprop="url">
+  <time datetime="2018-10-09T02:03:00.000Z" itemprop="datePublished">2018-10-09</time>
+  <span>&nbsp;&nbsp;&nbsp;</span> nginx 优化
+</a>
 
 
+  
+  
+    </div></div></div></section>
+  
 
+	    </div>
+  	</article>
+  	 	
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -613,37 +441,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     
     
     
-        
-
-
-    
-    
-        
-    
-   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-   <script src="//cdn.jsdelivr.net/npm/valine"></script>
-   <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-     var meta = 'nick,mail,link';
-     meta = meta.split(',').filter(function (item) {
-       return GUEST.indexOf(item)>-1;
-     });
-     new Valine({
-         el: '#vcomments' ,
-         verify: false,
-         notify: false,
-         appId: '',
-         appKey: '',
-         placeholder: 'Just go go',
-         avatar:'mm',
-         meta:meta,
-         pageSize:'10' || 10,
-         visitor: false
-     });
-   </script>
-
-    
-
     
     
 
